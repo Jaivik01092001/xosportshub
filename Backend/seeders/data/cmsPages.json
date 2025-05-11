@@ -1,0 +1,57 @@
+[
+  {
+    "_id": "5d725a4a7b292f5f8ceff7b1",
+    "title": "About Us",
+    "slug": "about-us",
+    "content": "<h1>About XO Sports Hub</h1><p>XO Sports Hub is a premier digital marketplace connecting athletes and sports enthusiasts with top-quality training content from professional coaches and athletes.</p><p>Our mission is to democratize access to elite sports training, making it available to anyone, anywhere, at any time.</p><h2>Our Story</h2><p>Founded in 2023, XO Sports Hub was created by a team of former athletes and tech entrepreneurs who recognized the need for a centralized platform where athletes could access high-quality training materials.</p><p>Today, we host content from Olympic athletes, professional coaches, and sports experts across a wide range of disciplines.</p><h2>Our Values</h2><ul><li><strong>Excellence:</strong> We strive for excellence in everything we do.</li><li><strong>Accessibility:</strong> We believe quality sports training should be accessible to all.</li><li><strong>Innovation:</strong> We continuously innovate to improve the learning experience.</li><li><strong>Community:</strong> We foster a supportive community of athletes and coaches.</li></ul>",
+    "metaTitle": "About XO Sports Hub - Premier Sports Training Marketplace",
+    "metaDescription": "Learn about XO Sports Hub, the premier digital marketplace for sports training content from professional coaches and athletes.",
+    "status": "Published",
+    "createdBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7b2",
+    "title": "Terms of Service",
+    "slug": "terms-of-service",
+    "content": "<h1>Terms of Service</h1><p>Last updated: January 1, 2023</p><p>Please read these Terms of Service (\"Terms\", \"Terms of Service\") carefully before using the XO Sports Hub website and platform.</p><h2>1. Agreement to Terms</h2><p>By accessing or using our platform, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the service.</p><h2>2. Intellectual Property</h2><p>The content on XO Sports Hub, except for user-generated content, is owned by or licensed to us and is subject to copyright and other intellectual property rights laws.</p><h2>3. User Accounts</h2><p>When you create an account with us, you must provide accurate and complete information. You are responsible for safeguarding the password and for all activities that occur under your account.</p><h2>4. User-Generated Content</h2><p>Users may post content to our platform. By posting content, you grant us a non-exclusive, worldwide, royalty-free license to use, reproduce, modify, and display the content in connection with our services.</p><h2>5. Prohibited Activities</h2><p>You may not engage in any activity that interferes with or disrupts the services or servers and networks connected to the services.</p><h2>6. Termination</h2><p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p><h2>7. Limitation of Liability</h2><p>In no event shall XO Sports Hub, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages.</p><h2>8. Changes to Terms</h2><p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>",
+    "metaTitle": "Terms of Service - XO Sports Hub",
+    "metaDescription": "Read the Terms of Service for XO Sports Hub, outlining the rules and guidelines for using our sports training marketplace.",
+    "status": "Published",
+    "createdBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7b3",
+    "title": "Privacy Policy",
+    "slug": "privacy-policy",
+    "content": "<h1>Privacy Policy</h1><p>Last updated: January 1, 2023</p><p>This Privacy Policy describes how XO Sports Hub (\"we\", \"us\", or \"our\") collects, uses, and discloses your personal information when you use our website and services.</p><h2>1. Information We Collect</h2><p>We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us. This may include your name, email address, postal address, phone number, and payment information.</p><h2>2. How We Use Your Information</h2><p>We use the information we collect to provide, maintain, and improve our services, process transactions, send communications, and for other purposes described in this Privacy Policy.</p><h2>3. Sharing of Information</h2><p>We may share your information with third-party vendors, service providers, and other parties who require access to such information to work on our behalf.</p><h2>4. Data Security</h2><p>We take reasonable measures to help protect information about you from loss, theft, misuse, and unauthorized access, disclosure, alteration, and destruction.</p><h2>5. Your Rights</h2><p>You may access, update, or delete your account information at any time by logging into your account or contacting us.</p><h2>6. Changes to this Privacy Policy</h2><p>We may change this Privacy Policy from time to time. If we make changes, we will notify you by revising the date at the top of the policy.</p><h2>7. Contact Us</h2><p>If you have any questions about this Privacy Policy, please contact us at privacy@xosportshub.com.</p>",
+    "metaTitle": "Privacy Policy - XO Sports Hub",
+    "metaDescription": "Read the Privacy Policy for XO Sports Hub to understand how we collect, use, and protect your personal information.",
+    "status": "Published",
+    "createdBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7b4",
+    "title": "FAQ",
+    "slug": "faq",
+    "content": "<h1>Frequently Asked Questions</h1><h2>General Questions</h2><h3>What is XO Sports Hub?</h3><p>XO Sports Hub is a digital marketplace for sports training content, where professional coaches and athletes can sell their training materials to athletes and sports enthusiasts.</p><h3>How do I create an account?</h3><p>Click the \"Sign Up\" button in the top right corner of the homepage, fill out the registration form, and verify your email address.</p><h2>For Buyers</h2><h3>How do I purchase content?</h3><p>Browse the marketplace, select the content you want to purchase, and follow the checkout process. You can pay using credit/debit cards.</p><h3>Can I preview content before buying?</h3><p>Yes, most video content offers a 10-second preview to help you decide if it's right for you.</p><h3>What happens after I purchase content?</h3><p>After purchase, you'll have immediate access to download or stream the content from your account dashboard.</p><h2>For Sellers</h2><h3>How do I become a seller?</h3><p>Register as a seller, complete your profile with your sports expertise and credentials, and wait for admin verification.</p><h3>How do I upload content?</h3><p>Once verified, you can upload content through your seller dashboard. You'll need to provide details like title, description, sport category, and set your pricing.</p><h3>How and when do I get paid?</h3><p>We process payouts monthly for all sales, minus our platform commission. You need to have a minimum of $50 in earnings to receive a payout.</p><h2>Technical Support</h2><h3>What file formats are supported?</h3><p>We support various formats including MP4, MOV, and AVI for videos, PDF for documents, and JPG/PNG for images.</p><h3>I'm having trouble uploading/downloading content. What should I do?</h3><p>Please contact our support team at support@xosportshub.com with details of the issue you're experiencing.</p>",
+    "metaTitle": "Frequently Asked Questions - XO Sports Hub",
+    "metaDescription": "Find answers to common questions about using XO Sports Hub, our sports training marketplace platform.",
+    "status": "Published",
+    "createdBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7b5",
+    "title": "Contact Us",
+    "slug": "contact-us",
+    "content": "<h1>Contact Us</h1><p>We'd love to hear from you! Please use the form below to get in touch with our team.</p><div class=\"contact-form\">[CONTACT FORM PLACEHOLDER]</div><h2>Other Ways to Reach Us</h2><h3>Customer Support</h3><p>Email: support@xosportshub.com<br>Phone: +1-800-123-4567<br>Hours: Monday-Friday, 9am-5pm EST</p><h3>Business Inquiries</h3><p>Email: business@xosportshub.com</p><h3>Media Inquiries</h3><p>Email: media@xosportshub.com</p><h3>Office Address</h3><p>XO Sports Hub<br>123 Main Street<br>Suite 456<br>New York, NY 10001<br>United States</p>",
+    "metaTitle": "Contact Us - XO Sports Hub",
+    "metaDescription": "Get in touch with the XO Sports Hub team. We're here to help with any questions or feedback you may have.",
+    "status": "Published",
+    "createdBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  }
+]

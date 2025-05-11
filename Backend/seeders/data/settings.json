@@ -1,0 +1,106 @@
+[
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a1",
+    "key": "platform_commission",
+    "value": 10,
+    "group": "payment",
+    "isPublic": true,
+    "description": "Platform commission percentage",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a2",
+    "key": "minimum_payout_amount",
+    "value": 50,
+    "group": "payment",
+    "isPublic": true,
+    "description": "Minimum amount required for seller payout",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a3",
+    "key": "payout_schedule",
+    "value": "monthly",
+    "group": "payment",
+    "isPublic": true,
+    "description": "Schedule for processing seller payouts",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a4",
+    "key": "site_name",
+    "value": "XO Sports Hub",
+    "group": "general",
+    "isPublic": true,
+    "description": "Name of the platform",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a5",
+    "key": "contact_email",
+    "value": "contact@xosportshub.com",
+    "group": "general",
+    "isPublic": true,
+    "description": "Contact email address",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a6",
+    "key": "support_phone",
+    "value": "+1-800-123-4567",
+    "group": "general",
+    "isPublic": true,
+    "description": "Support phone number",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a7",
+    "key": "allowed_file_types",
+    "value": ["mp4", "mov", "avi", "pdf", "doc", "docx", "jpg", "png", "mp3", "wav"],
+    "group": "content",
+    "isPublic": true,
+    "description": "Allowed file types for content uploads",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a8",
+    "key": "max_file_size",
+    "value": 1024000000,
+    "group": "content",
+    "isPublic": true,
+    "description": "Maximum file size for uploads in bytes (1GB)",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  },
+  {
+    "_id": "5d725a4a7b292f5f8ceff7a9",
+    "key": "sports_categories",
+    "value": [
+      "Basketball",
+      "Football",
+      "Soccer",
+      "Baseball",
+      "Tennis",
+      "Golf",
+      "Swimming",
+      "Volleyball",
+      "Running",
+      "Cycling",
+      "Fitness",
+      "Yoga",
+      "Other"
+    ],
+    "group": "content",
+    "isPublic": true,
+    "description": "Available sports categories",
+    "updatedBy": "5d7a514b5d2c12c7449be042",
+    "createdAt": "2023-01-01T00:00:00.000Z"
+  }
+]
