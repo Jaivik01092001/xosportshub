@@ -48,6 +48,10 @@ app.use('/api/payments', require('./routes/payments'));
 app.use('/api/notifications', require('./routes/notifications'));
 app.use('/api/cms', require('./routes/cms'));
 app.use('/api/settings', require('./routes/settings'));
+app.use('/api/dashboard', require('./routes/dashboard'));
+app.use('/api/reviews', require('./routes/reviews'));
+app.use('/api/messages', require('./routes/messages'));
+app.use('/api/wishlist', require('./routes/wishlist'));
 
 // Health check route
 app.get('/health', (req, res) => {
