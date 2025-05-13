@@ -1,6 +1,6 @@
-const ErrorResponse = require('../utils/errorResponse');
-const Setting = require('../models/Setting');
-const { validationResult } = require('express-validator');
+const ErrorResponse = require("../utils/errorResponse");
+const Setting = require("../models/Setting");
+const { validationResult } = require("express-validator");
 
 // @desc    Get all settings
 // @route   GET /api/settings
@@ -12,7 +12,7 @@ exports.getSettings = async (req, res, next) => {
     res.status(200).json({
       success: true,
       count: settings.length,
-      data: settings
+      data: settings,
     });
   } catch (err) {
     next(err);
@@ -28,13 +28,13 @@ exports.getPublicSettings = async (req, res, next) => {
 
     // Convert to key-value object
     const settingsObj = {};
-    settings.forEach(setting => {
+    settings.forEach((setting) => {
       settingsObj[setting.key] = setting.value;
     });
 
     res.status(200).json({
       success: true,
-      data: settingsObj
+      data: settingsObj,
     });
   } catch (err) {
     next(err);
@@ -56,7 +56,7 @@ exports.getSetting = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: setting
+      data: setting,
     });
   } catch (err) {
     next(err);
@@ -80,7 +80,7 @@ exports.createSetting = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      data: setting
+      data: setting,
     });
   } catch (err) {
     next(err);
@@ -106,12 +106,12 @@ exports.updateSetting = async (req, res, next) => {
 
     setting = await Setting.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
 
     res.status(200).json({
       success: true,
-      data: setting
+      data: setting,
     });
   } catch (err) {
     next(err);
@@ -123,7 +123,7 @@ exports.updateSetting = async (req, res, next) => {
 // @access  Private/Admin
 exports.deleteSetting = async (req, res, next) => {
   try {
-    const setting = await Setting.findById(req.params.id);
+    const setting = await Setting.findByIdAndDelete(req.params.id);
 
     if (!setting) {
       return next(
@@ -131,11 +131,9 @@ exports.deleteSetting = async (req, res, next) => {
       );
     }
 
-    await setting.remove();
-
     res.status(200).json({
       success: true,
-      data: {}
+      data: {},
     });
   } catch (err) {
     next(err);
@@ -150,7 +148,7 @@ exports.updateMultipleSettings = async (req, res, next) => {
     const { settings } = req.body;
 
     if (!settings || !Array.isArray(settings)) {
-      return next(new ErrorResponse('Settings array is required', 400));
+      return next(new ErrorResponse("Settings array is required", 400));
     }
 
     const updatedSettings = [];
@@ -159,7 +157,7 @@ exports.updateMultipleSettings = async (req, res, next) => {
       const { key, value } = settingData;
 
       if (!key) {
-        return next(new ErrorResponse('Setting key is required', 400));
+        return next(new ErrorResponse("Setting key is required", 400));
       }
 
       // Find setting by key
@@ -177,9 +175,9 @@ exports.updateMultipleSettings = async (req, res, next) => {
           key,
           value,
           updatedBy: req.user.id,
-          group: settingData.group || 'general',
+          group: settingData.group || "general",
           isPublic: settingData.isPublic || false,
-          description: settingData.description || ''
+          description: settingData.description || "",
         });
       }
 
@@ -189,7 +187,7 @@ exports.updateMultipleSettings = async (req, res, next) => {
     res.status(200).json({
       success: true,
       count: updatedSettings.length,
-      data: updatedSettings
+      data: updatedSettings,
     });
   } catch (err) {
     next(err);

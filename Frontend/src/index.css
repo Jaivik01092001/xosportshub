@@ -1,0 +1,188 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: var(--basefont);
+  color: var(--text-color);
+  background-color: var(--white);
+}
+p {
+  margin: 0;
+}
+/* Root Variables */
+:root {
+  /* Colors */
+  --primary-color: #960d12;
+  --primary-light-color: #ffebeb;
+  --secondary-color: #163351;
+  --text-color: #1c1c1c;
+  --dark-gray: #999999;
+  --light-gray: #d9d9d9;
+  --bg-gray: #f5f5f5;
+  --bg-blue: #f1f5f9;
+  --white: #ffffff;
+  --black: #000000;
+  /* Font Sizes */
+  --heading1: 52px;
+  --heading2: 40px;
+  --heading3: 32px;
+  --heading4: 28px;
+  --heading5: 20px;
+  --heading6: 18px;
+  --basefont: 16px;
+  --smallfont: 14px;
+  --extrasmallfont: 12px;
+  /* Box Model Properties */
+  --border-radius: 4px;
+  /* Shadows */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --box-shadow-dark: 0 6px 8px rgba(0, 0, 0, 0.2);
+  /* Z-Index */
+  --z-index-modal: 1000;
+  --z-index-tooltip: 1100;
+  --z-index-header: 900;
+}
+/* Container Styling */
+.content-width {
+  max-width: 1200px;
+  padding: 0.5rem;
+  margin: auto;
+}
+/* Input Styling */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--primary-color);
+  width: 18px;
+  height: 18px;
+}
+input,
+select {
+  outline: none;
+}
+/* Text Selection */
+::selection {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+/* Section Padding */
+.section-padding {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+/* Common Titles and Descriptions */
+.commontitle {
+  text-align: center;
+  font-size: var(--heading3);
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.commondescription {
+  text-align: center;
+  font-size: var(--heading6);
+  margin-bottom: 30px;
+}
+/* button Centering */
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: var(--smallfont);
+  font-weight: 400;
+}
+/* Responsive Media Queries */
+/* Tablets (Portrait & Landscape) */
+@media (max-width: 1024px) {
+  :root {
+    --heading1: 40px;
+    --heading2: 32px;
+    --heading3: 28px;
+    --heading4: 24px;
+    --heading5: 18px;
+    --heading6: 16px;
+    --basefont: 14px;
+    --smallfont: 12px;
+    --extrasmallfont: 10px;
+  }
+  .section-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+/* Large Smartphones (Portrait & Landscape) */
+@media (max-width: 768px) {
+  :root {
+    --heading1: 32px;
+    --heading2: 28px;
+    --heading3: 24px;
+    --heading4: 20px;
+    --heading5: 16px;
+    --heading6: 14px;
+    --basefont: 12px;
+    --smallfont: 10px;
+    --extrasmallfont: 8px;
+  }
+  .section-padding {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+/* Small Smartphones (Portrait) */
+@media (max-width: 480px) and (orientation: portrait) {
+  :root {
+    --heading1: 28px;
+    --heading2: 24px;
+    --heading3: 20px;
+    --heading4: 18px;
+    --heading5: 14px;
+    --heading6: 12px;
+    --basefont: 10px;
+    --smallfont: 8px;
+    --extrasmallfont: 6px;
+  }
+  .section-padding {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+/* Small Smartphones (Landscape) */
+@media (max-width: 640px) and (orientation: landscape) {
+  :root {
+    --heading1: 30px;
+    --heading2: 26px;
+    --heading3: 22px;
+    --heading4: 18px;
+    --heading5: 14px;
+    --heading6: 12px;
+    --basefont: 10px;
+    --smallfont: 8px;
+    --extrasmallfont: 6px;
+  }
+  .section-padding {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+/* Extra Small Devices (Watches, Foldable Phones) */
+@media (max-width: 320px) {
+  :root {
+    --heading1: 24px;
+    --heading2: 20px;
+    --heading3: 16px;
+    --heading4: 14px;
+    --heading5: 12px;
+    --heading6: 10px;
+    --basefont: 8px;
+    --smallfont: 6px;
+    --extrasmallfont: 4px;
+  }
+  .section-padding {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}

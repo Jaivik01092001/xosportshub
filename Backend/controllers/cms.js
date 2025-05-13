@@ -1,7 +1,7 @@
-const ErrorResponse = require('../utils/errorResponse');
-const CmsPage = require('../models/CmsPage');
-const { validationResult } = require('express-validator');
-const sendEmail = require('../utils/sendEmail');
+const ErrorResponse = require("../utils/errorResponse");
+const CmsPage = require("../models/CmsPage");
+const { validationResult } = require("express-validator");
+const sendEmail = require("../utils/sendEmail");
 
 // @desc    Get all CMS pages
 // @route   GET /api/cms
@@ -10,19 +10,19 @@ exports.getPages = async (req, res, next) => {
   try {
     const pages = await CmsPage.find()
       .populate({
-        path: 'createdBy',
-        select: 'firstName lastName'
+        path: "createdBy",
+        select: "firstName lastName",
       })
       .populate({
-        path: 'updatedBy',
-        select: 'firstName lastName'
+        path: "updatedBy",
+        select: "firstName lastName",
       })
-      .sort('title');
+      .sort("title");
 
     res.status(200).json({
       success: true,
       count: pages.length,
-      data: pages
+      data: pages,
     });
   } catch (err) {
     next(err);
@@ -34,14 +34,14 @@ exports.getPages = async (req, res, next) => {
 // @access  Public
 exports.getPublishedPages = async (req, res, next) => {
   try {
-    const pages = await CmsPage.find({ status: 'Published' })
-      .select('title slug metaTitle metaDescription')
-      .sort('title');
+    const pages = await CmsPage.find({ status: "Published" })
+      .select("title slug metaTitle metaDescription")
+      .sort("title");
 
     res.status(200).json({
       success: true,
       count: pages.length,
-      data: pages
+      data: pages,
     });
   } catch (err) {
     next(err);
@@ -62,7 +62,7 @@ exports.getPage = async (req, res, next) => {
     }
 
     // If page is draft and user is not admin, return 404
-    if (page.status === 'Draft' && (!req.user || req.user.role !== 'admin')) {
+    if (page.status === "Draft" && (!req.user || req.user.role !== "admin")) {
       return next(
         new ErrorResponse(`Page not found with slug of ${req.params.slug}`, 404)
       );
@@ -70,7 +70,7 @@ exports.getPage = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: page
+      data: page,
     });
   } catch (err) {
     next(err);
@@ -94,7 +94,7 @@ exports.createPage = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      data: page
+      data: page,
     });
   } catch (err) {
     next(err);
@@ -120,12 +120,12 @@ exports.updatePage = async (req, res, next) => {
 
     page = await CmsPage.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
 
     res.status(200).json({
       success: true,
-      data: page
+      data: page,
     });
   } catch (err) {
     next(err);
@@ -137,7 +137,7 @@ exports.updatePage = async (req, res, next) => {
 // @access  Private/Admin
 exports.deletePage = async (req, res, next) => {
   try {
-    const page = await CmsPage.findById(req.params.id);
+    const page = await CmsPage.findByIdAndDelete(req.params.id);
 
     if (!page) {
       return next(
@@ -145,11 +145,9 @@ exports.deletePage = async (req, res, next) => {
       );
     }
 
-    await page.remove();
-
     res.status(200).json({
       success: true,
-      data: {}
+      data: {},
     });
   } catch (err) {
     next(err);
@@ -179,13 +177,13 @@ exports.contactForm = async (req, res, next) => {
           
           Message:
           ${message}
-        `
+        `,
       });
 
       // Send confirmation email to user
       await sendEmail({
         email,
-        subject: 'Your message has been received',
+        subject: "Your message has been received",
         message: `
           Dear ${name},
           
@@ -193,16 +191,16 @@ exports.contactForm = async (req, res, next) => {
           
           Regards,
           XO Sports Hub Team
-        `
+        `,
       });
 
       res.status(200).json({
         success: true,
-        data: 'Email sent'
+        data: "Email sent",
       });
     } catch (err) {
       console.log(err);
-      return next(new ErrorResponse('Email could not be sent', 500));
+      return next(new ErrorResponse("Email could not be sent", 500));
     }
   } catch (err) {
     next(err);
