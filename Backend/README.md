@@ -39,17 +39,20 @@ A complete backend system for a digital content marketplace platform for sports 
 ### Installation
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/yourusername/xosportshub.git
    cd xosportshub
    ```
 
 2. Install dependencies:
+
    ```
    npm install
    ```
 
 3. Set up environment variables:
+
    - Copy `.env.example` to `.env`
    - Update the variables with your configuration
 
@@ -99,6 +102,8 @@ npm run seed -- -d
 ### Content Routes
 
 - `GET /api/content` - Get all content
+- `GET /api/content/categories` - Get content categories
+- `GET /api/content/trending` - Get trending content
 - `GET /api/content/:id` - Get single content
 - `POST /api/content` - Create content (seller)
 - `PUT /api/content/:id` - Update content (seller)
@@ -177,6 +182,43 @@ npm run seed -- -d
 - `PUT /api/settings/:id` - Update setting (admin)
 - `DELETE /api/settings/:id` - Delete setting (admin)
 - `PUT /api/settings` - Update multiple settings (admin)
+
+### Dashboard Routes
+
+- `GET /api/dashboard/stats` - Get main dashboard statistics (admin)
+- `GET /api/dashboard/users` - Get user statistics (admin)
+- `GET /api/dashboard/content` - Get content statistics (admin)
+- `GET /api/dashboard/orders` - Get order statistics (admin)
+- `GET /api/dashboard/revenue` - Get revenue statistics (admin)
+- `GET /api/dashboard/activity` - Get recent activity (admin)
+
+### Reviews Routes
+
+- `GET /api/reviews` - Get all reviews (admin)
+- `GET /api/reviews/:id` - Get single review
+- `GET /api/reviews/content/:contentId` - Get reviews for specific content
+- `GET /api/reviews/seller/:sellerId` - Get reviews for specific seller
+- `POST /api/reviews` - Create review (buyer)
+- `PUT /api/reviews/:id` - Update review (buyer)
+- `DELETE /api/reviews/:id` - Delete review (buyer, admin)
+
+### Messages Routes
+
+- `GET /api/messages/conversations` - Get user's conversations
+- `GET /api/messages/conversations/:id` - Get single conversation
+- `POST /api/messages/conversations` - Create new conversation
+- `PUT /api/messages/conversations/:id/archive` - Archive conversation
+- `GET /api/messages/conversations/:conversationId/messages` - Get messages in conversation
+- `POST /api/messages/conversations/:conversationId/messages` - Send message in conversation
+- `PUT /api/messages/conversations/:conversationId/read` - Mark conversation as read
+- `GET /api/messages/unread-count` - Get unread messages count
+
+### Wishlist Routes
+
+- `GET /api/wishlist` - Get user's wishlist (buyer)
+- `POST /api/wishlist` - Add item to wishlist (buyer)
+- `DELETE /api/wishlist/:contentId` - Remove item from wishlist (buyer)
+- `GET /api/wishlist/check/:contentId` - Check if item is in wishlist (buyer)
 
 ## License
 
