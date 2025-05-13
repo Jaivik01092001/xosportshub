@@ -6,7 +6,9 @@ const {
   createContent,
   updateContent,
   deleteContent,
-  getSellerContent
+  getSellerContent,
+  getContentCategories,
+  getTrendingContent
 } = require('../controllers/content');
 
 const { protect, authorize } = require('../middleware/auth');
@@ -16,6 +18,8 @@ const router = express.Router();
 
 // Public routes
 router.get('/', getAllContent);
+router.get('/categories', getContentCategories);
+router.get('/trending', getTrendingContent);
 router.get('/:id', getContent);
 
 // Protected routes

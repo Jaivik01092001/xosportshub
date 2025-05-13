@@ -9,3 +9,6 @@ yarn-error.log
 coverage/
 .idea/
 *.log
+
+API_TESTING_GUIDE.md
+XOSportsHub API.postman_collection.json

@@ -1,9 +1,9 @@
-const ErrorResponse = require('../utils/errorResponse');
-const Payment = require('../models/Payment');
-const Order = require('../models/Order');
-const User = require('../models/User');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const { validationResult } = require('express-validator');
+const ErrorResponse = require("../utils/errorResponse");
+const Payment = require("../models/Payment");
+const Order = require("../models/Order");
+const User = require("../models/User");
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const { validationResult } = require("express-validator");
 
 // @desc    Get all payments
 // @route   GET /api/payments
@@ -12,20 +12,20 @@ exports.getPayments = async (req, res, next) => {
   try {
     const payments = await Payment.find()
       .populate({
-        path: 'buyer',
-        select: 'firstName lastName email'
+        path: "buyer",
+        select: "firstName lastName email",
       })
       .populate({
-        path: 'seller',
-        select: 'firstName lastName email'
+        path: "seller",
+        select: "firstName lastName email",
       })
-      .populate('order')
-      .sort('-createdAt');
+      .populate("order")
+      .sort("-createdAt");
 
     res.status(200).json({
       success: true,
       count: payments.length,
-      data: payments
+      data: payments,
     });
   } catch (err) {
     next(err);
@@ -39,14 +39,14 @@ exports.getPayment = async (req, res, next) => {
   try {
     const payment = await Payment.findById(req.params.id)
       .populate({
-        path: 'buyer',
-        select: 'firstName lastName email'
+        path: "buyer",
+        select: "firstName lastName email",
       })
       .populate({
-        path: 'seller',
-        select: 'firstName lastName email'
+        path: "seller",
+        select: "firstName lastName email",
       })
-      .populate('order');
+      .populate("order");
 
     if (!payment) {
       return next(
@@ -58,7 +58,7 @@ exports.getPayment = async (req, res, next) => {
     if (
       payment.buyer._id.toString() !== req.user.id &&
       payment.seller._id.toString() !== req.user.id &&
-      req.user.role !== 'admin'
+      req.user.role !== "admin"
     ) {
       return next(
         new ErrorResponse(
@@ -70,7 +70,7 @@ exports.getPayment = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: payment
+      data: payment,
     });
   } catch (err) {
     next(err);
@@ -90,7 +90,7 @@ exports.createPaymentIntent = async (req, res, next) => {
     const { orderId } = req.body;
 
     // Get order
-    const order = await Order.findById(orderId).populate('content');
+    const order = await Order.findById(orderId).populate("content");
 
     if (!order) {
       return next(
@@ -99,7 +99,7 @@ exports.createPaymentIntent = async (req, res, next) => {
     }
 
     // Make sure user is order buyer
-    if (order.buyer.toString() !== req.user.id && req.user.role !== 'admin') {
+    if (order.buyer.toString() !== req.user.id && req.user.role !== "admin") {
       return next(
         new ErrorResponse(
           `User ${req.user.id} is not authorized to pay for this order`,
@@ -109,27 +109,25 @@ exports.createPaymentIntent = async (req, res, next) => {
     }
 
     // Check if order is already paid
-    if (order.paymentStatus === 'Completed') {
-      return next(
-        new ErrorResponse(`Order is already paid`, 400)
-      );
+    if (order.paymentStatus === "Completed") {
+      return next(new ErrorResponse(`Order is already paid`, 400));
     }
 
     // Create payment intent
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(order.amount * 100), // Convert to cents
-      currency: 'usd',
+      currency: "usd",
       metadata: {
         orderId: order._id.toString(),
         contentId: order.content._id.toString(),
         buyerId: req.user.id,
-        sellerId: order.seller.toString()
-      }
+        sellerId: order.seller.toString(),
+      },
     });
 
     res.status(200).json({
       success: true,
-      clientSecret: paymentIntent.client_secret
+      clientSecret: paymentIntent.client_secret,
     });
   } catch (err) {
     next(err);
@@ -158,7 +156,7 @@ exports.confirmPayment = async (req, res, next) => {
     }
 
     // Make sure user is order buyer
-    if (order.buyer.toString() !== req.user.id && req.user.role !== 'admin') {
+    if (order.buyer.toString() !== req.user.id && req.user.role !== "admin") {
       return next(
         new ErrorResponse(
           `User ${req.user.id} is not authorized to confirm payment for this order`,
@@ -170,16 +168,14 @@ exports.confirmPayment = async (req, res, next) => {
     // Get payment intent from Stripe
     const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
 
-    if (paymentIntent.status !== 'succeeded') {
-      return next(
-        new ErrorResponse(`Payment has not been completed`, 400)
-      );
+    if (paymentIntent.status !== "succeeded") {
+      return next(new ErrorResponse(`Payment has not been completed`, 400));
     }
 
     // Update order
-    order.paymentStatus = 'Completed';
+    order.paymentStatus = "Completed";
     order.paymentIntentId = paymentIntentId;
-    order.status = 'Completed';
+    order.status = "Completed";
     await order.save();
 
     // Create payment record
@@ -190,15 +186,15 @@ exports.confirmPayment = async (req, res, next) => {
       amount: order.amount,
       platformFee: order.platformFee,
       sellerEarnings: order.sellerEarnings,
-      paymentMethod: 'card',
+      paymentMethod: "card",
       paymentIntentId,
-      status: 'Completed',
-      payoutStatus: 'Pending'
+      status: "Completed",
+      payoutStatus: "Pending",
     });
 
     res.status(200).json({
       success: true,
-      data: payment
+      data: payment,
     });
   } catch (err) {
     next(err);
@@ -210,39 +206,44 @@ exports.confirmPayment = async (req, res, next) => {
 // @access  Public
 exports.webhook = async (req, res, next) => {
   try {
-    const sig = req.headers['stripe-signature'];
     let event;
 
-    try {
-      event = stripe.webhooks.constructEvent(
-        req.body,
-        sig,
-        process.env.STRIPE_WEBHOOK_SECRET
-      );
-    } catch (err) {
-      return res.status(400).send(`Webhook Error: ${err.message}`);
+    if (process.env.NODE_ENV === "development") {
+      // 🔓 Bypass signature verification in development
+      event = req.body;
+    } else {
+      // 🔐 Verify signature in production
+      const sig = req.headers["stripe-signature"];
+
+      try {
+        event = stripe.webhooks.constructEvent(
+          req.body,
+          sig,
+          process.env.STRIPE_WEBHOOK_SECRET
+        );
+      } catch (err) {
+        return res.status(400).send(`Webhook Error: ${err.message}`);
+      }
     }
 
     // Handle the event
-    if (event.type === 'payment_intent.succeeded') {
+    if (event.type === "payment_intent.succeeded") {
       const paymentIntent = event.data.object;
-      
-      // Get order from metadata
-      const orderId = paymentIntent.metadata.orderId;
-      
+      const orderId = paymentIntent.metadata?.orderId;
+
       if (orderId) {
         const order = await Order.findById(orderId);
-        
+
         if (order) {
-          // Update order
-          order.paymentStatus = 'Completed';
+          order.paymentStatus = "Completed";
           order.paymentIntentId = paymentIntent.id;
-          order.status = 'Completed';
+          order.status = "Completed";
           await order.save();
 
-          // Create payment record if it doesn't exist
-          const existingPayment = await Payment.findOne({ paymentIntentId: paymentIntent.id });
-          
+          const existingPayment = await Payment.findOne({
+            paymentIntentId: paymentIntent.id,
+          });
+
           if (!existingPayment) {
             await Payment.create({
               order: orderId,
@@ -251,10 +252,10 @@ exports.webhook = async (req, res, next) => {
               amount: order.amount,
               platformFee: order.platformFee,
               sellerEarnings: order.sellerEarnings,
-              paymentMethod: 'card',
+              paymentMethod: "card",
               paymentIntentId: paymentIntent.id,
-              status: 'Completed',
-              payoutStatus: 'Pending'
+              status: "Completed",
+              payoutStatus: "Pending",
             });
           }
         }
@@ -273,13 +274,13 @@ exports.webhook = async (req, res, next) => {
 exports.getBuyerPayments = async (req, res, next) => {
   try {
     const payments = await Payment.find({ buyer: req.user.id })
-      .populate('order')
-      .sort('-createdAt');
+      .populate("order")
+      .sort("-createdAt");
 
     res.status(200).json({
       success: true,
       count: payments.length,
-      data: payments
+      data: payments,
     });
   } catch (err) {
     next(err);
@@ -292,13 +293,13 @@ exports.getBuyerPayments = async (req, res, next) => {
 exports.getSellerPayments = async (req, res, next) => {
   try {
     const payments = await Payment.find({ seller: req.user.id })
-      .populate('order')
-      .sort('-createdAt');
+      .populate("order")
+      .sort("-createdAt");
 
     res.status(200).json({
       success: true,
       count: payments.length,
-      data: payments
+      data: payments,
     });
   } catch (err) {
     next(err);
@@ -319,17 +320,15 @@ exports.processPayout = async (req, res, next) => {
     }
 
     // Check if payment is completed
-    if (payment.status !== 'Completed') {
+    if (payment.status !== "Completed") {
       return next(
         new ErrorResponse(`Payment must be completed to process payout`, 400)
       );
     }
 
     // Check if payout is already processed
-    if (payment.payoutStatus === 'Completed') {
-      return next(
-        new ErrorResponse(`Payout has already been processed`, 400)
-      );
+    if (payment.payoutStatus === "Completed") {
+      return next(new ErrorResponse(`Payout has already been processed`, 400));
     }
 
     // Get seller
@@ -344,27 +343,30 @@ exports.processPayout = async (req, res, next) => {
     // Check if seller has Stripe Connect ID
     if (!seller.paymentInfo || !seller.paymentInfo.stripeConnectId) {
       return next(
-        new ErrorResponse(`Seller does not have payment information set up`, 400)
+        new ErrorResponse(
+          `Seller does not have payment information set up`,
+          400
+        )
       );
     }
 
     // Process payout through Stripe
     const payout = await stripe.transfers.create({
       amount: Math.round(payment.sellerEarnings * 100), // Convert to cents
-      currency: 'usd',
+      currency: "usd",
       destination: seller.paymentInfo.stripeConnectId,
-      transfer_group: `ORDER_${payment.order}`
+      transfer_group: `ORDER_${payment.order}`,
     });
 
     // Update payment
-    payment.payoutStatus = 'Completed';
+    payment.payoutStatus = "Completed";
     payment.payoutId = payout.id;
     payment.payoutDate = Date.now();
     await payment.save();
 
     res.status(200).json({
       success: true,
-      data: payment
+      data: payment,
     });
   } catch (err) {
     next(err);

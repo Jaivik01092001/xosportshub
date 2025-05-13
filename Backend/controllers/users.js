@@ -1,6 +1,6 @@
-const ErrorResponse = require('../utils/errorResponse');
-const User = require('../models/User');
-const { validationResult } = require('express-validator');
+const ErrorResponse = require("../utils/errorResponse");
+const User = require("../models/User");
+const { validationResult } = require("express-validator");
 
 // @desc    Get all users
 // @route   GET /api/users
@@ -12,7 +12,7 @@ exports.getUsers = async (req, res, next) => {
     res.status(200).json({
       success: true,
       count: users.length,
-      data: users
+      data: users,
     });
   } catch (err) {
     next(err);
@@ -34,7 +34,7 @@ exports.getUser = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: user
+      data: user,
     });
   } catch (err) {
     next(err);
@@ -55,7 +55,7 @@ exports.createUser = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      data: user
+      data: user,
     });
   } catch (err) {
     next(err);
@@ -69,7 +69,7 @@ exports.updateUser = async (req, res, next) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
 
     if (!user) {
@@ -80,7 +80,7 @@ exports.updateUser = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: user
+      data: user,
     });
   } catch (err) {
     next(err);
@@ -92,7 +92,7 @@ exports.updateUser = async (req, res, next) => {
 // @access  Private/Admin
 exports.deleteUser = async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findByIdAndDelete(req.params.id);
 
     if (!user) {
       return next(
@@ -100,11 +100,9 @@ exports.deleteUser = async (req, res, next) => {
       );
     }
 
-    await user.remove();
-
     res.status(200).json({
       success: true,
-      data: {}
+      data: {},
     });
   } catch (err) {
     next(err);
@@ -127,22 +125,22 @@ exports.updateProfile = async (req, res, next) => {
       lastName: req.body.lastName,
       email: req.body.email,
       phone: req.body.phone,
-      bio: req.body.bio
+      bio: req.body.bio,
     };
 
     // If user is a seller, update seller info
-    if (req.user.role === 'seller' && req.body.sellerInfo) {
+    if (req.user.role === "seller" && req.body.sellerInfo) {
       fieldsToUpdate.sellerInfo = req.body.sellerInfo;
     }
 
     const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
 
     res.status(200).json({
       success: true,
-      data: user
+      data: user,
     });
   } catch (err) {
     next(err);
@@ -156,8 +154,8 @@ exports.getSellerProfile = async (req, res, next) => {
   try {
     const user = await User.findOne({
       _id: req.params.id,
-      role: 'seller'
-    }).populate('content');
+      role: "seller",
+    }).populate("content");
 
     if (!user) {
       return next(
@@ -167,7 +165,7 @@ exports.getSellerProfile = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: user
+      data: user,
     });
   } catch (err) {
     next(err);
@@ -187,10 +185,8 @@ exports.verifySeller = async (req, res, next) => {
       );
     }
 
-    if (user.role !== 'seller') {
-      return next(
-        new ErrorResponse(`User is not a seller`, 400)
-      );
+    if (user.role !== "seller") {
+      return next(new ErrorResponse(`User is not a seller`, 400));
     }
 
     user.isVerified = true;
@@ -198,7 +194,7 @@ exports.verifySeller = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      data: user
+      data: user,
     });
   } catch (err) {
     next(err);
