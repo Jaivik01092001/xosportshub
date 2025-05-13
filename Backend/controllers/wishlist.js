@@ -1,7 +1,7 @@
-const ErrorResponse = require('../utils/errorResponse');
-const Wishlist = require('../models/Wishlist');
-const Content = require('../models/Content');
-const { validationResult } = require('express-validator');
+const ErrorResponse = require("../utils/errorResponse");
+const Wishlist = require("../models/Wishlist");
+const Content = require("../models/Content");
+const { validationResult } = require("express-validator");
 
 // @desc    Get user's wishlist
 // @route   GET /api/wishlist
@@ -10,19 +10,19 @@ exports.getWishlist = async (req, res, next) => {
   try {
     const wishlist = await Wishlist.find({ user: req.user.id })
       .populate({
-        path: 'content',
-        select: 'title description sport contentType price thumbnailUrl seller',
+        path: "content",
+        select: "title description sport contentType price thumbnailUrl seller",
         populate: {
-          path: 'seller',
-          select: 'firstName lastName profileImage isVerified'
-        }
+          path: "seller",
+          select: "firstName lastName profileImage isVerified",
+        },
       })
-      .sort('-addedAt');
+      .sort("-addedAt");
 
     res.status(200).json({
       success: true,
       count: wishlist.length,
-      data: wishlist
+      data: wishlist,
     });
   } catch (err) {
     next(err);
@@ -50,7 +50,7 @@ exports.addToWishlist = async (req, res, next) => {
     }
 
     // Check if content is published
-    if (content.status !== 'Published' || content.visibility !== 'Public') {
+    if (content.status !== "Published" || content.visibility !== "Public") {
       return next(
         new ErrorResponse(`Content is not available for wishlist`, 400)
       );
@@ -59,35 +59,33 @@ exports.addToWishlist = async (req, res, next) => {
     // Check if already in wishlist
     const existingItem = await Wishlist.findOne({
       user: req.user.id,
-      content: contentId
+      content: contentId,
     });
 
     if (existingItem) {
-      return next(
-        new ErrorResponse(`Content already in wishlist`, 400)
-      );
+      return next(new ErrorResponse(`Content already in wishlist`, 400));
     }
 
     // Add to wishlist
     const wishlistItem = await Wishlist.create({
       user: req.user.id,
       content: contentId,
-      notes
+      notes,
     });
 
     // Populate content details
     await wishlistItem.populate({
-      path: 'content',
-      select: 'title description sport contentType price thumbnailUrl seller',
+      path: "content",
+      select: "title description sport contentType price thumbnailUrl seller",
       populate: {
-        path: 'seller',
-        select: 'firstName lastName profileImage isVerified'
-      }
+        path: "seller",
+        select: "firstName lastName profileImage isVerified",
+      },
     });
 
     res.status(201).json({
       success: true,
-      data: wishlistItem
+      data: wishlistItem,
     });
   } catch (err) {
     next(err);
@@ -99,22 +97,18 @@ exports.addToWishlist = async (req, res, next) => {
 // @access  Private/Buyer
 exports.removeFromWishlist = async (req, res, next) => {
   try {
-    const wishlistItem = await Wishlist.findOne({
+    const wishlistItem = await Wishlist.findOneAndDelete({
       user: req.user.id,
-      content: req.params.contentId
+      content: req.params.contentId,
     });
 
     if (!wishlistItem) {
-      return next(
-        new ErrorResponse(`Item not found in wishlist`, 404)
-      );
+      return next(new ErrorResponse(`Item not found in wishlist`, 404));
     }
-
-    await wishlistItem.remove();
 
     res.status(200).json({
       success: true,
-      data: {}
+      data: {},
     });
   } catch (err) {
     next(err);
@@ -128,15 +122,15 @@ exports.checkWishlistItem = async (req, res, next) => {
   try {
     const wishlistItem = await Wishlist.findOne({
       user: req.user.id,
-      content: req.params.contentId
+      content: req.params.contentId,
     });
 
     res.status(200).json({
       success: true,
       data: {
         inWishlist: !!wishlistItem,
-        item: wishlistItem
-      }
+        item: wishlistItem,
+      },
     });
   } catch (err) {
     next(err);
