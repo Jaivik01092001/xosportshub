@@ -113,6 +113,7 @@ exports.deleteUser = async (req, res, next) => {
 // @route   PUT /api/users/profile
 // @access  Private
 exports.updateProfile = async (req, res, next) => {
+  console.log("update profile");
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

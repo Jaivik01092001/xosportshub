@@ -47,12 +47,11 @@ router.get('/sellers/:id', getSellerProfile);
 
 // User routes
 router.put(
-  '/profile',
+  '/profile/:id',
   protect,
   [
     check('firstName', 'First name is required').not().isEmpty(),
     check('lastName', 'Last name is required').not().isEmpty(),
-    check('email', 'Please include a valid email').isEmail()
   ],
   updateProfile
 );
