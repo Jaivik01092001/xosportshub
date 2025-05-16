@@ -26,28 +26,30 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Routes>
-        {/* Visitor Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/info" element={<Info />} />
+      <main>
+        <Routes>
+          {/* Visitor Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/info" element={<Info />} />
 
-        {/* Authentication */}
-        <Route path="/auth" element={<Auth />} />
+          {/* Authentication */}
+          <Route path="/auth" element={<Auth />} />
 
-        {/* Buyer Routes */}
-        <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
-        <Route path="/buyer/orders" element={<BuyerOrders />} />
-        <Route path="/buyer/settings" element={<BuyerSettings />} />
+          {/* Buyer Routes */}
+          <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
+          <Route path="/buyer/orders" element={<BuyerOrders />} />
+          <Route path="/buyer/settings" element={<BuyerSettings />} />
 
-        {/* Seller Routes */}
-        <Route path="/seller/dashboard" element={<SellerDashboard />} />
-        <Route path="/seller/my-content" element={<SellerMyContent />} />
-        <Route path="/seller/settings" element={<SellerSettings />} />
+          {/* Seller Routes */}
+          <Route path="/seller/dashboard" element={<SellerDashboard />} />
+          <Route path="/seller/my-content" element={<SellerMyContent />} />
+          <Route path="/seller/settings" element={<SellerSettings />} />
 
-        {/* Catch-all route */}
-        <Route path="*" element={<Home />} />
-      </Routes>
+          {/* Catch-all route */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
     </>
   );
 };

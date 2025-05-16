@@ -1,0 +1,73 @@
+.sports-card {
+  position: relative;
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+  height: 300px;
+  box-shadow: var(--box-shadow-light);
+  transition: all 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.sports-card-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sports-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.sports-card:hover .sports-card-image img {
+  transform: scale(1.05);
+}
+
+.sports-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, var(--btn-color) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.sports-card:hover::before {
+  opacity: 1;
+}
+
+.sports-card:hover {
+  transform: translateY(-4px);
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .sports-card {
+    min-width: 150px;
+    height: 150px;
+  }
+
+  .sports-card-name {
+    font-size: var(--smallfont);
+  }
+}
+
+@media (max-width: 480px) {
+  .sports-card {
+    min-width: 130px;
+    height: 130px;
+  }
+
+  .sports-card-overlay {
+    padding: 15px 10px 10px;
+  }
+}

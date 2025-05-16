@@ -1,8 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import "../../styles/Navbar.css";
+import logo from "../../assets/images/XOsports-hub-logo.svg";
 
 const Navbar = () => {
   const location = useLocation();
   const path = location.pathname;
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Determine user role based on URL path
   let userRole = "visitor";
@@ -12,39 +16,109 @@ const Navbar = () => {
     userRole = "seller";
   }
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <nav>
-      <h1>Sports Marketplace</h1>
-      <div>
-        {userRole === "visitor" && (
-          // Visitor links
-          <>
-            <Link to="/">Home</Link>
-            <Link to="/contact">Contact</Link>
-            <Link to="/info">Info</Link>
-            <Link to="/auth">Register / Login</Link>
-          </>
-        )}
+    <nav className="navbar">
+      <div className="navbar-container">
+        <div className="navbar-logo">
+          <Link to="/">
+            <img src={logo} alt="XO Sports Hub Logo" />
+          </Link>
+        </div>
 
-        {userRole === "buyer" && (
-          // Buyer links
-          <>
-            <Link to="/buyer/dashboard">Dashboard</Link>
-            <Link to="/buyer/orders">Orders</Link>
-            <Link to="/buyer/settings">Settings</Link>
-            <Link to="/">Logout</Link>
-          </>
-        )}
+        <button className="navbar-toggle" onClick={toggleMenu}>
+          {menuOpen ? "✕" : "☰"}
+        </button>
 
-        {userRole === "seller" && (
-          // Seller links
-          <>
-            <Link to="/seller/dashboard">Dashboard</Link>
-            <Link to="/seller/my-content">My Content</Link>
-            <Link to="/seller/settings">Settings</Link>
-            <Link to="/">Logout</Link>
-          </>
-        )}
+        <div className={`navbar-links ${menuOpen ? "active" : ""}`}>
+          {userRole === "visitor" && (
+            // Visitor links
+            <>
+              <Link to="/" className={path === "/" ? "active" : ""}>
+                Home
+              </Link>
+              <Link
+                to="/contact"
+                className={path === "/contact" ? "active" : ""}
+              >
+                Contact
+              </Link>
+              <Link to="/info" className={path === "/info" ? "active" : ""}>
+                About Us
+              </Link>
+            </>
+          )}
+
+          {userRole === "buyer" && (
+            // Buyer links
+            <>
+              <Link
+                to="/buyer/dashboard"
+                className={path === "/buyer/dashboard" ? "active" : ""}
+              >
+                Dashboard
+              </Link>
+              <Link
+                to="/buyer/orders"
+                className={path === "/buyer/orders" ? "active" : ""}
+              >
+                Orders
+              </Link>
+              <Link
+                to="/buyer/settings"
+                className={path === "/buyer/settings" ? "active" : ""}
+              >
+                Settings
+              </Link>
+            </>
+          )}
+
+          {userRole === "seller" && (
+            // Seller links
+            <>
+              <Link
+                to="/seller/dashboard"
+                className={path === "/seller/dashboard" ? "active" : ""}
+              >
+                Dashboard
+              </Link>
+              <Link
+                to="/seller/my-content"
+                className={path === "/seller/my-content" ? "active" : ""}
+              >
+                My Content
+              </Link>
+              <Link
+                to="/seller/settings"
+                className={path === "/seller/settings" ? "active" : ""}
+              >
+                Settings
+              </Link>
+            </>
+          )}
+        </div>
+
+        <div className={`navbar-auth ${menuOpen ? "active" : ""}`}>
+          {userRole === "visitor" && (
+            <>
+              <Link to="/auth" className="btn signinbtn">
+                Sign In
+              </Link>
+              <Link to="/auth" className="btn signupbtn">
+                Sign Up
+              </Link>
+            </>
+          )}
+
+          {(userRole === "buyer" || userRole === "seller") && (
+            <Link to="/" className="btn btn-outline">
+              Logout
+            </Link>
+          )}
+        </div>
       </div>
     </nav>
   );

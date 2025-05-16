@@ -17,17 +17,21 @@ p {
 :root {
   /* Colors */
   --primary-color: #960d12;
-  --primary-light-color: #ffebeb;
+  --nav-primary-color: #0181bb;
+  --nav-light-primary: #02affc;
+  --primary-light-color: #fdf5f0;
+  --btn-color: #ee3425;
   --secondary-color: #163351;
   --text-color: #1c1c1c;
-  --dark-gray: #999999;
+  --dark-gray: #666666;
   --light-gray: #d9d9d9;
   --bg-gray: #f5f5f5;
   --bg-blue: #f1f5f9;
   --white: #ffffff;
   --black: #000000;
+  --primary-rgb: 150, 13, 18;
   /* Font Sizes */
-  --heading1: 52px;
+  --heading1: 42px;
   --heading2: 40px;
   --heading3: 32px;
   --heading4: 28px;
@@ -38,6 +42,7 @@ p {
   --extrasmallfont: 12px;
   /* Box Model Properties */
   --border-radius: 4px;
+  --border-radius-large: 12px;
   /* Shadows */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -87,7 +92,229 @@ select {
   font-size: var(--heading6);
   margin-bottom: 30px;
 }
-/* button Centering */
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: var(--basefont);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+}
+.signupbtn {
+  background-color: var(--nav-primary-color);
+  color: var(--white);
+  border-radius: var(--border-radius-large);
+}
+.signupbtn:hover {
+  background-color: var(--nav-light-primary);
+}
+.signinbtn {
+  border: 1px solid var(--nav-primary-color);
+  color: #0181bb;
+  border-radius: var(--border-radius-large);
+}
+.signinbtn:hover {
+  color: var(--white);
+  background-color: var(--nav-light-primary);
+}
+.btn-primary {
+  background: #ee3425;
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: var(--basefont);
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(238, 52, 37, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #fb5024;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(238, 52, 37, 0.4);
+}
+
+.btn-secondary {
+  background: linear-gradient(to bottom, #ee3425, #fb5024);
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(to bottom, #ee3425, #fb5024);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #ee3425;
+  border: 1px solid #ee3425;
+  padding: 6px 12px;
+  border-radius: var(--border-radius);
+  font-size: var(--smallfont);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: linear-gradient(to bottom, #ee3425, #fb5024);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.3);
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: var(--heading6);
+  letter-spacing: 0.5px;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: var(--smallfont);
+}
+
+/* Layout Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+.gap-20 {
+  gap: 20px;
+}
+
+.gap-30 {
+  gap: 30px;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Spacing Utility Classes */
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.py-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.py-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.py-30 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.px-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.px-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.px-30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* Text Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
 
 /* Error Message */
 .error-message {

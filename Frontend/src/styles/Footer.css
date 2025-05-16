@@ -1,0 +1,152 @@
+.footer {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 60px 0 20px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo-section {
+  grid-column: span 1;
+}
+
+.footer-logo {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.footer-tagline {
+  font-size: var(--smallfont);
+  font-weight: 100;
+  color: var(--btn-color);
+  margin-bottom: 10px;
+}
+
+.footer-description {
+  font-size: var(--smallfont);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.footer h3 {
+  font-size: var(--heading6);
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--white);
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul li a {
+  color: var(--light-gray);
+  text-decoration: none;
+  font-size: var(--smallfont);
+  transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: var(--white);
+}
+
+.footer-contact p {
+  font-size: var(--smallfont);
+  margin-bottom: 10px;
+  color: var(--light-gray);
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.footer-sports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.footer-social a {
+  color: var(--white);
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 20px 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: var(--extrasmallfont);
+  color: var(--light-gray);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-logo-section {
+    grid-column: span 1;
+  }
+
+  .footer-sports {
+    grid-column: span 2;
+  }
+
+  .footer-sports-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 15px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .footer-logo-section {
+    grid-column: span 1;
+  }
+
+  .footer-sports {
+    grid-column: span 1;
+  }
+
+  .footer-sports-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    margin-top: 30px;
+  }
+}
