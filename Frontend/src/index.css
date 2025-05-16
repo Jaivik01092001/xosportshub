@@ -13,6 +13,12 @@ body {
 p {
   margin: 0;
 }
+a {
+  color: var(--btn-color);
+  font-size: var(--basefont);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 /* Root Variables */
 :root {
   /* Colors */
@@ -124,7 +130,7 @@ select {
   background-color: var(--nav-light-primary);
 }
 .btn-primary {
-  background: #ee3425;
+  background: var(--btn-color);
   color: var(--white);
   padding: 14px 28px;
   border-radius: 8px;
@@ -135,19 +141,31 @@ select {
 }
 
 .btn-primary:hover {
-  background-color: #fb5024;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--btn-color)
+  );
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(238, 52, 37, 0.4);
 }
 
 .btn-secondary {
-  background: linear-gradient(to bottom, #ee3425, #fb5024);
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--btn-color)
+  );
   color: var(--secondary-color);
   font-weight: 600;
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(to bottom, #ee3425, #fb5024);
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--btn-color)
+  );
   transform: translateY(-2px);
 }
 
@@ -164,7 +182,11 @@ select {
 }
 
 .btn-outline:hover {
-  background: linear-gradient(to bottom, #ee3425, #fb5024);
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--btn-color)
+  );
   color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.3);
@@ -327,9 +349,9 @@ select {
 @media (max-width: 1024px) {
   :root {
     --heading1: 40px;
-    --heading2: 32px;
-    --heading3: 28px;
-    --heading4: 24px;
+    --heading2: 38px;
+    --heading3: 30px;
+    --heading4: 26px;
     --heading5: 18px;
     --heading6: 16px;
     --basefont: 14px;
@@ -344,15 +366,15 @@ select {
 /* Large Smartphones (Portrait & Landscape) */
 @media (max-width: 768px) {
   :root {
-    --heading1: 32px;
+    --heading1: 30px;
     --heading2: 28px;
     --heading3: 24px;
     --heading4: 20px;
-    --heading5: 16px;
-    --heading6: 14px;
-    --basefont: 12px;
-    --smallfont: 10px;
-    --extrasmallfont: 8px;
+    --heading5: 15px;
+    --heading6: 13px;
+    --basefont: 13px;
+    --smallfont: 11px;
+    --extrasmallfont: 9px;
   }
   .section-padding {
     padding-top: 30px;
@@ -362,15 +384,15 @@ select {
 /* Small Smartphones (Portrait) */
 @media (max-width: 480px) and (orientation: portrait) {
   :root {
-    --heading1: 28px;
-    --heading2: 24px;
-    --heading3: 20px;
-    --heading4: 18px;
-    --heading5: 14px;
-    --heading6: 12px;
-    --basefont: 10px;
-    --smallfont: 8px;
-    --extrasmallfont: 6px;
+    --heading1: 22px;
+    --heading2: 20px;
+    --heading3: 18px;
+    --heading4: 16px;
+    --heading5: 13px;
+    --heading6: 11px;
+    --basefont: 11px;
+    --smallfont: 10px;
+    --extrasmallfont: 9px;
   }
   .section-padding {
     padding-top: 25px;
@@ -379,17 +401,6 @@ select {
 }
 /* Small Smartphones (Landscape) */
 @media (max-width: 640px) and (orientation: landscape) {
-  :root {
-    --heading1: 30px;
-    --heading2: 26px;
-    --heading3: 22px;
-    --heading4: 18px;
-    --heading5: 14px;
-    --heading6: 12px;
-    --basefont: 10px;
-    --smallfont: 8px;
-    --extrasmallfont: 6px;
-  }
   .section-padding {
     padding-top: 20px;
     padding-bottom: 20px;

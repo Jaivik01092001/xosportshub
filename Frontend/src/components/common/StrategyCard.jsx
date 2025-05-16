@@ -18,7 +18,7 @@ const StrategyCard = ({ image, title, coach, price, hasVideo }) => {
         <p className="strategy-card-coach">By {coach}</p>
         <div className="strategy-card-footer">
           <span className="strategy-card-price">${price.toFixed(2)}</span>
-          <button className="btn-outline">Learn More</button>
+          <a>Learn More</a>
         </div>
       </div>
     </div>

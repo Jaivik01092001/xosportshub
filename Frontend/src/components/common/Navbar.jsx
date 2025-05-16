@@ -40,14 +40,15 @@ const Navbar = () => {
               <Link to="/" className={path === "/" ? "active" : ""}>
                 Home
               </Link>
+
+              <Link to="/info" className={path === "/info" ? "active" : ""}>
+                About Us
+              </Link>
               <Link
                 to="/contact"
                 className={path === "/contact" ? "active" : ""}
               >
                 Contact
-              </Link>
-              <Link to="/info" className={path === "/info" ? "active" : ""}>
-                About Us
               </Link>
             </>
           )}

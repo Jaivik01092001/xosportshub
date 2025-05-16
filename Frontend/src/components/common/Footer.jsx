@@ -12,6 +12,10 @@ const Footer = () => {
           <p className="footer-tagline">
             "How To Win Games" – A Digital Sports Strategy Exchange
           </p>
+          <div className="footer-contact">
+            <h3>Contact Us</h3>
+            <p>Email: info@XOsportshub.com</p>
+          </div>
         </div>
 
         <div className="footer-links">
@@ -135,11 +139,6 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-        </div>
-
-        <div className="footer-contact">
-          <h3>Contact Us</h3>
-          <p>Email: info@XOsportshub.com</p>
         </div>
       </div>
 
