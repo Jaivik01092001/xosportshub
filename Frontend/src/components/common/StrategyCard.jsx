@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../styles/StrategyCard.css";
 import { FaPlay } from "react-icons/fa";
 
-const StrategyCard = ({ image, title, coach, price, hasVideo }) => {
+const StrategyCard = ({ image, title, coach, price, hasVideo, id }) => {
   return (
     <div className="strategy-card">
       <div className="strategy-card-image">
@@ -18,7 +19,9 @@ const StrategyCard = ({ image, title, coach, price, hasVideo }) => {
         <p className="strategy-card-coach">By {coach}</p>
         <div className="strategy-card-footer">
           <span className="strategy-card-price">${price.toFixed(2)}</span>
-          <a>Learn More</a>
+          <Link to={`/strategy/${id}`} className="learn-more">
+            Learn More
+          </Link>
         </div>
       </div>
     </div>

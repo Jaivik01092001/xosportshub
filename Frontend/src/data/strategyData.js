@@ -7,7 +7,7 @@ export const strategyData = [
     coach: "Independent Coaches Circle",
     price: 32.0,
     image:
-      "https://images.unsplash.com/photo-1519766304817-4f37bda74b38?q=80&w=300&h=200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?q=80&w=300&h=200&auto=format&fit=crop",
     hasVideo: true,
   },
   {
