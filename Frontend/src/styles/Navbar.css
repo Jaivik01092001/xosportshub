@@ -69,7 +69,7 @@
 @media (max-width: 768px) {
   .navbar-toggle {
     display: block;
-    background-color: var(--nav-light-primary);
+    background-color: var(--btn-color);
     border-radius: 30%;
     padding: 5px;
     color: white;

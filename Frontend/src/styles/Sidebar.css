@@ -102,7 +102,7 @@
 }
 
 .sidebar-auth .signinbtn:hover {
-  background-color: var(--nav-light-primary);
+  background-color: var(--btn-color);
   color: var(--white);
 }
 
@@ -113,8 +113,8 @@
 }
 
 .sidebar-auth .signupbtn:hover {
-  background-color: var(--nav-light-primary);
-  border-color: var(--nav-light-primary);
+  background-color: var(--btn-color);
+  border-color: var(--btn-color);
 }
 
 .sidebar-auth .btn-outline {

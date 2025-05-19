@@ -165,7 +165,11 @@
 }
 
 .signup-button:hover {
-  background-color: var(--primary-color);
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--btn-color)
+  );
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.3);
 }

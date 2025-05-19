@@ -1,9 +1,17 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Footer from "../src/components/common/Footer";
 
 // Common Components
 import Navbar from "./components/common/Navbar";
+import ScrollToTop from "./components/common/ScrollToTop";
+import Preloader from "./components/common/Preloader";
+
+// Lenis Smooth Scrolling Provider
+import LenisProvider from "./utils/LenisProvider";
+
+// Import Lottie animation data
+import preloaderAnimation from "./assets/preloader-animation.json";
 
 // Lazy-loaded Authentication
 const Auth = lazy(() => import("./pages/Authentication/Auth"));
@@ -25,45 +33,61 @@ const SellerMyContent = lazy(() => import("./pages/Seller/SellerMyContent"));
 const SellerSettings = lazy(() => import("./pages/Seller/SellerSettings"));
 
 const App = () => {
+  const [showPreloader, setShowPreloader] = useState(true);
+
+  // Effect to handle preloader visibility
+  useEffect(() => {
+    // The Preloader component will handle its own timing and fade-out
+    // This state is just to control whether to render it at all
+    const timer = setTimeout(() => {
+      setShowPreloader(false);
+    }, 1000); // 5.5 seconds (5s display + 0.5s for fade-out)
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <>
-      <Navbar />
-      <main>
-        <Suspense
-          fallback={
-            <div style={{ textAlign: "center", padding: "2rem" }}>
-              Loading...
-            </div>
-          }
-        >
-          <Routes>
-            {/* Visitor Routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/info" element={<Info />} />
+    <LenisProvider>
+      <>
+        {/* Preloader */}
+        {showPreloader && (
+          <Preloader animationData={preloaderAnimation} duration={5000} />
+        )}
 
-            {/* Authentication */}
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/signup" element={<Signup />} />
+        <Navbar />
+        <main>
+          <Suspense>
+            <Routes>
+              {/* Visitor Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/info" element={<Info />} />
 
-            {/* Buyer Routes */}
-            <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
-            <Route path="/buyer/orders" element={<BuyerOrders />} />
-            <Route path="/buyer/settings" element={<BuyerSettings />} />
+              {/* Authentication */}
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/signup" element={<Signup />} />
 
-            {/* Seller Routes */}
-            <Route path="/seller/dashboard" element={<SellerDashboard />} />
-            <Route path="/seller/my-content" element={<SellerMyContent />} />
-            <Route path="/seller/settings" element={<SellerSettings />} />
+              {/* Buyer Routes */}
+              <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
+              <Route path="/buyer/orders" element={<BuyerOrders />} />
+              <Route path="/buyer/settings" element={<BuyerSettings />} />
 
-            {/* Catch-all route */}
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </Suspense>
-      </main>
-      {/* Footer */}
-      <Footer />
-    </>
+              {/* Seller Routes */}
+              <Route path="/seller/dashboard" element={<SellerDashboard />} />
+              <Route path="/seller/my-content" element={<SellerMyContent />} />
+              <Route path="/seller/settings" element={<SellerSettings />} />
+
+              {/* Catch-all route */}
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </Suspense>
+        </main>
+        {/* Footer */}
+        <Footer />
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
+      </>
+    </LenisProvider>
   );
 };
 
