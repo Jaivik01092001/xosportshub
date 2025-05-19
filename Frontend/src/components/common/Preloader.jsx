@@ -1,64 +1,64 @@
 import React, { useEffect, useState } from "react";
+import Lottie from "lottie-react";
 import "./Preloader.css";
 
 /**
  * Preloader Component
  *
- * This component displays a Lottie animation as a preloader for 5 seconds
- * before allowing the main content to be displayed.
+ * This component displays a Lottie animation as a preloader while the app is loading.
+ * It will be hidden when the onLoaded callback is triggered.
  *
  * Note: This component requires the lottie-react package to be installed:
  * npm install lottie-react
  *
  * @param {Object} props - Component props
  * @param {Object} props.animationData - The Lottie JSON animation data
- * @param {number} props.duration - Duration in milliseconds to show the preloader (default: 5000ms)
+ * @param {Function} props.onLoaded - Callback function to notify when animation is loaded
+ * @param {boolean} props.isLoading - Whether the app is still loading
  */
-const Preloader = ({ animationData, duration = 5000 }) => {
-  const [loading, setLoading] = useState(true);
+const Preloader = ({ animationData, onLoaded, isLoading = true }) => {
+  const [animationLoaded, setAnimationLoaded] = useState(false);
 
   useEffect(() => {
     // Disable scrolling while preloader is active
     document.body.style.overflow = "hidden";
 
-    // Set a timeout to hide the preloader after the specified duration
-    const timer = setTimeout(() => {
-      setLoading(false);
-
-      // Re-enable scrolling after preloader is hidden
-      document.body.style.overflow = "auto";
-    }, duration);
-
-    // Clean up the timeout if the component unmounts
+    // Clean up when component unmounts
     return () => {
-      clearTimeout(timer);
       document.body.style.overflow = "auto";
     };
-  }, [duration]);
+  }, []);
 
-  // Dynamically import Lottie to avoid issues if the package isn't installed
-  const LottiePlayer = React.lazy(() => {
-    try {
-      return import("lottie-react");
-    } catch (error) {
-      console.error(
-        "lottie-react package is not installed. Please run: npm install lottie-react"
-      );
-      return { default: () => <div>Animation not available</div> };
+  // Re-enable scrolling when preloader is no longer needed
+  useEffect(() => {
+    if (!isLoading) {
+      document.body.style.overflow = "auto";
     }
-  });
+  }, [isLoading]);
+
+  // Mark animation as loaded when it's ready
+  useEffect(() => {
+    if (animationData) {
+      setAnimationLoaded(true);
+      if (onLoaded) {
+        onLoaded();
+      }
+    }
+  }, [animationData, onLoaded]);
 
   return (
-    <div className={`preloader ${!loading ? "preloader--hidden" : ""}`}>
+    <div className={`preloader ${!isLoading ? "preloader--hidden" : ""}`}>
       <div className="preloader__content">
-        <React.Suspense>
-          <LottiePlayer
+        {animationLoaded ? (
+          <Lottie
             animationData={animationData}
             loop={true}
             autoplay={true}
             className="preloader__animation"
           />
-        </React.Suspense>
+        ) : (
+          <div className="preloader__placeholder"></div>
+        )}
       </div>
     </div>
   );

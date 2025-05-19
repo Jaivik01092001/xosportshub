@@ -10,8 +10,11 @@ import Preloader from "./components/common/Preloader";
 // Lenis Smooth Scrolling Provider
 import LenisProvider from "./utils/LenisProvider";
 
-// Import Lottie animation data
+// Import and preload Lottie animation data
 import preloaderAnimation from "./assets/preloader-animation.json";
+
+// Preload the animation data
+const preloadedAnimation = { ...preloaderAnimation };
 
 // Lazy-loaded Authentication
 const Auth = lazy(() => import("./pages/Authentication/Auth"));
@@ -33,26 +36,53 @@ const SellerMyContent = lazy(() => import("./pages/Seller/SellerMyContent"));
 const SellerSettings = lazy(() => import("./pages/Seller/SellerSettings"));
 
 const App = () => {
-  const [showPreloader, setShowPreloader] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [contentLoaded, setContentLoaded] = useState(false);
+  const [animationLoaded, setAnimationLoaded] = useState(false);
 
-  // Effect to handle preloader visibility
+  // Check if both animation and content are loaded
+  const checkAllLoaded = () => {
+    if (animationLoaded && contentLoaded) {
+      // Add a small delay for a smooth transition
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
+    }
+  };
+
+  // Handle animation loaded callback
+  const handleAnimationLoaded = () => {
+    setAnimationLoaded(true);
+    checkAllLoaded();
+  };
+
+  // Handle content loaded
   useEffect(() => {
-    // The Preloader component will handle its own timing and fade-out
-    // This state is just to control whether to render it at all
-    const timer = setTimeout(() => {
-      setShowPreloader(false);
-    }, 1000); // 5.5 seconds (5s display + 0.5s for fade-out)
+    // Listen for when the page content is fully loaded
+    const handleLoad = () => {
+      setContentLoaded(true);
+      checkAllLoaded();
+    };
 
-    return () => clearTimeout(timer);
+    // Check if already loaded
+    if (document.readyState === 'complete') {
+      setContentLoaded(true);
+      checkAllLoaded();
+    } else {
+      window.addEventListener('load', handleLoad);
+      return () => window.removeEventListener('load', handleLoad);
+    }
   }, []);
 
   return (
     <LenisProvider>
       <>
         {/* Preloader */}
-        {showPreloader && (
-          <Preloader animationData={preloaderAnimation} duration={5000} />
-        )}
+        <Preloader
+          animationData={preloadedAnimation}
+          onLoaded={handleAnimationLoaded}
+          isLoading={isLoading}
+        />
 
         <Navbar />
         <main>
