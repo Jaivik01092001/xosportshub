@@ -120,7 +120,7 @@
   width: 100%;
   max-width: 100%;
   scroll-snap-type: x mandatory;
-   grid-auto-columns: minmax(calc(25% - 15px), 1fr); 
+   grid-auto-columns: minmax(calc(25% - 15px), 1fr);
 }
 
 .sports-cards-container::-webkit-scrollbar {
@@ -257,7 +257,7 @@
   justify-content: space-between;
 }
 .offer-join-container .vertical-line img {
-  height: 350px;
+  height: 450px;
 }
 .offer-column,
 .join-column {
@@ -267,6 +267,7 @@
 
 .offer-title,
 .join-title {
+  white-space: nowrap;
   font-size: var(--heading4);
   font-weight: 600;
   color: var(--secondary-color);
@@ -280,21 +281,56 @@
   margin: 0;
 }
 
-.offer-list li,
-.join-list li {
+.offer-item,
+.join-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: var(--basefont);
   line-height: 1.5;
 }
 
-.offer-list li:before,
-.join-list li:before {
-  content: "✓";
-  color: var(--primary-color);
-  font-weight: bold;
-  margin-right: 10px;
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  color: var(--btn-color);
+  font-size: 24px;
+  min-width: 24px;
+}
+
+.offer-icon,
+.join-icon {
+  color: var(--btn-color);
+}
+
+.offer-text,
+.join-text {
+  flex: 1;
+}
+
+.offer-text h3,
+.join-text h3 {
+  font-size: var(--basefont);
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: var(--secondary-color);
+}
+
+.offer-text p,
+.join-text p {
+  font-size: var(--smallfont);
+  margin: 0;
+  color: var(--dark-gray);
+}
+
+.offer-item:hover .icon-container,
+.join-item:hover .icon-container,
+.offer-item:hover ,
+.join-item:hover  {
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
 }
 
 /* CTA Section */
@@ -374,9 +410,9 @@
     display: none;
   }
   .sports-cards-container {
-   
+
     grid-template-rows: repeat(2, 1fr);
-    grid-auto-columns: minmax(calc(50% - 10px), 1fr); 
+    grid-auto-columns: minmax(calc(50% - 10px), 1fr);
   }
 
   .featured-grid {
@@ -398,6 +434,18 @@
   .offer-join-container .vertical-line {
     display: none;
   }
+  .icon-container {
+    min-width: 20px;
+    font-size: 20px;
+  }
+  .offer-text h3,
+  .join-text h3 {
+    font-size: var(--smallfont);
+  }
+  .offer-text p,
+  .join-text p {
+    font-size: var(--extrasmallfont);
+  }
   .scroll-arrow {
     width: 35px;
     height: 35px;
@@ -411,7 +459,7 @@
 
 @media (max-width: 480px) {
   .sports-cards-container {
-    
+
     grid-template-rows: repeat(2, 1fr);
   }
 

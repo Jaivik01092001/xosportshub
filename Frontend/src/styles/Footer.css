@@ -22,6 +22,22 @@
   margin-bottom: 15px;
 }
 
+.icons{
+  display: flex;
+  gap: 15px;
+ 
+}
+
+.social-icon {
+  color: var(--white);
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  color: var(--btn-color);
+}
+
 .footer-tagline {
   font-size: var(--smallfont);
   font-weight: 100;

@@ -10,6 +10,17 @@ import StrategyCard from "../../components/common/StrategyCard";
 import Footer from "../../components/common/Footer";
 // Icons
 import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
+import { TbLockDollar } from "react-icons/tb";
+import { TbPencilDollar } from "react-icons/tb";
+import { GoShieldCheck } from "react-icons/go";
+import { LiaHandHoldingUsdSolid } from "react-icons/lia";
+import { BsDatabaseLock } from "react-icons/bs";
+import { GiTeacher } from "react-icons/gi";
+import { GrTransaction } from "react-icons/gr";
+import { FaRegHandshake } from "react-icons/fa";
+import { MdSecurity } from "react-icons/md";
+
+
 
 // Data
 import { sportsData } from "../../data/sportsData";
@@ -36,9 +47,9 @@ const Home = () => {
       <section className="hero-section">
         <div className="hero-container">
           <div className="hero-content">
-            <h1 className="hero-title">Sports Playbook Strategy Marketplace</h1>
+            <h1 className="hero-title">Digital Sports Playbook Strategy Marketplace</h1>
             <p className="hero-tagline">
-              "How To Win Games" – A Digital Sports Strategy Exchange
+            "Elevate Your Game - A Digital Exchange of Sports Strategies"
             </p>
             <div className="hero-description">
               <p>Discover, Buy, and Sell Winning Sports Strategies.</p>
@@ -92,7 +103,7 @@ const Home = () => {
       <section className="featured-section">
         <div className="featured-container">
           <div className="featured-header">
-            <h2 className="featured-title">Featured Strategic Content</h2>
+            <h2 className="featured-title">Featured Sports Strategies</h2>
             <Link to="/" className="featured-view-all">
               Learn More Contents
             </Link>
@@ -139,11 +150,47 @@ const Home = () => {
           <div className="offer-column">
             <h2 className="offer-title">What We Offer</h2>
             <ul className="offer-list">
-              <li>Expert-created training content across multiple sports</li>
-              <li>High-quality videos, PDFs, and interactive materials</li>
-              <li>Content for all skill levels from beginner to advanced</li>
-              <li>Personalized coaching and custom content requests</li>
-              <li>Secure platform with verified coaches and sellers</li>
+              <li className="offer-item">
+                <div className="icon-container">
+                  <TbLockDollar className="offer-icon" />
+                </div>
+                <div className="offer-text">
+                  <h3>Fixed-price listings and bidding options
+                  for Exclusive Sports Digital Content</h3>
+                </div>
+              </li>
+              <li className="offer-item">
+                <div className="icon-container">
+                  <TbPencilDollar className="offer-icon" />
+                </div>
+                <div className="offer-text">
+                  <h3>Buyer requests for Tailored Playbook, Opponent Scouting Reports, meal plans or wellness guides, etc.</h3>
+                </div>
+              </li>
+              <li className="offer-item">
+                <div className="icon-container">
+                  <GoShieldCheck className="offer-icon" />
+                </div>
+                <div className="offer-text">
+                  <h3>Secure, Cloud-Based Hosting</h3>
+                </div>
+              </li>
+              <li className="offer-item">
+                <div className="icon-container">
+                  <LiaHandHoldingUsdSolid className="offer-icon" />
+                </div>
+                <div className="offer-text">
+                  <h3>Transparent Commission-Based Payments For Creators And The Platform</h3>
+                </div>
+              </li>
+              <li className="offer-item">
+                <div className="icon-container">
+                  <BsDatabaseLock className="offer-icon" />
+                </div>
+                <div className="offer-text">
+                  <h3>Focus On Seller Credibility, Data Security, And High-Quality Content</h3>
+                </div>
+              </li>
             </ul>
           </div>
           <div className="vertical-line">
@@ -152,11 +199,42 @@ const Home = () => {
           <div className="join-column">
             <h2 className="join-title">Why Join Our Marketplace?</h2>
             <ul className="join-list">
-              <li>Access to exclusive content from professional coaches</li>
-              <li>Learn at your own pace with on-demand content</li>
-              <li>Affordable alternatives to in-person coaching</li>
-              <li>Connect with a community of athletes and coaches</li>
-              <li>Continuous updates with new content added regularly</li>
+              <li className="join-item">
+                <div className="icon-container">
+                  <GiTeacher className="join-icon" />
+                </div>
+                <div className="join-text">
+                  <h3>Access Expert Strategies</h3>
+                  <p>Explore And Purchase Strategies Curated By Top Sports Minds</p>
+                </div>
+              </li>
+              <li className="join-item">
+                <div className="icon-container">
+                  <GrTransaction className="join-icon" />
+                </div>
+                <div className="join-text">
+                  <h3>Flexible Transactions</h3>
+                  <p>Choose Between Fixed Prices Or Competitive Bidding, With Options For Custom Content Requests</p>
+                </div>
+              </li>
+              <li className="join-item">
+                <div className="icon-container">
+                  <MdSecurity className="join-icon" />
+                </div>
+                <div className="join-text">
+                  <h3>Secure & Protected</h3>
+                  <p>Scalable Cloud Hosting And Verified Sellers Ensure Safety And Trust</p>
+                </div>
+              </li>
+              <li className="join-item">
+                <div className="icon-container">
+                  <FaRegHandshake className="join-icon" />
+                </div>
+                <div className="join-text">
+                  <h3>Fair & Transparent</h3>
+                  <p>Clear Fee Structures And Secure Payment Processing Support A Trustworthy Environment</p>
+                </div>
+              </li>
             </ul>
           </div>
         </div>

@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Footer.css";
 import logo from "../../assets/images/XOsports-hub-logo.svg";
-
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
+import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="footer">
@@ -10,11 +12,17 @@ const Footer = () => {
         <div className="footer-logo-section">
           <img src={logo} alt="XO Sports Hub Logo" className="footer-logo" />
           <p className="footer-tagline">
-            "How To Win Games" – A Digital Sports Strategy Exchange
+          "Elevate Your Game - A Digital Exchange of Sports Strategies"
           </p>
           <div className="footer-contact">
             <h3>Contact Us</h3>
             <p>Email: info@XOsportshub.com</p>
+            <div className="icons">
+              <FaEnvelope size={30} className="social-icon"/>
+              <FaLinkedin size={30} className="social-icon"/>
+              <RiInstagramFill size={30} className="social-icon"/>
+              <FaXTwitter size={30} className="social-icon"/>
+            </div>
           </div>
         </div>
 
