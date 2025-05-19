@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../../styles/Auth.css";
-import FormInput from "../../components/common/FormInput";
+import { FaEnvelope } from "react-icons/fa";
 
 const Auth = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
-    rememberMe: false,
+    phone: "",
+    countryCode: "+91",
   });
 
   const [errors, setErrors] = useState({});
@@ -29,6 +29,13 @@ const Auth = () => {
     }
   };
 
+  const handleCountryCodeChange = (e) => {
+    setFormData({
+      ...formData,
+      countryCode: e.target.value,
+    });
+  };
+
   const validateForm = () => {
     const newErrors = {};
 
@@ -38,8 +45,10 @@ const Auth = () => {
       newErrors.email = "Email is invalid";
     }
 
-    if (!formData.password) {
-      newErrors.password = "Password is required";
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      newErrors.phone = "Phone number must be 10 digits";
     }
 
     return newErrors;
@@ -54,61 +63,87 @@ const Auth = () => {
       return;
     }
 
-    // Simulate login based on email pattern
-    if (formData.email.includes("buyer")) {
-      navigate("/buyer/dashboard");
-    } else if (formData.email.includes("seller")) {
-      navigate("/seller/dashboard");
-    } else {
-      navigate("/buyer/dashboard"); // Default to buyer
-    }
+    // Navigate to OTP verification page with phone number
+    navigate("/otp-verification", {
+      state: {
+        phoneNumber: `${formData.countryCode} ${formData.phone}`,
+      },
+    });
+
+    // Note: In a real application, you would:
+    // 1. Call an API to send the OTP to the user's phone
+    // 2. Store necessary information in state/context/redux
+    // 3. Then navigate to the OTP verification page
   };
 
   return (
     <div className="auth-container">
       <div className="auth-form-container">
-        <h1 className="auth-title">Sign in to your account</h1>
+        <h1 className="auth-title">Login in to your account</h1>
 
         <form onSubmit={handleSubmit} className="auth-form">
-          <FormInput
-            label="Email Address"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter Email Address"
-            required
-            error={errors.email}
-            showLabel={false}
-          />
-
-          <FormInput
-            label="Password"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter Password"
-            required
-            error={errors.password}
-            showLabel={false}
-          />
-
-          <div className="auth-options">
-            <div className="remember-me">
-              <input
-                type="checkbox"
-                id="rememberMe"
-                name="rememberMe"
-                checked={formData.rememberMe}
-                onChange={handleChange}
-              />
-              <label htmlFor="rememberMe">Remember me</label>
+          <div className="form-input-container email-input-container">
+            <div className="email-icon">
+              <FaEnvelope />
             </div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter Email Address"
+              className={`form-input email-input ${
+                errors.email ? "input-error" : ""
+              }`}
+              required
+            />
+          </div>
+          {errors.email && <p className="error-message">{errors.email}</p>}
 
-            <Link to="/forgot-password" className="forgot-password">
-              Forgot Password?
-            </Link>
+          <div className="form-input-container">
+            <div className="phone-input-wrapper">
+              <div>
+                <select
+                  value={formData.countryCode}
+                  onChange={handleCountryCodeChange}
+                  className="country-code-select"
+                >
+                  <option value="+91">+91</option>
+                  <option value="+1">+1</option>
+                  <option value="+44">+44</option>
+                  <option value="+61">+61</option>
+                  <option value="+86">+86</option>
+                  <option value="+49">+49</option>
+                  <option value="+33">+33</option>
+                  <option value="+81">+81</option>
+                  <option value="+7">+7</option>
+                  <option value="+55">+55</option>
+                </select>
+              </div>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={(e) => {
+                  const phoneValue = e.target.value.replace(/\D/g, "");
+                  handleChange({
+                    target: {
+                      name: "phone",
+                      value: phoneValue,
+                    },
+                  });
+                }}
+                placeholder="Enter Phone Number"
+                className={`form-input phone-input ${
+                  errors.phone ? "input-error" : ""
+                }`}
+                required
+                pattern="[0-9]*"
+              />
+            </div>
+            {errors.phone && <p className="error-message">{errors.phone}</p>}
           </div>
 
           <button type="submit" className="signin-button">

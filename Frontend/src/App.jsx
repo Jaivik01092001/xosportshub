@@ -19,6 +19,9 @@ const preloadedAnimation = { ...preloaderAnimation };
 // Lazy-loaded Authentication
 const Auth = lazy(() => import("./pages/Authentication/Auth"));
 const Signup = lazy(() => import("./pages/Authentication/Signup"));
+const OtpVerification = lazy(() =>
+  import("./pages/Authentication/OtpVerification")
+);
 
 // Lazy-loaded Visitor Pages
 const Home = lazy(() => import("./pages/Visitor/Home"));
@@ -65,12 +68,12 @@ const App = () => {
     };
 
     // Check if already loaded
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       setContentLoaded(true);
       checkAllLoaded();
     } else {
-      window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
     }
   }, []);
 
@@ -96,6 +99,7 @@ const App = () => {
               {/* Authentication */}
               <Route path="/auth" element={<Auth />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/otp-verification" element={<OtpVerification />} />
 
               {/* Buyer Routes */}
               <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
