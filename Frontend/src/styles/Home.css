@@ -120,7 +120,7 @@
   width: 100%;
   max-width: 100%;
   scroll-snap-type: x mandatory;
-   grid-auto-columns: minmax(calc(25% - 15px), 1fr);
+  grid-auto-columns: minmax(calc(25% - 15px), 1fr);
 }
 
 .sports-cards-container::-webkit-scrollbar {
@@ -327,8 +327,8 @@
 
 .offer-item:hover .icon-container,
 .join-item:hover .icon-container,
-.offer-item:hover ,
-.join-item:hover  {
+.offer-item:hover,
+.join-item:hover {
   color: var(--secondary-color);
   transition: color 0.3s ease;
 }
@@ -366,13 +366,25 @@
 }
 
 /* Responsive styles */
+
 @media (max-width: 1024px) {
+  .sports-cards-container {
+    grid-template-rows: repeat(2, 1fr);
+    grid-auto-flow: column;
+    overflow-x: scroll;
+    gap: 20px;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    width: 100%;
+    max-width: 100%;
+    scroll-snap-type: x mandatory;
+    grid-auto-columns: minmax(calc(33% - 12px), 1fr);
+  }
   .featured-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-
-@media (max-width: 1024px) {
   .hero-section {
     padding: 50px 0;
   }
@@ -431,7 +443,6 @@
     display: none;
   }
   .sports-cards-container {
-
     grid-template-rows: repeat(2, 1fr);
     grid-auto-columns: minmax(calc(50% - 10px), 1fr);
   }

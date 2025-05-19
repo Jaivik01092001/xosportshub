@@ -67,7 +67,6 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 2.6em;
 }
 
 .strategy-card-coach {
@@ -117,6 +116,6 @@
 
 @media (max-width: 480px) {
   .strategy-card-image {
-    height: 120px;
+    height: 200px;
   }
 }

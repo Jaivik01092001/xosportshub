@@ -3,6 +3,7 @@ import { useState } from "react";
 import "../../styles/Navbar.css";
 import logo from "../../assets/images/XOsports-hub-logo.svg";
 import Sidebar from "./Sidebar";
+import { RiMenu5Line } from "react-icons/ri";
 
 const Navbar = () => {
   const location = useLocation();
@@ -33,7 +34,7 @@ const Navbar = () => {
 
           {/* Hamburger menu for mobile */}
           <button className="navbar-toggle" onClick={toggleSidebar}>
-            {sidebarOpen ? "✕" : "☰"}
+            {sidebarOpen ? "✕" : <RiMenu5Line />}
           </button>
 
           {/* Desktop navigation links */}

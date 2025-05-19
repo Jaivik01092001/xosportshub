@@ -373,37 +373,20 @@ select {
 /* Large Smartphones (Portrait & Landscape) */
 @media (max-width: 768px) {
   :root {
-    --heading1: 30px;
-    --heading2: 28px;
-    --heading3: 24px;
-    --heading4: 20px;
-    --heading5: 15px;
-    --heading6: 13px;
-    --basefont: 13px;
-    --smallfont: 11px;
-    --extrasmallfont: 9px;
+    --heading1: 37.5px;
+    --heading2: 35px;
+    --heading3: 30px;
+    --heading4: 25px;
+    --heading5: 18.75px;
+    --heading6: 16.25px;
+    --basefont: 16.25px;
+    --smallfont: 13.75px;
+    --extrasmallfont: 11.25px;
   }
+
   .section-padding {
     padding-top: 30px;
     padding-bottom: 30px;
-  }
-}
-/* Small Smartphones (Portrait) */
-@media (max-width: 480px) and (orientation: portrait) {
-  :root {
-    --heading1: 22px;
-    --heading2: 20px;
-    --heading3: 18px;
-    --heading4: 16px;
-    --heading5: 13px;
-    --heading6: 11px;
-    --basefont: 11px;
-    --smallfont: 10px;
-    --extrasmallfont: 9px;
-  }
-  .section-padding {
-    padding-top: 25px;
-    padding-bottom: 25px;
   }
 }
 /* Small Smartphones (Landscape) */
@@ -413,19 +396,28 @@ select {
     padding-bottom: 20px;
   }
 }
+/* Small Smartphones (Portrait) */
+@media (max-width: 480px) and (orientation: portrait) {
+  :root {
+    --heading1: 27.5px; /* 22 * 1.25 */
+    --heading2: 25px; /* 20 * 1.25 */
+    --heading3: 22.5px; /* 18 * 1.25 */
+    --heading4: 20px; /* 16 * 1.25 */
+    --heading5: 16.25px; /* 13 * 1.25 */
+    --heading6: 13.75px; /* 11 * 1.25 */
+    --basefont: 13.75px; /* 11 * 1.25 */
+    --smallfont: 12.5px; /* 10 * 1.25 */
+    --extrasmallfont: 11.25px; /* 9 * 1.25 */
+  }
+
+  .section-padding {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+
 /* Extra Small Devices (Watches, Foldable Phones) */
 @media (max-width: 320px) {
-  :root {
-    --heading1: 24px;
-    --heading2: 20px;
-    --heading3: 16px;
-    --heading4: 14px;
-    --heading5: 12px;
-    --heading6: 10px;
-    --basefont: 8px;
-    --smallfont: 6px;
-    --extrasmallfont: 4px;
-  }
   .section-padding {
     padding-top: 15px;
     padding-bottom: 15px;
