@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Seller Icon</title>
+    <g id="Seller-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M20,0 C31.0457,0 40,8.9543 40,20 C40,31.0457 31.0457,40 20,40 C8.9543,40 0,31.0457 0,20 C0,8.9543 8.9543,0 20,0 Z" id="Background" fill="#E6F4F9" fill-rule="nonzero"></path>
+        <g id="Store" transform="translate(8.000000, 8.000000)" fill="#0181BB" fill-rule="nonzero">
+            <path d="M21.5,9.5 L21.5,21.5 C21.5,22.3284 20.8284,23 20,23 L4,23 C3.17157,23 2.5,22.3284 2.5,21.5 L2.5,9.5" id="Path" stroke="#0181BB" stroke-width="2"></path>
+            <path d="M0,4.5 L24,4.5 L24,7.5 C24,9.15685 22.6569,10.5 21,10.5 C19.3431,10.5 18,9.15685 18,7.5 C18,9.15685 16.6569,10.5 15,10.5 C13.3431,10.5 12,9.15685 12,7.5 C12,9.15685 10.6569,10.5 9,10.5 C7.34315,10.5 6,9.15685 6,7.5 C6,9.15685 4.65685,10.5 3,10.5 C1.34315,10.5 0,9.15685 0,7.5 L0,4.5 Z" id="Path"></path>
+            <path d="M15,23 L15,17 C15,15.8954 14.1046,15 13,15 L11,15 C9.89543,15 9,15.8954 9,17 L9,23" id="Path" stroke="#FFFFFF" stroke-width="2"></path>
+        </g>
+    </g>
+</svg>

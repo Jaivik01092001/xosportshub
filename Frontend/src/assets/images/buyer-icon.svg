@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Buyer Icon</title>
+    <g id="Buyer-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M20,0 C31.0457,0 40,8.9543 40,20 C40,31.0457 31.0457,40 20,40 C8.9543,40 0,31.0457 0,20 C0,8.9543 8.9543,0 20,0 Z" id="Background" fill="#E6F4F9" fill-rule="nonzero"></path>
+        <g id="Shopping-Cart" transform="translate(8.000000, 8.000000)" fill="#0181BB" fill-rule="nonzero">
+            <path d="M23.9,5.8 L20.7,15.8 C20.5,16.5 19.9,17 19.2,17 L8.3,17 C7.6,17 7,16.5 6.8,15.8 L3.6,5.8 C3.3,4.8 4,3.8 5,3.8 L22.5,3.8 C23.5,3.8 24.2,4.8 23.9,5.8 Z" id="Path"></path>
+            <path d="M8.5,21.2 C9.6,21.2 10.5,20.3 10.5,19.2 C10.5,18.1 9.6,17.2 8.5,17.2 C7.4,17.2 6.5,18.1 6.5,19.2 C6.5,20.3 7.4,21.2 8.5,21.2 Z" id="Path"></path>
+            <path d="M19,21.2 C20.1,21.2 21,20.3 21,19.2 C21,18.1 20.1,17.2 19,17.2 C17.9,17.2 17,18.1 17,19.2 C17,20.3 17.9,21.2 19,21.2 Z" id="Path"></path>
+            <path d="M13.8,3.8 L13.8,11.2" id="Path" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M17.5,7.5 L10.1,7.5" id="Path" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

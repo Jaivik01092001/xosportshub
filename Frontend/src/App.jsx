@@ -1,11 +1,13 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+import Footer from "../src/components/common/Footer";
 
 // Common Components
 import Navbar from "./components/common/Navbar";
 
 // Lazy-loaded Authentication
 const Auth = lazy(() => import("./pages/Authentication/Auth"));
+const Signup = lazy(() => import("./pages/Authentication/Signup"));
 
 // Lazy-loaded Visitor Pages
 const Home = lazy(() => import("./pages/Visitor/Home"));
@@ -27,7 +29,13 @@ const App = () => {
     <>
       <Navbar />
       <main>
-        <Suspense fallback={<div style={{ textAlign: 'center', padding: '2rem' }}>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div style={{ textAlign: "center", padding: "2rem" }}>
+              Loading...
+            </div>
+          }
+        >
           <Routes>
             {/* Visitor Routes */}
             <Route path="/" element={<Home />} />
@@ -36,6 +44,7 @@ const App = () => {
 
             {/* Authentication */}
             <Route path="/auth" element={<Auth />} />
+            <Route path="/signup" element={<Signup />} />
 
             {/* Buyer Routes */}
             <Route path="/buyer/dashboard" element={<BuyerDashboard />} />
@@ -52,6 +61,8 @@ const App = () => {
           </Routes>
         </Suspense>
       </main>
+      {/* Footer */}
+      <Footer />
     </>
   );
 };

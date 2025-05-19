@@ -113,7 +113,7 @@ const Navbar = () => {
                 <Link to="/auth" className="btn signinbtn">
                   Sign In
                 </Link>
-                <Link to="/auth" className="btn signupbtn">
+                <Link to="/signup" className="btn signupbtn">
                   Sign Up
                 </Link>
               </>
@@ -134,7 +134,8 @@ const Navbar = () => {
         toggleSidebar={toggleSidebar}
         userRole={userRole}
       />
-    </>);
+    </>
+  );
 };
 
 export default Navbar;

@@ -7,7 +7,7 @@ import verticallineimg from "../../assets/images/verticallineimg.svg";
 // Components
 import SportsCard from "../../components/common/SportsCard";
 import StrategyCard from "../../components/common/StrategyCard";
-import Footer from "../../components/common/Footer";
+
 // Icons
 import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
 
@@ -175,9 +175,6 @@ const Home = () => {
           </Link>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </>
   );
 };

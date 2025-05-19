@@ -1,0 +1,123 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 90px); /* Adjust for navbar height */
+  padding: 40px 20px;
+  background-color: var(--bg-gray);
+}
+
+.auth-form-container {
+  background-color: var(--white);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--box-shadow-light);
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.auth-title {
+  font-size: var(--heading4);
+  font-weight: 600;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.remember-me label {
+  font-size: var(--smallfont);
+  color: var(--secondary-color);
+}
+
+.forgot-password {
+  font-size: var(--smallfont);
+  color: var(--nav-primary-color);
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.signin-button {
+  background-color: var(--btn-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 14px;
+  font-size: var(--basefont);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.signin-button:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.3);
+}
+
+.signup-link {
+  text-align: center;
+  font-size: var(--smallfont);
+  color: var(--secondary-color);
+}
+
+.signup-link a {
+  color: var(--nav-primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .auth-form-container {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 20px 10px;
+  }
+  
+  .auth-form-container {
+    padding: 20px 15px;
+  }
+  
+  .auth-title {
+    font-size: var(--heading5);
+  }
+  
+  .auth-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
