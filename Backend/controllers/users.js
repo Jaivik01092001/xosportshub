@@ -113,7 +113,6 @@ exports.deleteUser = async (req, res, next) => {
 // @route   PUT /api/users/profile
 // @access  Private
 exports.updateProfile = async (req, res, next) => {
-  console.log("update profile");
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -125,7 +124,7 @@ exports.updateProfile = async (req, res, next) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
-      phone: req.body.phone,
+      mobile: req.body.mobile,
       bio: req.body.bio,
     };
 

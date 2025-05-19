@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongoose.Schema(
@@ -25,20 +24,15 @@ const UserSchema = new mongoose.Schema(
         'Please add a valid email'
       ]
     },
-    phone: {
+    mobile: {
       type: String,
-      maxlength: [20, 'Phone number cannot be longer than 20 characters']
+      required: [true, 'Please add a mobile number'],
+      maxlength: [20, 'Mobile number cannot be longer than 20 characters']
     },
     role: {
       type: String,
       enum: ['buyer', 'seller', 'admin'],
       default: 'buyer'
-    },
-    password: {
-      type: String,
-      required: [true, 'Please add a password'],
-      minlength: [6, 'Password must be at least 6 characters'],
-      select: false
     },
     profileImage: {
       type: String,
@@ -63,8 +57,8 @@ const UserSchema = new mongoose.Schema(
       stripeConnectId: String,
       defaultPaymentMethod: String
     },
-    resetPasswordToken: String,
-    resetPasswordExpire: Date,
+    otpCode: String,
+    otpExpire: Date,
     emailVerificationToken: String,
     emailVerificationExpire: Date,
     lastLogin: Date,
@@ -79,16 +73,6 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-// Encrypt password using bcrypt
-UserSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    next();
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-});
-
 // Sign JWT and return
 UserSchema.methods.getSignedJwtToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
@@ -96,9 +80,16 @@ UserSchema.methods.getSignedJwtToken = function () {
   });
 };
 
-// Match user entered password to hashed password in database
-UserSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
+// Generate OTP
+UserSchema.methods.generateOTP = function() {
+  // Generate a 6-digit OTP
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+  // Set OTP and expiration (10 minutes)
+  this.otpCode = otp;
+  this.otpExpire = Date.now() + 10 * 60 * 1000;
+
+  return otp;
 };
 
 // Virtual for full name
