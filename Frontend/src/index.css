@@ -23,8 +23,7 @@ a {
 :root {
   /* Colors */
   --primary-color: #960d12;
-  --nav-primary-color: #0181bb;
-  --nav-light-primary: #02affc;
+
   --primary-light-color: #fdf5f0;
   --btn-color: #ee3425;
   --secondary-color: #163351;
@@ -113,7 +112,7 @@ select {
   border: none;
 }
 .signupbtn {
-  background-color: var(--nav-primary-color);
+  background-color: var(--btn-color);
   color: var(--white);
   border-radius: var(--border-radius-large);
 }
@@ -121,8 +120,8 @@ select {
   background-color: var(--nav-light-primary);
 }
 .signinbtn {
-  border: 1px solid var(--nav-primary-color);
-  color: #0181bb;
+  border: 1px solid var(--btn-color);
+  color: var(--btn-color);
   border-radius: var(--border-radius-large);
 }
 .signinbtn:hover {

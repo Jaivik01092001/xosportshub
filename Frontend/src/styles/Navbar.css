@@ -43,11 +43,11 @@
 }
 
 .navbar-links a:hover {
-  color: var(--nav-primary-color);
+  color: var(--btn-color);
 }
 
 .navbar-links a.active {
-  color: var(--nav-primary-color);
+  color: var(--btn-color);
   font-weight: 600;
 }
 
@@ -68,11 +68,11 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .navbar-toggle {
-            display: block;
-        background-color: var(--nav-light-primary);
-        border-radius: 30%;
-        padding: 5px;
-        color: white;
+    display: block;
+    background-color: var(--nav-light-primary);
+    border-radius: 30%;
+    padding: 5px;
+    color: white;
   }
 
   .navbar-links {

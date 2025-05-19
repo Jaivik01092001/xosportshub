@@ -372,6 +372,27 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 50px 0;
+  }
+
+  .offer-join-container {
+    grid-template-columns: 1fr 0.1fr 1fr;
+    gap: 20px;
+  }
+
+  .offer-text h3,
+  .join-text h3 {
+    font-size: var(--smallfont);
+  }
+
+  .offer-text p,
+  .join-text p {
+    font-size: var(--extrasmallfont);
+  }
+}
+
 @media (max-width: 768px) {
   .hero-section {
     padding: 40px 0;
@@ -430,22 +451,34 @@
   .offer-join-container {
     grid-template-columns: 1fr;
     gap: 30px;
+    padding: 0 15px;
   }
+
   .offer-join-container .vertical-line {
     display: none;
   }
+
+  .offer-column,
+  .join-column {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .icon-container {
     min-width: 20px;
     font-size: 20px;
   }
+
   .offer-text h3,
   .join-text h3 {
     font-size: var(--smallfont);
   }
+
   .offer-text p,
   .join-text p {
     font-size: var(--extrasmallfont);
   }
+
   .scroll-arrow {
     width: 35px;
     height: 35px;
@@ -459,11 +492,65 @@
 
 @media (max-width: 480px) {
   .sports-cards-container {
-
     grid-template-rows: repeat(2, 1fr);
   }
 
   .featured-grid {
     grid-template-columns: 1fr;
+  }
+
+  .offer-join-section {
+    padding: 40px 0;
+  }
+
+  .offer-title,
+  .join-title {
+    font-size: var(--heading5);
+    text-align: center;
+  }
+
+  .offer-item,
+  .join-item {
+    margin-bottom: 15px;
+  }
+
+  .icon-container {
+    min-width: 18px;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+
+  .offer-text h3,
+  .join-text h3 {
+    font-size: var(--extrasmallfont);
+    line-height: 1.3;
+  }
+
+  .offer-text p,
+  .join-text p {
+    font-size: var(--extrasmallfont);
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 360px) {
+  .offer-join-section {
+    padding: 30px 0;
+  }
+
+  .offer-title,
+  .join-title {
+    font-size: var(--heading6);
+  }
+
+  .icon-container {
+    min-width: 16px;
+    font-size: 16px;
+    margin-right: 8px;
+  }
+
+  .offer-item,
+  .join-item {
+    margin-bottom: 12px;
   }
 }

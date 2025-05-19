@@ -23,7 +23,7 @@
 }
 
 .form-input:focus {
-  border-color: var(--nav-primary-color);
+  border-color: var(--btn-color);
   box-shadow: 0 0 0 2px rgba(1, 129, 187, 0.2);
   outline: none;
 }

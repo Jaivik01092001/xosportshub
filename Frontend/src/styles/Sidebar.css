@@ -53,13 +53,10 @@
   margin-bottom: 20px;
 }
 
-
-
 .sidebar-links {
   display: flex;
   flex-direction: column;
   gap: 20px;
-
 }
 
 .sidebar-links a {
@@ -72,11 +69,11 @@
 }
 
 .sidebar-links a:hover {
-  color: var(--nav-primary-color);
+  color: var(--btn-color);
 }
 
 .sidebar-links a.active {
-  color: var(--nav-primary-color);
+  color: var(--btn-color);
   font-weight: 600;
 }
 
@@ -100,8 +97,8 @@
 
 .sidebar-auth .signinbtn {
   background-color: transparent;
-  color: var(--nav-primary-color);
-  border: 1px solid var(--nav-primary-color);
+  color: var(--btn-color);
+  border: 1px solid var(--btn-color);
 }
 
 .sidebar-auth .signinbtn:hover {
@@ -110,9 +107,9 @@
 }
 
 .sidebar-auth .signupbtn {
-  background-color: var(--nav-primary-color);
+  background-color: var(--btn-color);
   color: var(--white);
-  border: 1px solid var(--nav-primary-color);
+  border: 1px solid var(--btn-color);
 }
 
 .sidebar-auth .signupbtn:hover {
