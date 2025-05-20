@@ -1,4 +1,4 @@
-.preloader {
+.preloader-component {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,13 +14,13 @@
   visibility: visible;
 }
 
-.preloader--hidden {
+.preloader-component.preloader--hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.preloader__content {
+.preloader-component .preloader__content {
   width: 200px;
   height: 200px;
   display: flex;
@@ -28,18 +28,18 @@
   align-items: center;
 }
 
-.preloader__animation {
+.preloader-component .preloader__animation {
   width: 100%;
   height: 100%;
 }
 
-.preloader__fallback {
+.preloader-component .preloader__fallback {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
 }
 
-.preloader__placeholder {
+.preloader-component .preloader__placeholder {
   width: 100px;
   height: 100px;
   border-radius: 50%;

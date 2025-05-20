@@ -1,4 +1,4 @@
-.sidebar-container {
+.sidebar-component {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,14 +11,14 @@
   transition: visibility 0s linear 0.3s, opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.sidebar-container.active {
+.sidebar-component.active {
   pointer-events: auto;
   visibility: visible;
   opacity: 1;
   transition: visibility 0s, opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.sidebar-overlay {
+.sidebar-component .sidebar-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -30,11 +30,11 @@
   will-change: opacity;
 }
 
-.sidebar-container.active .sidebar-overlay {
+.sidebar-component.active .sidebar-overlay {
   opacity: 1;
 }
 
-.sidebar {
+.sidebar-component .sidebar {
   position: absolute;
   top: 0;
   left: 0;
@@ -50,23 +50,23 @@
   will-change: transform;
 }
 
-.sidebar-container.active .sidebar {
+.sidebar-component.active .sidebar {
   transform: translateX(0);
 }
 
-.sidebar-header {
+.sidebar-component .sidebar-header {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;
 }
 
-.sidebar-links {
+.sidebar-component .sidebar-links {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.sidebar-links a {
+.sidebar-component .sidebar-links a {
   text-decoration: none;
   color: var(--secondary-color);
   font-weight: 500;
@@ -75,16 +75,16 @@
   padding: 5px 0;
 }
 
-.sidebar-links a:hover {
+.sidebar-component .sidebar-links a:hover {
   color: var(--btn-color);
 }
 
-.sidebar-links a.active {
+.sidebar-component .sidebar-links a.active {
   color: var(--btn-color);
   font-weight: 600;
 }
 
-.sidebar-auth {
+.sidebar-component .sidebar-auth {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -93,7 +93,7 @@
   border-top: 1px solid var(--light-gray);
 }
 
-.sidebar-auth .btn {
+.sidebar-component .sidebar-auth .btn {
   display: block;
   padding: 8px 16px;
   border-radius: var(--border-radius);
@@ -102,42 +102,42 @@
   transition: all 0.3s ease;
 }
 
-.sidebar-auth .signinbtn {
+.sidebar-component .sidebar-auth .signinbtn {
   background-color: transparent;
   color: var(--btn-color);
   border: 1px solid var(--btn-color);
 }
 
-.sidebar-auth .signinbtn:hover {
+.sidebar-component .sidebar-auth .signinbtn:hover {
   background-color: var(--btn-color);
   color: var(--white);
 }
 
-.sidebar-auth .signupbtn {
+.sidebar-component .sidebar-auth .signupbtn {
   background-color: var(--btn-color);
   color: var(--white);
   border: 1px solid var(--btn-color);
 }
 
-.sidebar-auth .signupbtn:hover {
+.sidebar-component .sidebar-auth .signupbtn:hover {
   background-color: var(--btn-color);
   border-color: var(--btn-color);
 }
 
-.sidebar-auth .btn-outline {
+.sidebar-component .sidebar-auth .btn-outline {
   background-color: transparent;
   color: var(--btn-color);
   border: 1px solid var(--btn-color);
 }
 
-.sidebar-auth .btn-outline:hover {
+.sidebar-component .sidebar-auth .btn-outline:hover {
   background-color: var(--btn-color);
   color: var(--white);
 }
 
 /* Only show sidebar on small screens */
 @media (min-width: 769px) {
-  .sidebar-container {
+  .sidebar-component {
     display: none !important;
   }
 }

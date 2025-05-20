@@ -27,27 +27,27 @@ const Sidebar = ({ isOpen, toggleSidebar, userRole }) => {
   };
 
   return (
-    <div className={`sidebar-container ${isOpen ? "active" : ""}`}>
+    <div className={`sidebar-component sidebar-container ${isOpen ? "active" : ""}`}>
       <div className="sidebar-overlay" onClick={toggleSidebar}></div>
       <div className="sidebar" ref={sidebarRef}>
         <div className="sidebar-header">
-         
+
         </div>
-        
+
         <div className="sidebar-links">
           {userRole === "visitor" && (
             // Visitor links
             <>
-              <Link 
-                to="/" 
-                className={path === "/" ? "active" : ""} 
+              <Link
+                to="/"
+                className={path === "/" ? "active" : ""}
                 onClick={handleLinkClick}
               >
                 Home
               </Link>
-              <Link 
-                to="/info" 
-                className={path === "/info" ? "active" : ""} 
+              <Link
+                to="/info"
+                className={path === "/info" ? "active" : ""}
                 onClick={handleLinkClick}
               >
                 About Us
@@ -123,7 +123,7 @@ const Sidebar = ({ isOpen, toggleSidebar, userRole }) => {
               <Link to="/auth" className="btn signinbtn" onClick={handleLinkClick}>
                 Sign In
               </Link>
-              <Link to="/auth" className="btn signupbtn" onClick={handleLinkClick}>
+              <Link to="/signup" className="btn signupbtn" onClick={handleLinkClick}>
                 Sign Up
               </Link>
             </>

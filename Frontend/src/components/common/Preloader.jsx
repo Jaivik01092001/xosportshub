@@ -47,7 +47,7 @@ const Preloader = ({ animationData, onLoaded, isLoading = true }) => {
   }, [animationData, onLoaded]);
 
   return (
-    <div className={`preloader ${!isLoading ? "preloader--hidden" : ""}`}>
+    <div className={`preloader-component preloader ${!isLoading ? "preloader--hidden" : ""}`}>
       <div className="preloader__content">
         {animationLoaded ? (
           <Lottie

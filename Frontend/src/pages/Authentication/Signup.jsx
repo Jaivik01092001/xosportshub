@@ -102,7 +102,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="signup-container">
+      <div className="signup-page signup-container">
         <div className="signup-form-container">
           <h1 className="signup-title">Sign up to your account</h1>
 
@@ -175,7 +175,7 @@ const Signup = () => {
               showLabel={false}
             />
 
-            <div className="form-input-container">
+            <div className="signup-form-input form-input-container">
               <div className="phone-input-wrapper">
                 <div>
                   <select

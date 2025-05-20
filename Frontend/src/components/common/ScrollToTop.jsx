@@ -69,7 +69,7 @@ const ScrollToTop = () => {
 
   return (
     <button
-      className={`scroll-to-top-btn ${isVisible ? "visible" : ""}`}
+      className={`scroll-to-top-component  ${isVisible ? "visible" : ""}`}
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >

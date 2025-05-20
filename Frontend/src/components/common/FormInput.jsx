@@ -14,7 +14,7 @@ const FormInput = ({
   pattern = null,
 }) => {
   return (
-    <div className="form-input-container">
+    <div className="form-input-component form-input-container">
       {label && showLabel && (
         <label htmlFor={name} className="form-label">
           {label} {required && <span className="required">*</span>}

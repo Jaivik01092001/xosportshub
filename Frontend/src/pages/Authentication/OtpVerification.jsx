@@ -110,7 +110,7 @@ const OtpVerification = () => {
   };
 
   return (
-    <div className="otp-container">
+    <div className="otp-page otp-container">
       <div className="otp-form-container">
         <h1 className="otp-title">OTP Verification</h1>
 

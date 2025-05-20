@@ -77,12 +77,12 @@ const Auth = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-page auth-container">
       <div className="auth-form-container">
         <h1 className="auth-title">Login in to your account</h1>
 
         <form onSubmit={handleSubmit} className="auth-form">
-          <div className="form-input-container email-input-container">
+          <div className="auth-form-input form-input-container email-input-container">
             <div className="email-icon">
               <FaEnvelope />
             </div>
@@ -98,10 +98,10 @@ const Auth = () => {
               }`}
               required
             />
+            {errors.email && <p className="error-message">{errors.email}</p>}
           </div>
-          {errors.email && <p className="error-message">{errors.email}</p>}
 
-          <div className="form-input-container">
+          <div className="auth-form-input form-input-container">
             <div className="phone-input-wrapper">
               <div>
                 <select

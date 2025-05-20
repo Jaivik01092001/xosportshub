@@ -1,4 +1,4 @@
-.signup-container {
+.signup-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   background-color: var(--bg-gray);
 }
 
-.signup-form-container {
+.signup-page .signup-form-container {
   background-color: var(--white);
   border-radius: var(--border-radius-large);
   box-shadow: var(--box-shadow-light);
@@ -16,7 +16,7 @@
   max-width: 600px;
 }
 
-.signup-title {
+.signup-page .signup-title {
   font-size: var(--heading4);
   font-weight: 600;
   color: var(--secondary-color);
@@ -24,26 +24,26 @@
   margin-bottom: 30px;
 }
 
-.account-type-selector {
+.signup-page .account-type-selector {
   margin-bottom: 30px;
   display: grid;
   justify-items: center;
 }
 
-.account-type-label {
+.signup-page .account-type-label {
   font-size: var(--smallfont);
   font-weight: 500;
   color: var(--secondary-color);
   margin-bottom: 10px;
 }
 
-.account-type-options {
+.signup-page .account-type-options {
   display: flex;
   gap: 20px;
   justify-content: center;
 }
 
-.account-type-option {
+.signup-page .account-type-option {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,13 +57,13 @@
   height: 120px;
 }
 
-.account-type-option.selected {
+.signup-page .account-type-option.selected {
   border-color: #ff5630;
   background-color: rgba(255, 86, 48, 0.05);
   position: relative;
 }
 
-.account-type-option.selected::after {
+.signup-page .account-type-option.selected::after {
   content: "";
   position: absolute;
   top: -10px;
@@ -77,7 +77,7 @@
   align-items: center;
 }
 
-.account-type-option.selected::before {
+.signup-page .account-type-option.selected::before {
   content: "✓";
   position: absolute;
   top: -10px;
@@ -92,66 +92,104 @@
   z-index: 1;
 }
 
-.account-type-icon {
+.signup-page .account-type-icon {
   width: 40px;
   height: 40px;
   margin-bottom: 10px;
 }
 
-.account-type-option p {
+.signup-page .account-type-option p {
   font-size: var(--smallfont);
   color: var(--secondary-color);
   text-align: center;
 }
 
-.signup-form {
+.signup-page .signup-form {
   display: flex;
   flex-direction: column;
 }
 
-.form-row {
+.signup-page .form-row {
   display: flex;
   gap: 20px;
   margin-bottom: 0;
 }
 
-.form-row .form-input-container {
+.signup-page .signup-form-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.signup-page .signup-form-input .form-input {
+  padding: 12px 16px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  font-size: var(--basefont);
+  color: var(--text-color);
+  background-color: var(--white);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-page .signup-form-input .form-input:focus {
+  border-color: var(--btn-color);
+  box-shadow: 0 0 0 2px rgba(1, 129, 187, 0.2);
+  outline: none;
+}
+
+.signup-page .signup-form-input .form-input::placeholder {
+  color: var(--dark-gray);
+  opacity: 0.7;
+}
+
+.signup-page .signup-form-input .input-error {
+  border-color: #ff3b30;
+}
+
+.signup-page .signup-form-input .error-message {
+  color: #ff3b30;
+  font-size: var(--extrasmallfont);
+  margin-top: 5px;
+}
+
+.signup-page .form-row .form-input-container {
   flex: 1;
 }
 
-.terms-checkbox {
+.signup-page .terms-checkbox {
   display: flex;
   align-items: flex-start;
   margin-bottom: 25px;
   position: relative;
 }
 
-.terms-checkbox input[type="checkbox"] {
+.signup-page .terms-checkbox input[type="checkbox"] {
   margin-right: 10px;
   margin-top: 2px;
 }
 
-.terms-checkbox label {
+.signup-page .terms-checkbox label {
   font-size: var(--smallfont);
   color: var(--secondary-color);
 }
 
-.terms-checkbox a {
+.signup-page .terms-checkbox a {
   color: #ff5630;
   text-decoration: none;
 }
 
-.terms-checkbox a:hover {
+.signup-page .terms-checkbox a:hover {
   text-decoration: underline;
 }
 
-.terms-checkbox .error-message {
+.signup-page .terms-checkbox .error-message {
   position: absolute;
   bottom: -20px;
   left: 0;
 }
 
-.signup-button {
+.signup-page .signup-button {
   background-color: #ff5630;
   color: var(--white);
   border: none;
@@ -164,39 +202,39 @@
   margin-bottom: 20px;
 }
 
-.signup-button:hover {
+.signup-page .signup-button:hover {
   background: linear-gradient(to bottom, #ff5630, #ff7452);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(255, 86, 48, 0.3);
 }
 
-.login-link {
+.signup-page .login-link {
   text-align: center;
   font-size: var(--smallfont);
   color: var(--secondary-color);
 }
 
-.login-link a {
+.signup-page .login-link a {
   color: #ff5630;
   text-decoration: none;
   font-weight: 500;
 }
 
-.login-link a:hover {
+.signup-page .login-link a:hover {
   text-decoration: underline;
 }
 
 /* Phone Input Styles */
-.phone-input-wrapper {
+.signup-page .phone-input-wrapper {
   display: flex;
   width: 100%;
 }
 
-.country-code-selector {
+.signup-page .country-code-selector {
   min-width: 80px;
 }
 
-.country-code-select {
+.signup-page .country-code-select {
   height: 100%;
   padding: 12px 10px;
   border: 1px solid var(--light-gray);
@@ -216,32 +254,32 @@
   padding-right: 24px;
 }
 
-.country-code-select:focus {
+.signup-page .country-code-select:focus {
   border-color: #ff5630;
   outline: none;
 }
 
-.phone-input {
+.signup-page .phone-input {
   flex: 1;
   border-radius: 0 var(--border-radius) var(--border-radius) 0 !important;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .signup-form-container {
+  .signup-page .signup-form-container {
     padding: 30px 20px;
   }
 
-  .form-row {
+  .signup-page .form-row {
     flex-direction: column;
     gap: 0;
   }
 
-  .account-type-options {
+  .signup-page .account-type-options {
     align-items: center;
   }
 
-  .account-type-option {
+  .signup-page .account-type-option {
     width: 100%;
     max-width: 200px;
     height: auto;
@@ -251,21 +289,21 @@
     padding: 15px;
   }
 
-  .account-type-icon {
+  .signup-page .account-type-icon {
     margin-bottom: 0;
   }
 }
 
 @media (max-width: 480px) {
-  .signup-container {
+  .signup-page {
     padding: 20px 10px;
   }
 
-  .signup-form-container {
+  .signup-page .signup-form-container {
     padding: 20px 15px;
   }
 
-  .signup-title {
+  .signup-page .signup-title {
     font-size: var(--heading5);
   }
 }

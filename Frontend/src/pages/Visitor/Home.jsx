@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Home.css";
-import herosideimg from "../../assets/images/herosideimg.svg";
+import herosideimg from "../../assets/images/herosideimg.png";
 import ourmissionimage from "../../assets/images/ourmissionimage.svg";
 import verticallineimg from "../../assets/images/verticallineimg.svg";
 // Components
@@ -42,16 +42,16 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="home-section">
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-container">
+      <section className="hero-section p-section">
+        <div className="hero-container max-container">
           <div className="hero-content">
-            <h1 className="hero-title">Digital Sports Playbook Strategy Marketplace</h1>
-            <p className="hero-tagline">
+            <h1 className="hero-title mb-10">Digital Sports Playbook Strategy Marketplace</h1>
+            <p className="hero-tagline mb-20">
             "Elevate Your Game - A Digital Exchange of Sports Strategies"
             </p>
-            <div className="hero-description">
+            <div className="hero-description mb-30">
               <p>Discover, Buy, and Sell Winning Sports Strategies.</p>
               <p>
                 Join a secure, innovative marketplace dedicated to premium
@@ -69,9 +69,9 @@ const Home = () => {
       </section>
 
       {/* Sports Section */}
-      <section className="sports-section">
-        <div className="sports-container">
-          <div className="sports-header">
+      <section className="sports-section p-section">
+        <div className="sports-container max-container">
+          <div className="sports-header mb-30">
             <h2 className="sports-title">Sports</h2>
             <Link to="/" className="sports-view-all">
               See All Sports
@@ -88,7 +88,7 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <div className="navigation-arrows">
+          <div className="navigation-arrows mt-30">
             <button className="scroll-arrow" onClick={scrollLeft}>
               <IoMdArrowBack />
             </button>
@@ -100,9 +100,9 @@ const Home = () => {
       </section>
 
       {/* Featured Strategic Content Section */}
-      <section className="featured-section">
-        <div className="featured-container">
-          <div className="featured-header">
+      <section className="featured-section p-section">
+        <div className="featured-container max-container">
+          <div className="featured-header mb-30">
             <h2 className="featured-title">Featured Sports Strategies</h2>
             <Link to="/" className="featured-view-all">
               Learn More Contents
@@ -124,20 +124,20 @@ const Home = () => {
       </section>
 
       {/* Our Mission Section */}
-      <section className="mission-section">
-        <div className="mission-container">
+      <section className="mission-section p-section">
+        <div className="mission-container max-container">
           <div className="mission-image">
             <img src={ourmissionimage} alt="Coaching Session" />
           </div>
           <div className="mission-content">
-            <h2 className="mission-title">Our Mission</h2>
+            <h2 className="mission-title mb-20">Our Mission</h2>
 
-            <p className="mission-description">
+            <p className="mission-description mb-30">
               Build a digital marketplace where sports professionals, coaches,
               and enthusiasts can exchange strategic content—videos, PDFs,
               playbooks, and custom requests.
             </p>
-            <Link to="/info" className="btn btn-outline py-15 ">
+            <Link to="/info" className="btn btn-outline py-15">
               Start Trading Strategies Today
             </Link>
           </div>
@@ -145,12 +145,12 @@ const Home = () => {
       </section>
 
       {/* What We Offer + Why Join Our Marketplace Section */}
-      <section className="offer-join-section">
-        <div className="offer-join-container">
+      <section className="offer-join-section p-section">
+        <div className="offer-join-container max-container">
           <div className="offer-column">
-            <h2 className="offer-title">What We Offer</h2>
+            <h2 className="offer-title mb-20">What We Offer</h2>
             <ul className="offer-list">
-              <li className="offer-item">
+              <li className="offer-item mb-20">
                 <div className="icon-container">
                   <TbLockDollar className="offer-icon" />
                 </div>
@@ -159,7 +159,7 @@ const Home = () => {
                   for Exclusive Sports Digital Content</h3>
                 </div>
               </li>
-              <li className="offer-item">
+              <li className="offer-item mb-20">
                 <div className="icon-container">
                   <TbPencilDollar className="offer-icon" />
                 </div>
@@ -167,7 +167,7 @@ const Home = () => {
                   <h3>Buyer requests for Tailored Playbook, Opponent Scouting Reports, meal plans or wellness guides, etc.</h3>
                 </div>
               </li>
-              <li className="offer-item">
+              <li className="offer-item mb-20">
                 <div className="icon-container">
                   <GoShieldCheck className="offer-icon" />
                 </div>
@@ -175,7 +175,7 @@ const Home = () => {
                   <h3>Secure, Cloud-Based Hosting</h3>
                 </div>
               </li>
-              <li className="offer-item">
+              <li className="offer-item mb-20">
                 <div className="icon-container">
                   <LiaHandHoldingUsdSolid className="offer-icon" />
                 </div>
@@ -183,7 +183,7 @@ const Home = () => {
                   <h3>Transparent Commission-Based Payments For Creators And The Platform</h3>
                 </div>
               </li>
-              <li className="offer-item">
+              <li className="offer-item mb-20">
                 <div className="icon-container">
                   <BsDatabaseLock className="offer-icon" />
                 </div>
@@ -197,9 +197,9 @@ const Home = () => {
             <img src={verticallineimg} alt="verticallineimg" />
           </div>
           <div className="join-column">
-            <h2 className="join-title">Why Join Our Marketplace?</h2>
+            <h2 className="join-title mb-20">Why Join Our Marketplace?</h2>
             <ul className="join-list">
-              <li className="join-item">
+              <li className="join-item mb-20">
                 <div className="icon-container">
                   <GiTeacher className="join-icon" />
                 </div>
@@ -208,7 +208,7 @@ const Home = () => {
                   <p>Explore And Purchase Strategies Curated By Top Sports Minds</p>
                 </div>
               </li>
-              <li className="join-item">
+              <li className="join-item mb-20">
                 <div className="icon-container">
                   <GrTransaction className="join-icon" />
                 </div>
@@ -217,7 +217,7 @@ const Home = () => {
                   <p>Choose Between Fixed Prices Or Competitive Bidding, With Options For Custom Content Requests</p>
                 </div>
               </li>
-              <li className="join-item">
+              <li className="join-item mb-20">
                 <div className="icon-container">
                   <MdSecurity className="join-icon" />
                 </div>
@@ -226,7 +226,7 @@ const Home = () => {
                   <p>Scalable Cloud Hosting And Verified Sellers Ensure Safety And Trust</p>
                 </div>
               </li>
-              <li className="join-item">
+              <li className="join-item mb-20">
                 <div className="icon-container">
                   <FaRegHandshake className="join-icon" />
                 </div>
@@ -241,10 +241,10 @@ const Home = () => {
       </section>
 
       {/* Ready to Elevate Your Game? Section */}
-      <section className="cta-section">
-        <div className="cta-container">
-          <h2 className="cta-title">Ready to Elevate Your Game?</h2>
-          <p className="cta-description">
+      <section className="cta-section p-section">
+        <div className="cta-container max-container">
+          <h2 className="cta-title mb-10">Ready to Elevate Your Game?</h2>
+          <p className="cta-description mb-25">
             Join our platform now and start trading or requesting winning sports
             strategies!
           </p>
@@ -253,7 +253,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-.strategy-card {
+.strategy-card-component {
   display: flex;
   flex-direction: column;
   border-radius: var(--border-radius-large);
@@ -9,30 +9,30 @@
   height: 100%;
 }
 
-.strategy-card:hover {
+.strategy-card-component:hover {
   transform: translateY(-5px);
   box-shadow: var(--box-shadow);
 }
 
-.strategy-card-image {
+.strategy-card-component .strategy-card-image {
   width: 100%;
   height: 180px;
   overflow: hidden;
   position: relative;
 }
 
-.strategy-card-image img {
+.strategy-card-component .strategy-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.strategy-card:hover .strategy-card-image img {
+.strategy-card-component:hover .strategy-card-image img {
   transform: scale(1.05);
 }
 
-.video-icon {
+.strategy-card-component .video-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -49,14 +49,14 @@
   z-index: 2;
 }
 
-.strategy-card-content {
+.strategy-card-component .strategy-card-content {
   padding: 15px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.strategy-card-title {
+.strategy-card-component .strategy-card-title {
   font-size: var(--heading6);
   font-weight: 600;
   color: var(--secondary-color);
@@ -69,7 +69,7 @@
   text-overflow: ellipsis;
 }
 
-.strategy-card-coach {
+.strategy-card-component .strategy-card-coach {
   font-size: var(--smallfont);
   color: var(--dark-gray);
   margin-bottom: 15px;
@@ -80,7 +80,7 @@
   text-overflow: ellipsis;
 }
 
-.strategy-card-footer {
+.strategy-card-component .strategy-card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,7 +89,7 @@
   padding-top: 0.7rem;
 }
 
-.strategy-card-price {
+.strategy-card-component .strategy-card-price {
   font-size: var(--heading6);
   font-weight: 700;
   color: var(--secondary-color);
@@ -97,25 +97,25 @@
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .strategy-card-image {
+  .strategy-card-component .strategy-card-image {
     height: 150px;
   }
 
-  .strategy-card-title {
+  .strategy-card-component .strategy-card-title {
     font-size: var(--smallfont);
   }
 
-  .strategy-card-coach {
+  .strategy-card-component .strategy-card-coach {
     font-size: var(--extrasmallfont);
   }
 
-  .strategy-card-price {
+  .strategy-card-component .strategy-card-price {
     font-size: var(--smallfont);
   }
 }
 
 @media (max-width: 480px) {
-  .strategy-card-image {
+  .strategy-card-component .strategy-card-image {
     height: 200px;
   }
 }

@@ -1,4 +1,4 @@
-.navbar {
+.navbar-component {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,7 +10,7 @@
   z-index: var(--z-index-header);
 }
 
-.navbar-container {
+.navbar-component .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,22 +19,22 @@
   margin: 0 auto;
 }
 
-.navbar-logo {
+.navbar-component .navbar-logo {
   display: flex;
   align-items: center;
 }
 
-.navbar-logo img {
+.navbar-component .navbar-logo img {
   height: 60px;
   width: 127px;
 }
 
-.navbar-links {
+.navbar-component .navbar-links {
   display: flex;
   gap: 25px;
 }
 
-.navbar-links a {
+.navbar-component .navbar-links a {
   text-decoration: none;
   color: var(--secondary-color);
   font-weight: 500;
@@ -42,21 +42,21 @@
   transition: color 0.3s ease;
 }
 
-.navbar-links a:hover {
+.navbar-component .navbar-links a:hover {
   color: var(--btn-color);
 }
 
-.navbar-links a.active {
+.navbar-component .navbar-links a.active {
   color: var(--btn-color);
   font-weight: 600;
 }
 
-.navbar-auth {
+.navbar-component .navbar-auth {
   display: flex;
   gap: 10px;
 }
 
-.navbar-toggle {
+.navbar-component .navbar-toggle {
   display: none;
   background: none;
   border: none;
@@ -67,7 +67,7 @@
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  .navbar-toggle {
+  .navbar-component .navbar-toggle {
     display: block;
     background-color: var(--btn-color);
     border-radius: 5px;
@@ -80,16 +80,16 @@
     align-items: center;
   }
 
-  .navbar-links {
+  .navbar-component .navbar-links {
     display: none;
   }
 
-  .navbar-auth {
+  .navbar-component .navbar-auth {
     display: none;
   }
 }
 @media (max-width: 500px) {
-  .navbar {
+  .navbar-component {
     padding: 15px 20px 15px 0px;
   }
 }

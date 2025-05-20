@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar-component navbar">
         <div className="navbar-container">
           <div className="navbar-logo">
             <Link to="/">

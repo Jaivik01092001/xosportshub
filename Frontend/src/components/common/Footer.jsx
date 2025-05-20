@@ -7,7 +7,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer-component footer">
       <div className="footer-container">
         <div className="footer-logo-section">
           <img src={logo} alt="XO Sports Hub Logo" className="footer-logo" />

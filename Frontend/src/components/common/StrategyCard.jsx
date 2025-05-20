@@ -4,7 +4,7 @@ import { FaPlay } from "react-icons/fa";
 
 const StrategyCard = ({ image, title, coach, price, hasVideo }) => {
   return (
-    <div className="strategy-card">
+    <div className="strategy-card-component strategy-card">
       <div className="strategy-card-image">
         <img src={image} alt={title} />
         {hasVideo && (

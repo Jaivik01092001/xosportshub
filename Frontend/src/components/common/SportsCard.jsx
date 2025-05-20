@@ -3,7 +3,7 @@ import "../../styles/SportsCard.css";
 
 const SportsCard = ({ image, name }) => {
   return (
-    <div className="sports-card">
+    <div className="sports-card-component sports-card">
       <div className="sports-card-image">
         <img src={image} alt={name} />
       </div>
