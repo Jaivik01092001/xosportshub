@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/Home.css";
-import herosideimg from "../../assets/images/herosideimg.png";
+import herosideimg from "../../assets/images/herosideimg.svg";
 import ourmissionimage from "../../assets/images/ourmissionimage.svg";
 import verticallineimg from "../../assets/images/verticallineimg.svg";
 // Components
@@ -19,8 +19,6 @@ import { GiTeacher } from "react-icons/gi";
 import { GrTransaction } from "react-icons/gr";
 import { FaRegHandshake } from "react-icons/fa";
 import { MdSecurity } from "react-icons/md";
-
-
 
 // Data
 import { sportsData } from "../../data/sportsData";
@@ -47,9 +45,11 @@ const Home = () => {
       <section className="hero-section p-section">
         <div className="hero-container max-container">
           <div className="hero-content">
-            <h1 className="hero-title mb-10">Digital Sports Playbook Strategy Marketplace</h1>
+            <h1 className="hero-title mb-10">
+              Digital Sports Playbook Strategy Marketplace
+            </h1>
             <p className="hero-tagline mb-20">
-            "Elevate Your Game - A Digital Exchange of Sports Strategies"
+              "Elevate Your Game - A Digital Exchange of Sports Strategies"
             </p>
             <div className="hero-description mb-30">
               <p>Discover, Buy, and Sell Winning Sports Strategies.</p>
@@ -155,8 +155,10 @@ const Home = () => {
                   <TbLockDollar className="offer-icon" />
                 </div>
                 <div className="offer-text">
-                  <h3>Fixed-price listings and bidding options
-                  for Exclusive Sports Digital Content</h3>
+                  <h3>
+                    Fixed-price listings and bidding options for Exclusive
+                    Sports Digital Content
+                  </h3>
                 </div>
               </li>
               <li className="offer-item mb-20">
@@ -164,7 +166,10 @@ const Home = () => {
                   <TbPencilDollar className="offer-icon" />
                 </div>
                 <div className="offer-text">
-                  <h3>Buyer requests for Tailored Playbook, Opponent Scouting Reports, meal plans or wellness guides, etc.</h3>
+                  <h3>
+                    Buyer requests for Tailored Playbook, Opponent Scouting
+                    Reports, meal plans or wellness guides, etc.
+                  </h3>
                 </div>
               </li>
               <li className="offer-item mb-20">
@@ -180,7 +185,10 @@ const Home = () => {
                   <LiaHandHoldingUsdSolid className="offer-icon" />
                 </div>
                 <div className="offer-text">
-                  <h3>Transparent Commission-Based Payments For Creators And The Platform</h3>
+                  <h3>
+                    Transparent Commission-Based Payments For Creators And The
+                    Platform
+                  </h3>
                 </div>
               </li>
               <li className="offer-item mb-20">
@@ -188,7 +196,10 @@ const Home = () => {
                   <BsDatabaseLock className="offer-icon" />
                 </div>
                 <div className="offer-text">
-                  <h3>Focus On Seller Credibility, Data Security, And High-Quality Content</h3>
+                  <h3>
+                    Focus On Seller Credibility, Data Security, And High-Quality
+                    Content
+                  </h3>
                 </div>
               </li>
             </ul>
@@ -205,7 +216,9 @@ const Home = () => {
                 </div>
                 <div className="join-text">
                   <h3>Access Expert Strategies</h3>
-                  <p>Explore And Purchase Strategies Curated By Top Sports Minds</p>
+                  <p>
+                    Explore And Purchase Strategies Curated By Top Sports Minds
+                  </p>
                 </div>
               </li>
               <li className="join-item mb-20">
@@ -214,7 +227,10 @@ const Home = () => {
                 </div>
                 <div className="join-text">
                   <h3>Flexible Transactions</h3>
-                  <p>Choose Between Fixed Prices Or Competitive Bidding, With Options For Custom Content Requests</p>
+                  <p>
+                    Choose Between Fixed Prices Or Competitive Bidding, With
+                    Options For Custom Content Requests
+                  </p>
                 </div>
               </li>
               <li className="join-item mb-20">
@@ -223,7 +239,10 @@ const Home = () => {
                 </div>
                 <div className="join-text">
                   <h3>Secure & Protected</h3>
-                  <p>Scalable Cloud Hosting And Verified Sellers Ensure Safety And Trust</p>
+                  <p>
+                    Scalable Cloud Hosting And Verified Sellers Ensure Safety
+                    And Trust
+                  </p>
                 </div>
               </li>
               <li className="join-item mb-20">
@@ -232,7 +251,10 @@ const Home = () => {
                 </div>
                 <div className="join-text">
                   <h3>Fair & Transparent</h3>
-                  <p>Clear Fee Structures And Secure Payment Processing Support A Trustworthy Environment</p>
+                  <p>
+                    Clear Fee Structures And Secure Payment Processing Support A
+                    Trustworthy Environment
+                  </p>
                 </div>
               </li>
             </ul>
@@ -248,7 +270,7 @@ const Home = () => {
             Join our platform now and start trading or requesting winning sports
             strategies!
           </p>
-          <Link to="/auth" className="btn btn-primary">
+          <Link to="/auth" className="btn btn-primary mt-20">
             Join The Strategy Exchange
           </Link>
         </div>

@@ -2,7 +2,7 @@
 .home-section .hero-section {
   background-color: #141414;
   color: var(--white);
-  position: relative;
+
   background-image: url("../assets/images/herobackground.svg");
   background-size: cover;
   background-position: center;
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  gap: 2rem;
 }
 
 .home-section .hero-content {
@@ -43,11 +43,9 @@
 }
 
 .home-section .hero-background {
-  position: relative;
-  width: 45%;
-  height: 100%;
-  z-index: 1;
   display: flex;
+  width: 50%;
+  height: 100%;
   justify-content: center;
   align-items: center;
   max-width: 500px;
@@ -61,13 +59,6 @@
 }
 
 /* Sports Section */
-.home-section .sports-section {
-  /* padding handled by utility class */
-}
-
-.home-section .sports-container {
-  position: relative;
-}
 
 .home-section .sports-header {
   display: flex;
@@ -172,7 +163,6 @@
 }
 
 /* Mission Section */
-
 
 .home-section .mission-container {
   display: grid;
@@ -304,28 +294,27 @@
 /* CTA Section */
 .home-section .cta-section {
   text-align: center;
+  background-image: url("../assets/images/cta-sectionbg.svg");
 }
 
 .home-section .cta-container {
   padding: 40px 20px;
-  background: linear-gradient(to right, #f8fcf9, #f0f9f0);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .home-section .cta-title {
   font-size: var(--heading2);
   font-weight: 700;
-  color: var(--secondary-color);
+  color: var(--white);
   line-height: 1.2;
 }
 
 .home-section .cta-description {
   font-size: var(--basefont);
-  color: var(--dark-gray);
+  color: var(--white);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 400;
 }
 
 /* Responsive styles */
@@ -354,12 +343,13 @@
     font-size: var(--extrasmallfont);
   }
 }
-
-@media (max-width: 768px) {
-  .home-section .hero-container {
-    flex-direction: column;
+@media (max-width: 900px) {
+  .home-section .hero-background img {
+    max-width: 75%;
+    max-height: 100%;
   }
-
+}
+@media (max-width: 768px) {
   .home-section .hero-content {
     max-width: 100%;
     text-align: center;
@@ -379,13 +369,6 @@
 
   .home-section .hero-background {
     width: 100%;
-    opacity: 0.7;
-    position: relative;
-    order: -1;
-  }
-
-  .home-section .hero-background img {
-    display: none;
   }
 
   .home-section .sports-cards-container {
@@ -406,7 +389,7 @@
 
   .home-section .offer-join-container {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
     padding: 0 15px;
   }
 
@@ -443,8 +426,9 @@
 }
 
 @media (max-width: 480px) {
-  .home-section .featured-grid {
-    grid-template-columns: 1fr;
+  .home-section .hero-container {
+    flex-direction: column;
+    gap: 3rem;
   }
 
   .home-section .offer-title,
