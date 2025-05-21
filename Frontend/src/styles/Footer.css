@@ -18,6 +18,7 @@
 }
 
 .footer-component .footer-logo {
+  height: 60px;
   width: 120px;
   margin-bottom: 15px;
 }
@@ -28,6 +29,9 @@
 }
 
 .footer-component .social-icon {
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid var(--dark-gray);
   color: var(--secondary-color);
   transition: color 0.3s ease;
   cursor: pointer;
@@ -53,7 +57,7 @@
 .footer-component h3 {
   font-size: var(--heading6);
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: var(--secondary-color);
 }
 
@@ -67,7 +71,9 @@
   margin-bottom: 10px;
 }
 
+
 .footer-component ul li a {
+  border-bottom: 1px dotted var(--secondary-color);
   color: var(--secondary-color);
   text-decoration: none;
   font-size: var(--smallfont);
@@ -79,8 +85,11 @@
 }
 
 .footer-component .footer-contact p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: var(--smallfont);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: var(--secondary-color);
 }
 
