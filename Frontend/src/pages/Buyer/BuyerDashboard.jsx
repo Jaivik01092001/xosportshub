@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/BuyerDashboard.css";
 import StrategyCard from "../../components/common/StrategyCard";
 import { strategyData } from "../../data/strategyData";
 import { IoMdSearch } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
+import { FaFilter } from "react-icons/fa";
 
 const BuyerDashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSport, setSelectedSport] = useState("Baseball");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("high");
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Filter options
   const relatedOptions = [
@@ -42,6 +45,30 @@ const BuyerDashboard = () => {
     drills: false,
     catching: false,
   });
+
+  // Handle drawer open/close
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  // Close drawer when clicking overlay
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("filter-overlay")) {
+      setIsDrawerOpen(false);
+    }
+  };
+
+  // Close drawer on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
 
   // Handle checkbox change
   const handleCheckboxChange = (event) => {
@@ -144,8 +171,16 @@ const BuyerDashboard = () => {
   return (
     <div className="buyer-dashboard">
       <div className="container">
+        {/* Filter Overlay */}
+        {isDrawerOpen && (
+          <div className="filter-overlay" onClick={handleOverlayClick} />
+        )}
+
         {/* Filter Section */}
-        <div className="filter-section">
+        <div className={`filter-section ${isDrawerOpen ? "drawer-open" : ""}`}>
+          <button className="close-drawer-btn" onClick={toggleDrawer}>
+            <IoClose />
+          </button>
           <div className="filter-header">
             <h3>Filter By</h3>
             <button className="clear-all" onClick={clearFilters}>
@@ -274,7 +309,9 @@ const BuyerDashboard = () => {
               </div>
             </div>
           </div>
-
+          <button className="filter-toggle-btn" onClick={toggleDrawer}>
+            Filter <FaFilter />
+          </button>
           {/* Strategy Cards Grid */}
           <div className="strategy-grid">
             {strategyData.map((strategy) => (

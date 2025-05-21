@@ -1,6 +1,7 @@
 .buyer-dashboard {
   padding: 30px 0;
   min-height: calc(100vh - 90px);
+  position: relative;
 }
 
 .buyer-dashboard .container {
@@ -12,6 +13,38 @@
   padding: 0 20px;
 }
 
+/* Filter Toggle Button */
+.filter-toggle-btn {
+  display: none;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-toggle-btn:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* Filter Overlay */
+.filter-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 /* Filter Section Styles */
 .buyer-dashboard .filter-section {
   background-color: var(--primary-light-color);
@@ -21,6 +54,29 @@
   top: 100px;
   height: fit-content;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  min-height: 100vh;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Close Drawer Button */
+.close-drawer-btn {
+  display: none;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--secondary-color);
+  cursor: pointer;
+  padding: 5px;
+  transition: all 0.2s ease;
+}
+
+.close-drawer-btn:hover {
+  color: var(--btn-color);
+  transform: scale(1.1);
 }
 
 .buyer-dashboard .filter-header {
@@ -398,15 +454,7 @@
 /* Responsive Styles */
 @media (max-width: 992px) {
   .buyer-dashboard .container {
-    grid-template-columns: 1fr;
-  }
-
-  .buyer-dashboard .filter-section {
-    order: 2;
-  }
-
-  .buyer-dashboard .content-section {
-    order: 1;
+    grid-template-columns: 230px 1fr;
   }
 
   .buyer-dashboard .strategy-grid {
@@ -445,5 +493,54 @@
 @media (max-width: 480px) {
   .buyer-dashboard .strategy-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 680px) {
+  .buyer-dashboard .container {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: fit-content;
+  }
+
+  .buyer-dashboard .content-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .buyer-dashboard .search-sort {
+    width: auto;
+  }
+
+  .buyer-dashboard .filter-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    z-index: 999;
+    transform: translateX(-100%);
+    border-radius: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .buyer-dashboard .filter-section.drawer-open {
+    transform: translateX(0);
+  }
+
+  .filter-overlay {
+    display: block;
+    opacity: 1;
+  }
+
+  .close-drawer-btn {
+    display: block;
   }
 }
