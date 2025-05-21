@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../../styles/Auth.css";
 import { FaEnvelope } from "react-icons/fa";
+import { IoPhonePortraitOutline } from "react-icons/io5";
+import { CiMail } from "react-icons/ci";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -84,7 +86,7 @@ const Auth = () => {
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="auth-form-input form-input-container email-input-container">
             <div className="email-icon">
-              <FaEnvelope />
+              <CiMail />
             </div>
             <input
               type="email"
@@ -104,22 +106,25 @@ const Auth = () => {
           <div className="auth-form-input form-input-container">
             <div className="phone-input-wrapper">
               <div>
-                <select
-                  value={formData.countryCode}
-                  onChange={handleCountryCodeChange}
-                  className="country-code-select"
-                >
-                  <option value="+91">+91</option>
-                  <option value="+1">+1</option>
-                  <option value="+44">+44</option>
-                  <option value="+61">+61</option>
-                  <option value="+86">+86</option>
-                  <option value="+49">+49</option>
-                  <option value="+33">+33</option>
-                  <option value="+81">+81</option>
-                  <option value="+7">+7</option>
-                  <option value="+55">+55</option>
-                </select>
+                <div className="country-code-select">
+                  <IoPhonePortraitOutline />
+                  <select
+                    value={formData.countryCode}
+                    onChange={handleCountryCodeChange}
+                    className="selectstylesnone"
+                  >
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                    <option value="+61">+61</option>
+                    <option value="+86">+86</option>
+                    <option value="+49">+49</option>
+                    <option value="+33">+33</option>
+                    <option value="+81">+81</option>
+                    <option value="+7">+7</option>
+                    <option value="+55">+55</option>
+                  </select>
+                </div>
               </div>
               <input
                 type="tel"

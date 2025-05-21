@@ -680,7 +680,12 @@ select {
 .font-semibold {
   font-weight: 600;
 }
-
+.selectstylesnone {
+  border: none;
+  all: unset;
+  appearance: none;
+  -webkit-appearance: none;
+}
 /* Error Message */
 .error-message {
   color: red;
