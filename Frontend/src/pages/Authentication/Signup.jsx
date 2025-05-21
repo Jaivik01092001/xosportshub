@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/Signup.css";
-import FormInput from "../../components/common/FormInput";
-import buyerIcon from "../../assets/images/buyer-icon.svg";
-import sellerIcon from "../../assets/images/seller-icon.svg";
+import {
+  FaBook,
+  FaChalkboardTeacher,
+  FaUser,
+  FaEnvelope,
+  FaCheck,
+} from "react-icons/fa";
+import { FaMobile } from "react-icons/fa6";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -101,153 +106,193 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <div className="signup-page signup-container">
-        <div className="signup-form-container">
-          <h1 className="signup-title">Sign up to your account</h1>
+    <div className="signup__page">
+      <div className="signup__container">
+        <h1 className="signup__title">Sign up to your account</h1>
 
-          <div className="account-type-selector">
-            <p className="account-type-label">Select Account Type</p>
-            <div className="account-type-options">
-              <div
-                className={`account-type-option ${
-                  formData.accountType === "learn" ? "selected" : ""
-                }`}
-                onClick={() => handleAccountTypeChange("learn")}
-              >
-                <img
-                  src={buyerIcon}
-                  alt="Learn"
-                  className="account-type-icon"
-                />
-                <p>I want to learn</p>
+        <div className="signup__account-type">
+          <p className="signup__label">Select Account Type</p>
+          <div className="signup__options">
+            <div
+              className={`signup__option ${
+                formData.accountType === "learn"
+                  ? "signup__option--selected"
+                  : ""
+              }`}
+              onClick={() => handleAccountTypeChange("learn")}
+            >
+              <div className="signup__option-icon">
+                <FaBook />
               </div>
-              <div
-                className={`account-type-option ${
-                  formData.accountType === "teach" ? "selected" : ""
-                }`}
-                onClick={() => handleAccountTypeChange("teach")}
-              >
-                <img
-                  src={sellerIcon}
-                  alt="Teach"
-                  className="account-type-icon"
-                />
-                <p>I want to teach</p>
+              <p className="signup__option-text">I want to learn</p>
+            </div>
+
+            <div
+              className={`signup__option ${
+                formData.accountType === "teach"
+                  ? "signup__option--selected"
+                  : ""
+              }`}
+              onClick={() => handleAccountTypeChange("teach")}
+            >
+              <div className="signup__option-icon">
+                <FaChalkboardTeacher />
+              </div>
+              <p className="signup__option-text">I want to teach</p>
+              <div className="signup__option-content">
+                {formData.accountType === "teach" && (
+                  <div className="signup__check-circle">
+                    <FaCheck className="signup__check-icon" />
+                  </div>
+                )}
               </div>
             </div>
           </div>
+        </div>
 
-          <form onSubmit={handleSubmit} className="signup-form">
-            <div className="form-row">
-              <FormInput
-                label="First Name"
+        <form onSubmit={handleSubmit} className="signup__form">
+          <div className="signup__form-row">
+            <div className="signup__input-container">
+              <div className="signup__input-icon">
+                <FaUser />
+              </div>
+              <input
+                type="text"
+                id="firstName"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                placeholder="Enter First Name"
+                placeholder="First Name"
+                className={`signup__input ${
+                  errors.firstName ? "signup__input--error" : ""
+                }`}
                 required
-                error={errors.firstName}
-                showLabel={false}
               />
+              {errors.firstName && (
+                <p className="signup__error">{errors.firstName}</p>
+              )}
+            </div>
 
-              <FormInput
-                label="Last Name"
+            <div className="signup__input-container">
+              <div className="signup__input-icon">
+                <FaUser />
+              </div>
+              <input
+                type="text"
+                id="lastName"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                placeholder="Enter Last Name"
+                placeholder="Last Name"
+                className={`signup__input ${
+                  errors.lastName ? "signup__input--error" : ""
+                }`}
                 required
-                error={errors.lastName}
-                showLabel={false}
               />
+              {errors.lastName && (
+                <p className="signup__error">{errors.lastName}</p>
+              )}
             </div>
+          </div>
 
-            <FormInput
-              label="Email Address"
+          <div className="signup__input-container">
+            <div className="signup__input-icon">
+              <FaEnvelope />
+            </div>
+            <input
               type="email"
+              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter Email Address"
+              className={`signup__input ${
+                errors.email ? "signup__input--error" : ""
+              }`}
               required
-              error={errors.email}
-              showLabel={false}
             />
+            {errors.email && <p className="signup__error">{errors.email}</p>}
+          </div>
 
-            <div className="signup-form-input form-input-container">
-              <div className="phone-input-wrapper">
-                <div>
-                  <select
-                    value={formData.countryCode}
-                    onChange={handleCountryCodeChange}
-                    className="country-code-select"
-                  >
-                    <option value="+1">+1</option>
-                    <option value="+91">+91</option>
-                    <option value="+44">+44</option>
-                    <option value="+61">+61</option>
-                    <option value="+86">+86</option>
-                    <option value="+49">+49</option>
-                    <option value="+33">+33</option>
-                    <option value="+81">+81</option>
-                    <option value="+7">+7</option>
-                    <option value="+55">+55</option>
-                  </select>
-                </div>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={(e) => {
-                    const phoneValue = e.target.value.replace(/\D/g, "");
-                    handleChange({
-                      target: {
-                        name: "phone",
-                        value: phoneValue,
-                      },
-                    });
-                  }}
-                  placeholder="Enter Phone Number"
-                  className={`form-input phone-input ${
-                    errors.phone ? "input-error" : ""
-                  }`}
-                  required
-                  pattern="[0-9]*"
-                />
+          <div className="signup__phone-container">
+            <div className="signup__phone-wrapper">
+              <div className="signup__input-icon">
+                <FaMobile />
               </div>
-              {errors.phone && <p className="error-message">{errors.phone}</p>}
-            </div>
-
-            <div className="terms-checkbox">
+              <select
+                value={formData.countryCode}
+                onChange={handleCountryCodeChange}
+                className="signup__country-code"
+              >
+                <option value="+1">+1</option>
+                <option value="+91">+91</option>
+                <option value="+44">+44</option>
+                <option value="+61">+61</option>
+                <option value="+86">+86</option>
+                <option value="+49">+49</option>
+                <option value="+33">+33</option>
+                <option value="+81">+81</option>
+                <option value="+7">+7</option>
+                <option value="+55">+55</option>
+              </select>
               <input
-                type="checkbox"
-                id="agreeToTerms"
-                name="agreeToTerms"
-                checked={formData.agreeToTerms}
-                onChange={handleChange}
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={(e) => {
+                  const phoneValue = e.target.value.replace(/\D/g, "");
+                  handleChange({
+                    target: {
+                      name: "phone",
+                      value: phoneValue,
+                    },
+                  });
+                }}
+                placeholder="00000 00000"
+                className={`signup__phone-input ${
+                  errors.phone ? "signup__input--error" : ""
+                }`}
+                required
+                pattern="[0-9]*"
               />
-              <label htmlFor="agreeToTerms">
-                By signing up, you agree to our{" "}
-                <Link to="/terms">Terms & Conditions</Link>
-              </label>
-              {errors.agreeToTerms && (
-                <p className="error-message">{errors.agreeToTerms}</p>
-              )}
             </div>
+            {errors.phone && <p className="signup__error">{errors.phone}</p>}
+          </div>
 
-            <button type="submit" className="signup-button">
-              Create Your Account
-            </button>
+          <div className="signup__terms">
+            <input
+              type="checkbox"
+              id="agreeToTerms"
+              name="agreeToTerms"
+              checked={formData.agreeToTerms}
+              onChange={handleChange}
+              className="signup__checkbox"
+            />
+            <label htmlFor="agreeToTerms" className="signup__terms-label">
+              By sign up you agree to our{" "}
+              <Link to="/terms" className="signup__terms-link">
+                Terms & Conditions
+              </Link>
+            </label>
+            {errors.agreeToTerms && (
+              <p className="signup__error">{errors.agreeToTerms}</p>
+            )}
+          </div>
 
-            <p className="login-link">
-              Do you have an account? <Link to="/auth">Sign In</Link>
-            </p>
-          </form>
-        </div>
+          <button type="submit" className="signup__button">
+            Create Your Account
+          </button>
+
+          <p className="signup__login-link">
+            Do you have an account?{" "}
+            <Link to="/auth" className="signup__link">
+              Sign In
+            </Link>
+          </p>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 

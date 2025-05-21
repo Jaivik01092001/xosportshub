@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../../styles/Auth.css";
-import { FaEnvelope } from "react-icons/fa";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
 
