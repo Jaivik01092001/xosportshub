@@ -27,7 +27,11 @@
 }
 
 .filter-toggle-btn:hover {
-  background-color: var(--primary-color);
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--btn-color)
+  );
   transform: translateY(-2px);
 }
 
@@ -435,7 +439,12 @@
 
 .buyer-dashboard .pagination-item:hover,
 .buyer-dashboard .pagination-arrow:hover {
-  background-color: var(--bg-gray);
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--btn-color)
+  );
+  color: var(--white);
 }
 
 .buyer-dashboard .pagination-arrow:disabled {

@@ -75,7 +75,7 @@
 }
 
 .footer-component ul li a:hover {
-  color: var(--white);
+  color: var(--btn-color);
 }
 
 .footer-component .footer-contact p {
