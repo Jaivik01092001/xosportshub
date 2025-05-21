@@ -10,7 +10,11 @@ const Sidebar = ({ isOpen, toggleSidebar, userRole }) => {
   // Close sidebar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target) && isOpen) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        isOpen
+      ) {
         toggleSidebar();
       }
     };
@@ -27,12 +31,14 @@ const Sidebar = ({ isOpen, toggleSidebar, userRole }) => {
   };
 
   return (
-    <div className={`sidebar-component sidebar-container ${isOpen ? "active" : ""}`}>
+    <div
+      className={`sidebar-component sidebar-container ${
+        isOpen ? "active" : ""
+      }`}
+    >
       <div className="sidebar-overlay" onClick={toggleSidebar}></div>
       <div className="sidebar" ref={sidebarRef}>
-        <div className="sidebar-header">
-
-        </div>
+        <div className="sidebar-header"></div>
 
         <div className="sidebar-links">
           {userRole === "visitor" && (
@@ -58,6 +64,20 @@ const Sidebar = ({ isOpen, toggleSidebar, userRole }) => {
                 onClick={handleLinkClick}
               >
                 Contact Us
+              </Link>
+              <Link
+                to="/buyer/dashboard"
+                className={path === "/buyer/dashboard" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                Buy
+              </Link>
+              <Link
+                to="/seller/dashboard"
+                className={path === "/seller/dashboard" ? "active" : ""}
+                onClick={handleLinkClick}
+              >
+                Sell
               </Link>
             </>
           )}
@@ -120,10 +140,18 @@ const Sidebar = ({ isOpen, toggleSidebar, userRole }) => {
         <div className="sidebar-auth">
           {userRole === "visitor" && (
             <>
-              <Link to="/auth" className="btn signinbtn" onClick={handleLinkClick}>
+              <Link
+                to="/auth"
+                className="btn signinbtn"
+                onClick={handleLinkClick}
+              >
                 Sign In
               </Link>
-              <Link to="/signup" className="btn signupbtn" onClick={handleLinkClick}>
+              <Link
+                to="/signup"
+                className="btn signupbtn"
+                onClick={handleLinkClick}
+              >
                 Sign Up
               </Link>
             </>
