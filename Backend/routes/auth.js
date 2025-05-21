@@ -2,11 +2,9 @@ const express = require('express');
 const { check } = require('express-validator');
 const {
   register,
-  login,
+  sendOTP,
+  verifyOTP,
   getMe,
-  forgotPassword,
-  resetPassword,
-  updatePassword,
   logout,
   verifyEmail
 } = require('../controllers/auth');
@@ -21,56 +19,32 @@ router.post(
     check('firstName', 'First name is required').not().isEmpty(),
     check('lastName', 'Last name is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
-    check(
-      'password',
-      'Please enter a password with 6 or more characters'
-    ).isLength({ min: 6 }),
+    check('mobile', 'Mobile number is required').not().isEmpty(),
     check('role', 'Role must be either buyer or seller').isIn(['buyer', 'seller'])
   ],
   register
 );
 
 router.post(
-  '/login',
+  '/send-otp',
   [
-    check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password is required').exists()
+    check('email', 'Please include a valid email').optional().isEmail(),
+    check('mobile', 'Mobile number is required').optional().not().isEmpty()
   ],
-  login
+  sendOTP
+);
+
+router.post(
+  '/verify-otp',
+  [
+    check('userId', 'User ID is required').not().isEmpty(),
+    check('otp', 'OTP is required').not().isEmpty()
+  ],
+  verifyOTP
 );
 
 router.get('/me', protect, getMe);
 router.get('/logout', protect, logout);
 router.get('/verify-email/:token', verifyEmail);
-
-router.post(
-  '/forgot-password',
-  [check('email', 'Please include a valid email').isEmail()],
-  forgotPassword
-);
-
-router.put(
-  '/reset-password/:token',
-  [
-    check(
-      'password',
-      'Please enter a password with 6 or more characters'
-    ).isLength({ min: 6 })
-  ],
-  resetPassword
-);
-
-router.put(
-  '/update-password',
-  [
-    check('currentPassword', 'Current password is required').exists(),
-    check(
-      'newPassword',
-      'Please enter a password with 6 or more characters'
-    ).isLength({ min: 6 })
-  ],
-  protect,
-  updatePassword
-);
 
 module.exports = router;

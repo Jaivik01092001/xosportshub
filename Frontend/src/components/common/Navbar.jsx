@@ -45,7 +45,18 @@ const Navbar = () => {
                 <Link to="/" className={path === "/" ? "active" : ""}>
                   Home
                 </Link>
-
+                <Link
+                  to="/buyer/dashboard"
+                  className={path === "/buyer/dashboard" ? "active" : ""}
+                >
+                  Buy
+                </Link>
+                <Link
+                  to="/seller/dashboard"
+                  className={path === "/seller/dashboard" ? "active" : ""}
+                >
+                  Sell
+                </Link>
                 <Link to="/info" className={path === "/info" ? "active" : ""}>
                   About Us
                 </Link>

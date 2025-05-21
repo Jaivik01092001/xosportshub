@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/BuyerDashboard.css";
 import StrategyCard from "../../components/common/StrategyCard";
 import { strategyData } from "../../data/strategyData";
 import { IoMdSearch } from "react-icons/io";
-import { LuFilter } from "react-icons/lu";
+import { IoClose } from "react-icons/io5";
+import { FaFilter } from "react-icons/fa";
 
 const BuyerDashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSport, setSelectedSport] = useState("Baseball");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("high");
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Filter options
   const relatedOptions = [
@@ -19,9 +21,13 @@ const BuyerDashboard = () => {
     { id: "youth-baseball", label: "Youth Baseball", checked: false },
     { id: "mental-training", label: "Mental Training", checked: false },
     { id: "fielding", label: "Fielding", checked: false },
-    { id: "strength-conditioning", label: "Strength & Conditioning", checked: false },
+    {
+      id: "strength-conditioning",
+      label: "Strength & Conditioning",
+      checked: false,
+    },
     { id: "drills", label: "Drills", checked: false },
-    { id: "catching", label: "Catching", checked: false }
+    { id: "catching", label: "Catching", checked: false },
   ];
 
   // Price range state
@@ -37,14 +43,38 @@ const BuyerDashboard = () => {
     fielding: false,
     "strength-conditioning": false,
     drills: false,
-    catching: false
+    catching: false,
   });
+
+  // Handle drawer open/close
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  // Close drawer when clicking overlay
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("filter-overlay")) {
+      setIsDrawerOpen(false);
+    }
+  };
+
+  // Close drawer on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
 
   // Handle checkbox change
   const handleCheckboxChange = (event) => {
     setCheckedItems({
       ...checkedItems,
-      [event.target.name]: event.target.checked
+      [event.target.name]: event.target.checked,
     });
   };
 
@@ -74,7 +104,7 @@ const BuyerDashboard = () => {
       fielding: false,
       "strength-conditioning": false,
       drills: false,
-      catching: false
+      catching: false,
     });
     setPriceRange([0, 1000]);
   };
@@ -88,7 +118,7 @@ const BuyerDashboard = () => {
     items.push(
       <button
         key="prev"
-        className="buyer-dashboard__pagination-arrow"
+        className="pagination-arrow"
         onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
@@ -98,18 +128,26 @@ const BuyerDashboard = () => {
 
     // Page numbers
     for (let i = 1; i <= 7; i++) {
-      if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+      if (
+        i === 1 ||
+        i === totalPages ||
+        (i >= currentPage - 1 && i <= currentPage + 1)
+      ) {
         items.push(
           <button
             key={i}
-            className={`buyer-dashboard__pagination-item ${currentPage === i ? "active" : ""}`}
+            className={`pagination-item ${currentPage === i ? "active" : ""}`}
             onClick={() => handlePageChange(i)}
           >
             {i}
           </button>
         );
       } else if (i === currentPage - 2 || i === currentPage + 2) {
-        items.push(<span key={`ellipsis-${i}`} className="buyer-dashboard__pagination-ellipsis">...</span>);
+        items.push(
+          <span key={`ellipsis-${i}`} className="pagination-ellipsis">
+            ...
+          </span>
+        );
       }
     }
 
@@ -117,8 +155,10 @@ const BuyerDashboard = () => {
     items.push(
       <button
         key="next"
-        className="buyer-dashboard__pagination-arrow"
-        onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
+        className="pagination-arrow"
+        onClick={() =>
+          currentPage < totalPages && handlePageChange(currentPage + 1)
+        }
         disabled={currentPage === totalPages}
       >
         &gt;
@@ -130,20 +170,30 @@ const BuyerDashboard = () => {
 
   return (
     <div className="buyer-dashboard">
-      <div className="buyer-dashboard__container">
+      <div className="container">
+        {/* Filter Overlay */}
+        {isDrawerOpen && (
+          <div className="filter-overlay" onClick={handleOverlayClick} />
+        )}
+
         {/* Filter Section */}
-        <div className="buyer-dashboard__filter-section">
-          <div className="buyer-dashboard__filter-header">
+        <div className={`filter-section ${isDrawerOpen ? "drawer-open" : ""}`}>
+          <button className="close-drawer-btn" onClick={toggleDrawer}>
+            <IoClose />
+          </button>
+          <div className="filter-header">
             <h3>Filter By</h3>
-            <button className="buyer-dashboard__clear-all" onClick={clearFilters}>Clear All</button>
+            <button className="clear-all" onClick={clearFilters}>
+              Clear All
+            </button>
           </div>
 
           {/* Sport Filter */}
-          <div className="buyer-dashboard__filter-group">
+          <div className="filter-group">
             <h4>Sport</h4>
-            <div className="buyer-dashboard__sport-select-wrapper">
+            <div className="sport-select-wrapper">
               <select
-                className="buyer-dashboard__sport-select"
+                className="sport-select"
                 value={selectedSport}
                 onChange={(e) => setSelectedSport(e.target.value)}
               >
@@ -157,11 +207,11 @@ const BuyerDashboard = () => {
           </div>
 
           {/* Related Filters */}
-          <div className="buyer-dashboard__filter-group">
+          <div className="filter-group">
             <h4>Related</h4>
-            <div className="buyer-dashboard__checkbox-group">
+            <div className="checkbox-group">
               {relatedOptions.map((option) => (
-                <div className="buyer-dashboard__checkbox-item" key={option.id}>
+                <div className="checkbox-item" key={option.id}>
                   <input
                     type="checkbox"
                     id={option.id}
@@ -176,14 +226,14 @@ const BuyerDashboard = () => {
           </div>
 
           {/* Price Filter */}
-          <div className="buyer-dashboard__filter-group">
+          <div className="filter-group">
             <h4>Price</h4>
-            <div className="buyer-dashboard__price-range">
+            <div className="price-range">
               <div
-                className="buyer-dashboard__price-slider-container"
+                className="price-slider-container"
                 style={{
-                  '--min-value': priceRange[0],
-                  '--max-value': priceRange[1]
+                  "--min-value": priceRange[0],
+                  "--max-value": priceRange[1],
                 }}
               >
                 <input
@@ -198,7 +248,7 @@ const BuyerDashboard = () => {
                       setPriceRange([newMin, priceRange[1]]);
                     }
                   }}
-                  className="buyer-dashboard__price-slider buyer-dashboard__min-slider"
+                  className="price-slider min-slider"
                 />
                 <input
                   type="range"
@@ -212,10 +262,10 @@ const BuyerDashboard = () => {
                       setPriceRange([priceRange[0], newMax]);
                     }
                   }}
-                  className="buyer-dashboard__price-slider buyer-dashboard__max-slider"
+                  className="price-slider max-slider"
                 />
               </div>
-              <div className="buyer-dashboard__price-labels">
+              <div className="price-labels">
                 <span>${priceRange[0].toLocaleString()}</span>
                 <span>${priceRange[1].toLocaleString()}</span>
               </div>
@@ -224,29 +274,30 @@ const BuyerDashboard = () => {
         </div>
 
         {/* Content Section */}
-        <div className="buyer-dashboard__content-section">
-          <div className="buyer-dashboard__content-header">
-            <h2 className="buyer-dashboard__content-title">Featured Strategic Content <span>(48 Contents Found)</span></h2>
+        <div className="content-section">
+          <div className="content-header">
+            <h2 className="content-title">
+              Featured Strategic Content <span>(48 Contents Found)</span>
+            </h2>
 
-            <div className="buyer-dashboard__search-sort">
-              <div className="buyer-dashboard__search-container">
+            <div className="search-sort">
+              <div className="search-container">
                 <input
                   type="text"
                   placeholder="Search..."
                   value={searchTerm}
                   onChange={handleSearchChange}
-                  className="buyer-dashboard__search-input"
+                  className="search-input"
                 />
-                <button className="buyer-dashboard__search-button">
+                <button className="search-button">
                   <IoMdSearch />
                 </button>
               </div>
 
-              <div className="buyer-dashboard__sort-container">
-                <label htmlFor="sort"><LuFilter /></label>
+              <div className="sort-container">
                 <select
                   id="sort"
-                  className="buyer-dashboard__sort-select"
+                  className="sort-select"
                   value={sortOption}
                   onChange={handleSortChange}
                 >
@@ -258,9 +309,11 @@ const BuyerDashboard = () => {
               </div>
             </div>
           </div>
-
+          <button className="filter-toggle-btn" onClick={toggleDrawer}>
+            Filter <FaFilter />
+          </button>
           {/* Strategy Cards Grid */}
-          <div className="buyer-dashboard__strategy-grid">
+          <div className="strategy-grid">
             {strategyData.map((strategy) => (
               <StrategyCard
                 key={strategy.id}
@@ -275,9 +328,7 @@ const BuyerDashboard = () => {
           </div>
 
           {/* Pagination */}
-          <div className="buyer-dashboard__pagination">
-            {renderPaginationItems()}
-          </div>
+          <div className="pagination">{renderPaginationItems()}</div>
         </div>
       </div>
     </div>
