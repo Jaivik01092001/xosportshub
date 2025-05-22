@@ -16,9 +16,9 @@ const Footer = () => {
           </p>
           <div className="footer-contact">
             <h3>Contact Us</h3>
-            <p>Email: info@XOsportshub.com</p>
+            <p><FaEnvelope size={18}/> info@XOsportshub.com</p>
             <div className="icons">
-              <FaEnvelope size={30} className="social-icon"/>
+              
               <FaLinkedin size={30} className="social-icon"/>
               <RiInstagramFill size={30} className="social-icon"/>
               <FaXTwitter size={30} className="social-icon"/>

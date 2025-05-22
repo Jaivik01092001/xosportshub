@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/BuyerDashboard.css";
 import StrategyCard from "../../components/common/StrategyCard";
 import { strategyData } from "../../data/strategyData";
 import { IoMdSearch } from "react-icons/io";
-import { LuFilter } from "react-icons/lu";
+import { IoClose } from "react-icons/io5";
+import { FaFilter } from "react-icons/fa";
 
 const BuyerDashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSport, setSelectedSport] = useState("Baseball");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("high");
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Filter options
   const relatedOptions = [
@@ -19,9 +21,13 @@ const BuyerDashboard = () => {
     { id: "youth-baseball", label: "Youth Baseball", checked: false },
     { id: "mental-training", label: "Mental Training", checked: false },
     { id: "fielding", label: "Fielding", checked: false },
-    { id: "strength-conditioning", label: "Strength & Conditioning", checked: false },
+    {
+      id: "strength-conditioning",
+      label: "Strength & Conditioning",
+      checked: false,
+    },
     { id: "drills", label: "Drills", checked: false },
-    { id: "catching", label: "Catching", checked: false }
+    { id: "catching", label: "Catching", checked: false },
   ];
 
   // Price range state
@@ -37,14 +43,38 @@ const BuyerDashboard = () => {
     fielding: false,
     "strength-conditioning": false,
     drills: false,
-    catching: false
+    catching: false,
   });
+
+  // Handle drawer open/close
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  // Close drawer when clicking overlay
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("filter-overlay")) {
+      setIsDrawerOpen(false);
+    }
+  };
+
+  // Close drawer on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
 
   // Handle checkbox change
   const handleCheckboxChange = (event) => {
     setCheckedItems({
       ...checkedItems,
-      [event.target.name]: event.target.checked
+      [event.target.name]: event.target.checked,
     });
   };
 
@@ -74,7 +104,7 @@ const BuyerDashboard = () => {
       fielding: false,
       "strength-conditioning": false,
       drills: false,
-      catching: false
+      catching: false,
     });
     setPriceRange([0, 1000]);
   };
@@ -98,7 +128,11 @@ const BuyerDashboard = () => {
 
     // Page numbers
     for (let i = 1; i <= 7; i++) {
-      if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+      if (
+        i === 1 ||
+        i === totalPages ||
+        (i >= currentPage - 1 && i <= currentPage + 1)
+      ) {
         items.push(
           <button
             key={i}
@@ -109,7 +143,11 @@ const BuyerDashboard = () => {
           </button>
         );
       } else if (i === currentPage - 2 || i === currentPage + 2) {
-        items.push(<span key={`ellipsis-${i}`} className="pagination-ellipsis">...</span>);
+        items.push(
+          <span key={`ellipsis-${i}`} className="pagination-ellipsis">
+            ...
+          </span>
+        );
       }
     }
 
@@ -118,7 +156,9 @@ const BuyerDashboard = () => {
       <button
         key="next"
         className="pagination-arrow"
-        onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
+        onClick={() =>
+          currentPage < totalPages && handlePageChange(currentPage + 1)
+        }
         disabled={currentPage === totalPages}
       >
         &gt;
@@ -130,12 +170,22 @@ const BuyerDashboard = () => {
 
   return (
     <div className="buyer-dashboard">
-      <div className="dashboard-container">
+      <div className="container">
+        {/* Filter Overlay */}
+        {isDrawerOpen && (
+          <div className="filter-overlay" onClick={handleOverlayClick} />
+        )}
+
         {/* Filter Section */}
-        <div className="filter-section">
+        <div className={`filter-section ${isDrawerOpen ? "drawer-open" : ""}`}>
+          <button className="close-drawer-btn" onClick={toggleDrawer}>
+            <IoClose />
+          </button>
           <div className="filter-header">
             <h3>Filter By</h3>
-            <button className="clear-all" onClick={clearFilters}>Clear All</button>
+            <button className="clear-all" onClick={clearFilters}>
+              Clear All
+            </button>
           </div>
 
           {/* Sport Filter */}
@@ -182,8 +232,8 @@ const BuyerDashboard = () => {
               <div
                 className="price-slider-container"
                 style={{
-                  '--min-value': priceRange[0],
-                  '--max-value': priceRange[1]
+                  "--min-value": priceRange[0],
+                  "--max-value": priceRange[1],
                 }}
               >
                 <input
@@ -226,7 +276,9 @@ const BuyerDashboard = () => {
         {/* Content Section */}
         <div className="content-section">
           <div className="content-header">
-            <h2 className="content-title">Featured Strategic Content <span>(48 Contents Found)</span></h2>
+            <h2 className="content-title">
+              Featured Strategic Content <span>(48 Contents Found)</span>
+            </h2>
 
             <div className="search-sort">
               <div className="search-container">
@@ -243,7 +295,6 @@ const BuyerDashboard = () => {
               </div>
 
               <div className="sort-container">
-                <label htmlFor="sort"><LuFilter /></label>
                 <select
                   id="sort"
                   className="sort-select"
@@ -258,7 +309,9 @@ const BuyerDashboard = () => {
               </div>
             </div>
           </div>
-
+          <button className="filter-toggle-btn" onClick={toggleDrawer}>
+            Filter <FaFilter />
+          </button>
           {/* Strategy Cards Grid */}
           <div className="strategy-grid">
             {strategyData.map((strategy) => (
@@ -275,9 +328,7 @@ const BuyerDashboard = () => {
           </div>
 
           {/* Pagination */}
-          <div className="pagination">
-            {renderPaginationItems()}
-          </div>
+          <div className="pagination">{renderPaginationItems()}</div>
         </div>
       </div>
     </div>
@@ -285,3 +336,5 @@ const BuyerDashboard = () => {
 };
 
 export default BuyerDashboard;
+
+

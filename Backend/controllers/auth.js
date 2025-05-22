@@ -2,6 +2,7 @@ const crypto = require("crypto");
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
 const sendEmail = require("../utils/sendEmail");
+const { sendOTP } = require("../utils/sendOTP");
 const { validationResult } = require("express-validator");
 
 // @desc    Register user
@@ -14,12 +15,18 @@ exports.register = async (req, res, next) => {
       return res.status(400).json({ success: false, errors: errors.array() });
     }
 
-    const { firstName, lastName, email, password, role } = req.body;
+    const { firstName, lastName, email, mobile, role } = req.body;
 
     // Check if email already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    const existingUserEmail = await User.findOne({ email });
+    if (existingUserEmail) {
       return next(new ErrorResponse("Email already registered", 400));
+    }
+
+    // Check if mobile already exists
+    const existingUserMobile = await User.findOne({ mobile });
+    if (existingUserMobile) {
+      return next(new ErrorResponse("Mobile number already registered", 400));
     }
 
     // Create user
@@ -27,79 +34,144 @@ exports.register = async (req, res, next) => {
       firstName,
       lastName,
       email,
-      password,
+      mobile,
       role: role || "buyer",
     });
 
-    // Create verification token
-    const verificationToken = crypto.randomBytes(20).toString("hex");
-    user.emailVerificationToken = crypto
-      .createHash("sha256")
-      .update(verificationToken)
-      .digest("hex");
-    user.emailVerificationExpire = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
-
+    // Generate OTP for verification
+    const otp = user.generateOTP();
     await user.save({ validateBeforeSave: false });
 
-    // Create verification URL
-    const verificationUrl = `${req.protocol}://${req.get(
-      "host"
-    )}/api/auth/verify-email/${verificationToken}`;
-
-    const message = `You are receiving this email because you need to verify your email address. Please click the link to verify your email: \n\n ${verificationUrl}`;
-
     try {
-      await sendEmail({
-        email: user.email,
-        subject: "Email Verification",
-        message,
-      });
+      // Send OTP via SMS and Email
+      const otpResult = await sendOTP(user, otp);
 
-      sendTokenResponse(user, 201, res);
+      if (!otpResult.success) {
+        return next(new ErrorResponse("Failed to send verification code", 500));
+      }
+
+      res.status(201).json({
+        success: true,
+        message: "Registration successful. Please verify with the OTP sent to your email and mobile.",
+        userId: user._id
+      });
     } catch (err) {
       console.log(err);
-      user.emailVerificationToken = undefined;
-      user.emailVerificationExpire = undefined;
+      user.otpCode = undefined;
+      user.otpExpire = undefined;
 
       await user.save({ validateBeforeSave: false });
 
-      return next(new ErrorResponse("Email could not be sent", 500));
+      return next(new ErrorResponse("Failed to send verification code", 500));
     }
   } catch (err) {
     next(err);
   }
 };
 
-// @desc    Login user
-// @route   POST /api/auth/login
+// @desc    Send OTP for login
+// @route   POST /api/auth/send-otp
 // @access  Public
-exports.login = async (req, res, next) => {
+exports.sendOTP = async (req, res, next) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ success: false, errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+    const { email, mobile } = req.body;
 
-    // Check for user
-    const user = await User.findOne({ email }).select("+password");
+    // Check for user by email or mobile
+    const user = await User.findOne({
+      $or: [
+        { email: email },
+        { mobile: mobile }
+      ]
+    });
 
     if (!user) {
-      return next(new ErrorResponse("Invalid credentials", 401));
+      return next(new ErrorResponse("User not found", 404));
     }
 
-    // Check if password matches
-    const isMatch = await user.matchPassword(password);
+    // Generate OTP
+    const otp = user.generateOTP();
+    await user.save({ validateBeforeSave: false });
 
-    if (!isMatch) {
-      return next(new ErrorResponse("Invalid credentials", 401));
+    try {
+      // Send OTP via SMS and Email
+      const otpResult = await sendOTP(user, otp);
+
+      if (!otpResult.success) {
+        return next(new ErrorResponse("Failed to send verification code", 500));
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Verification code sent successfully",
+        userId: user._id
+      });
+    } catch (err) {
+      console.log(err);
+      user.otpCode = undefined;
+      user.otpExpire = undefined;
+
+      await user.save({ validateBeforeSave: false });
+
+      return next(new ErrorResponse("Failed to send verification code", 500));
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+// @desc    Verify OTP and login
+// @route   POST /api/auth/verify-otp
+// @access  Public
+exports.verifyOTP = async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ success: false, errors: errors.array() });
+    }
+
+    const { userId, otp } = req.body;
+
+    // Find user by ID
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return next(new ErrorResponse("User not found", 404));
+    }
+
+    // Check if OTP exists and is valid
+    if (!user.otpCode || !user.otpExpire) {
+      return next(new ErrorResponse("No OTP was generated or it has expired", 400));
+    }
+
+    // Check if OTP has expired
+    if (user.otpExpire < Date.now()) {
+      return next(new ErrorResponse("OTP has expired", 400));
+    }
+
+    // Check if OTP matches
+    if (user.otpCode !== otp) {
+      return next(new ErrorResponse("Invalid OTP", 400));
+    }
+
+    // Clear OTP fields
+    user.otpCode = undefined;
+    user.otpExpire = undefined;
+
+    // Set user as verified if not already
+    if (!user.isVerified) {
+      user.isVerified = true;
     }
 
     // Update last login
     user.lastLogin = Date.now();
     await user.save({ validateBeforeSave: false });
 
+    // Send token response
     sendTokenResponse(user, 200, res);
   } catch (err) {
     next(err);

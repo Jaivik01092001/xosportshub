@@ -124,6 +124,8 @@
 }
 
 .auth-page .country-code-select {
+  display: flex;
+  align-items: center;
   height: 100%;
   padding: 12px 10px;
   border: 1px solid var(--light-gray);
@@ -218,6 +220,5 @@
   .auth-page .country-code-select {
     padding: 8px 6px;
     padding-right: 20px;
-    
   }
 }
