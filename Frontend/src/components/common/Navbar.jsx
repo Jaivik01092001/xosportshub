@@ -131,7 +131,21 @@ const Navbar = () => {
               </>
             )}
 
-            {(userRole === "buyer" || userRole === "seller") && (
+            {userRole === "buyer" && (
+              <>
+                {path === "/buyer/dashboard" ? (
+                  <Link to="/buyer/account/profile" className="btn btn-primary">
+                    My Account
+                  </Link>
+                ) : (
+                  <Link to="/" className="btn btn-outline">
+                    Logout
+                  </Link>
+                )}
+              </>
+            )}
+
+            {userRole === "seller" && (
               <Link to="/" className="btn btn-outline">
                 Logout
               </Link>

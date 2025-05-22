@@ -10,6 +10,7 @@ import bidReducer from './slices/bidSlice';
 import paymentReducer from './slices/paymentSlice';
 import notificationReducer from './slices/notificationSlice';
 import wishlistReducer from './slices/wishlistSlice';
+import buyerDashboardReducer from './slices/buyerDashboardSlice';
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     payment: paymentReducer,
     notification: notificationReducer,
     wishlist: wishlistReducer,
+    buyerDashboard: buyerDashboardReducer,
   },
   // Use default middleware which already includes thunk
   devTools: process.env.NODE_ENV !== 'production',

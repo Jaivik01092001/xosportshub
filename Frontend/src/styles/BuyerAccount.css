@@ -1,0 +1,60 @@
+.BuyerAccount {
+  display: flex;
+  min-height: calc(100vh - 90px);
+  padding: var(--heading6) 0;
+  background-color: var(--bg-gray);
+}
+
+.BuyerAccount__container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--basefont);
+  gap: var(--heading6);
+}
+
+.BuyerAccount__sidebar {
+  flex: 0 0 250px;
+  position: sticky;
+  top: 90px;
+  height: calc(100vh - 120px);
+}
+
+.BuyerAccount__content {
+  flex: 1;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-light);
+  padding: var(--heading6);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .BuyerAccount__container {
+    max-width: 100%;
+    padding: 0 var(--smallfont);
+  }
+  
+  .BuyerAccount__sidebar {
+    flex: 0 0 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .BuyerAccount__container {
+    flex-direction: column;
+  }
+  
+  .BuyerAccount__sidebar {
+    flex: 0 0 auto;
+    position: relative;
+    top: 0;
+    height: auto;
+    margin-bottom: var(--basefont);
+  }
+  
+  .BuyerAccount__content {
+    padding: var(--basefont);
+  }
+}

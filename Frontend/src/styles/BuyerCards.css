@@ -1,0 +1,23 @@
+.BuyerCards {
+  display: flex;
+  flex-direction: column;
+}
+
+.BuyerCards__title {
+  font-size: var(--heading4);
+  color: var(--secondary-color);
+  margin-bottom: var(--heading6);
+  font-weight: 600;
+}
+
+.BuyerCards__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background-color: var(--bg-gray);
+  border-radius: var(--border-radius);
+  padding: var(--heading6);
+  color: var(--dark-gray);
+  font-size: var(--basefont);
+}
