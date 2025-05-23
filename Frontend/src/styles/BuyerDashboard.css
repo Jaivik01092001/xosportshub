@@ -4,8 +4,7 @@
   position: relative;
 }
 
-.buyer-dashboard .container {
-  max-width: 1200px;
+.buyer-dashboard .max-container {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 280px 1fr;

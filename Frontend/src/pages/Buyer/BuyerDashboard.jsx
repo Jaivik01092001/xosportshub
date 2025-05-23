@@ -170,7 +170,7 @@ const BuyerDashboard = () => {
 
   return (
     <div className="buyer-dashboard">
-      <div className="container">
+      <div className=" max-container">
         {/* Filter Overlay */}
         {isDrawerOpen && (
           <div className="filter-overlay" onClick={handleOverlayClick} />
@@ -336,5 +336,3 @@ const BuyerDashboard = () => {
 };
 
 export default BuyerDashboard;
-
-

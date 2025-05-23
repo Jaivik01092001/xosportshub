@@ -8,7 +8,6 @@
 .BuyerAccount__container {
   display: flex;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--basefont);
   gap: var(--heading6);
@@ -35,7 +34,7 @@
     max-width: 100%;
     padding: 0 var(--smallfont);
   }
-  
+
   .BuyerAccount__sidebar {
     flex: 0 0 220px;
   }
@@ -45,7 +44,7 @@
   .BuyerAccount__container {
     flex-direction: column;
   }
-  
+
   .BuyerAccount__sidebar {
     flex: 0 0 auto;
     position: relative;
@@ -53,7 +52,7 @@
     height: auto;
     margin-bottom: var(--basefont);
   }
-  
+
   .BuyerAccount__content {
     padding: var(--basefont);
   }

@@ -8,20 +8,21 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="footer-component footer">
-      <div className="footer-container">
+      <div className="footer-container max-container">
         <div className="footer-logo-section">
           <img src={logo} alt="XO Sports Hub Logo" className="footer-logo" />
           <p className="footer-tagline">
-          "Elevate Your Game - A Digital Exchange of Sports Strategies"
+            "Elevate Your Game - A Digital Exchange of Sports Strategies"
           </p>
           <div className="footer-contact">
             <h3>Contact Us</h3>
-            <p><FaEnvelope size={18}/> info@XOsportshub.com</p>
+            <p>
+              <FaEnvelope size={18} /> info@XOsportshub.com
+            </p>
             <div className="icons">
-              
-              <FaLinkedin size={30} className="social-icon"/>
-              <RiInstagramFill size={30} className="social-icon"/>
-              <FaXTwitter size={30} className="social-icon"/>
+              <FaLinkedin size={30} className="social-icon" />
+              <RiInstagramFill size={30} className="social-icon" />
+              <FaXTwitter size={30} className="social-icon" />
             </div>
           </div>
         </div>
@@ -150,7 +151,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div className="footer-bottom max-container">
         <p>
           &copy; {new Date().getFullYear()} Sports Playbook Strategy
           Marketplace. All rights reserved.

@@ -8,7 +8,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr 3fr;
   gap: 30px;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -71,7 +70,6 @@
   margin-bottom: 10px;
 }
 
-
 .footer-component ul li a {
   border-bottom: 1px dotted var(--secondary-color);
   color: var(--secondary-color);
@@ -117,7 +115,6 @@
 }
 
 .footer-component .footer-bottom {
-  max-width: 1200px;
   margin: 40px auto 0;
   padding: 20px 20px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);

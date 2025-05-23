@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { 
-  selectActiveTab, 
-  setActiveTab 
+import {
+  selectActiveTab,
+  setActiveTab,
 } from "../../redux/slices/buyerDashboardSlice";
 import BuyerSidebar from "../../components/buyer/BuyerSidebar";
 import BuyerProfile from "./BuyerProfile";
@@ -17,11 +17,11 @@ const BuyerAccount = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const activeTab = useSelector(selectActiveTab);
-  
+
   // Set active tab based on URL path
   useEffect(() => {
     const path = location.pathname;
-    
+
     if (path.includes("/profile")) {
       dispatch(setActiveTab("profile"));
     } else if (path.includes("/downloads")) {
@@ -36,7 +36,7 @@ const BuyerAccount = () => {
       dispatch(setActiveTab("profile")); // Default to profile
     }
   }, [location.pathname, dispatch]);
-  
+
   // Render the active component based on the active tab
   const renderActiveComponent = () => {
     switch (activeTab) {
@@ -54,16 +54,14 @@ const BuyerAccount = () => {
         return <BuyerProfile />;
     }
   };
-  
+
   return (
     <div className="BuyerAccount">
-      <div className="BuyerAccount__container">
+      <div className="BuyerAccount__container max-container">
         <div className="BuyerAccount__sidebar">
           <BuyerSidebar />
         </div>
-        <div className="BuyerAccount__content">
-          {renderActiveComponent()}
-        </div>
+        <div className="BuyerAccount__content">{renderActiveComponent()}</div>
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar-component navbar">
-        <div className="navbar-container">
+        <div className="navbar-container max-container">
           <div className="navbar-logo">
             <Link to="/">
               <img src={logo} alt="XO Sports Hub Logo" />
