@@ -62,11 +62,11 @@ const BuyerAccount = () => {
 
   return (
     <div className="BuyerAccount">
-      <div className="BuyerAccount__container max-container">
-        <div className="BuyerAccount__sidebar">
+      <div className="container max-container">
+        <div className="sidebar">
           <BuyerSidebar />
         </div>
-        <div className="BuyerAccount__content">{renderActiveComponent()}</div>
+        <div className="content">{renderActiveComponent()}</div>
       </div>
     </div>
   );

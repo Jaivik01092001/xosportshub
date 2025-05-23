@@ -5,17 +5,17 @@
 }
 
 /* Stats Cards */
-.BuyerAccountDashboard__stats {
+.BuyerAccountDashboard .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--basefont);
   margin-bottom: var(--heading6);
 }
 
-.BuyerAccountDashboard__stat-card {
+.BuyerAccountDashboard .stat-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: var(--basefont);
   border-radius: var(--border-radius);
@@ -24,49 +24,49 @@
   min-height: 120px;
 }
 
-.BuyerAccountDashboard__stat-card.downloads {
-  background-color: #8e44ad;
+.BuyerAccountDashboard .stat-card.downloads {
+  background: linear-gradient(90deg, #857a53, #00a0fe);
 }
 
-.BuyerAccountDashboard__stat-card.requests {
-  background-color: #f39c12;
+.BuyerAccountDashboard .stat-card.requests {
+  background: linear-gradient(90deg, #324e33, #00a0fe);
 }
 
-.BuyerAccountDashboard__stat-card.bids {
-  background-color: #2ecc71;
+.BuyerAccountDashboard .stat-card.bids {
+  background: linear-gradient(90deg, #44313d, #00a0fe);
 }
 
-.BuyerAccountDashboard__stat-number {
+.BuyerAccountDashboard .stat-number {
   font-size: 36px;
   font-weight: 700;
   margin-bottom: var(--extrasmallfont);
 }
 
-.BuyerAccountDashboard__stat-label {
+.BuyerAccountDashboard .stat-label {
   font-size: var(--basefont);
   font-weight: 500;
 }
 
 /* Section Styles */
-.BuyerAccountDashboard__section {
+.BuyerAccountDashboard .section {
   margin-bottom: var(--heading6);
 }
 
-.BuyerAccountDashboard__section-header {
+.BuyerAccountDashboard .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--basefont);
 }
 
-.BuyerAccountDashboard__section-title {
+.BuyerAccountDashboard .section-title {
   font-size: var(--heading6);
   color: var(--secondary-color);
   font-weight: 600;
   margin: 0;
 }
 
-.BuyerAccountDashboard__view-all {
+.BuyerAccountDashboard .view-all {
   color: var(--btn-color);
   font-size: var(--smallfont);
   text-decoration: none;
@@ -74,19 +74,19 @@
   transition: color 0.3s ease;
 }
 
-.BuyerAccountDashboard__view-all:hover {
+.BuyerAccountDashboard .view-all:hover {
   text-decoration: underline;
 }
 
 /* Table Styles */
-.BuyerAccountDashboard__table {
+.BuyerAccountDashboard .table {
   width: 100%;
   border: 1px solid var(--light-gray);
   border-radius: var(--border-radius);
   overflow: hidden;
 }
 
-.BuyerAccountDashboard__table-header {
+.BuyerAccountDashboard .table-header {
   display: grid;
   grid-template-columns: 0.5fr 1fr 3fr 1.5fr 1fr 1fr 0.5fr;
   background-color: var(--bg-gray);
@@ -96,7 +96,7 @@
   border-bottom: 1px solid var(--light-gray);
 }
 
-.BuyerAccountDashboard__table-row {
+.BuyerAccountDashboard .table-row {
   display: grid;
   grid-template-columns: 0.5fr 1fr 3fr 1.5fr 1fr 1fr 0.5fr;
   padding: var(--smallfont) var(--basefont);
@@ -104,27 +104,27 @@
   align-items: center;
 }
 
-.BuyerAccountDashboard__table-row:last-child {
+.BuyerAccountDashboard .table-row:last-child {
   border-bottom: none;
 }
 
-.BuyerAccountDashboard__table-cell {
+.BuyerAccountDashboard .table-cell {
   padding: 0 var(--extrasmallfont);
   font-size: var(--smallfont);
 }
 
-.BuyerAccountDashboard__table-cell.no,
-.BuyerAccountDashboard__table-cell.action {
+.BuyerAccountDashboard .table-cell.no,
+.BuyerAccountDashboard .table-cell.action {
   text-align: center;
 }
 
-.BuyerAccountDashboard__content-item {
+.BuyerAccountDashboard .content-item {
   display: flex;
   align-items: center;
   gap: var(--smallfont);
 }
 
-.BuyerAccountDashboard__content-image {
+.BuyerAccountDashboard .content-image {
   width: 50px;
   height: 50px;
   border-radius: var(--border-radius);
@@ -132,18 +132,18 @@
   flex-shrink: 0;
 }
 
-.BuyerAccountDashboard__content-image img {
+.BuyerAccountDashboard .content-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.BuyerAccountDashboard__content-info {
+.BuyerAccountDashboard .content-info {
   display: flex;
   flex-direction: column;
 }
 
-.BuyerAccountDashboard__content-title {
+.BuyerAccountDashboard .content-title {
   font-weight: 500;
   color: var(--text-color);
   margin-bottom: 2px;
@@ -153,12 +153,12 @@
   max-width: 200px;
 }
 
-.BuyerAccountDashboard__content-coach {
+.BuyerAccountDashboard .content-coach {
   font-size: var(--extrasmallfont);
   color: var(--dark-gray);
 }
 
-.BuyerAccountDashboard__status-badge {
+.BuyerAccountDashboard .status-badge {
   display: inline-block;
   padding: 4px 8px;
   border-radius: var(--border-radius);
@@ -167,42 +167,42 @@
   text-align: center;
 }
 
-.BuyerAccountDashboard__status-badge.downloaded {
+.BuyerAccountDashboard .status-badge.downloaded {
   background-color: rgba(46, 204, 113, 0.1);
   color: #2ecc71;
 }
 
-.BuyerAccountDashboard__status-badge.pending {
+.BuyerAccountDashboard .status-badge.pending {
   background-color: rgba(243, 156, 18, 0.1);
   color: #f39c12;
 }
 
-.BuyerAccountDashboard__status-badge.approved {
+.BuyerAccountDashboard .status-badge.approved {
   background-color: rgba(52, 152, 219, 0.1);
   color: #3498db;
 }
 
-.BuyerAccountDashboard__status-badge.completed {
+.BuyerAccountDashboard .status-badge.completed {
   background-color: rgba(46, 204, 113, 0.1);
   color: #2ecc71;
 }
 
-.BuyerAccountDashboard__status-badge.active {
+.BuyerAccountDashboard .status-badge.active {
   background-color: rgba(52, 152, 219, 0.1);
   color: #3498db;
 }
 
-.BuyerAccountDashboard__status-badge.won {
+.BuyerAccountDashboard .status-badge.won {
   background-color: rgba(46, 204, 113, 0.1);
   color: #2ecc71;
 }
 
-.BuyerAccountDashboard__status-badge.lost {
+.BuyerAccountDashboard .status-badge.lost {
   background-color: rgba(231, 76, 60, 0.1);
   color: #e74c3c;
 }
 
-.BuyerAccountDashboard__action-btn {
+.BuyerAccountDashboard .action-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,38 +214,38 @@
   font-size: var(--basefont);
 }
 
-.BuyerAccountDashboard__action-btn:hover {
+.BuyerAccountDashboard .action-btn:hover {
   color: var(--btn-color);
 }
 
 /* Responsive styles */
 @media (max-width: 992px) {
-  .BuyerAccountDashboard__table-header,
-  .BuyerAccountDashboard__table-row {
+  .BuyerAccountDashboard .table-header,
+  .BuyerAccountDashboard .table-row {
     grid-template-columns: 0.5fr 1fr 2fr 1.5fr 1fr 1fr 0.5fr;
   }
 
-  .BuyerAccountDashboard__content-title {
+  .BuyerAccountDashboard .content-title {
     max-width: 150px;
   }
 }
 
 @media (max-width: 768px) {
-  .BuyerAccountDashboard__stats {
+  .BuyerAccountDashboard .stats {
     grid-template-columns: 1fr;
     gap: var(--smallfont);
   }
 
-  .BuyerAccountDashboard__stat-card {
+  .BuyerAccountDashboard .stat-card {
     min-height: 100px;
   }
 
-  .BuyerAccountDashboard__table {
+  .BuyerAccountDashboard .table {
     overflow-x: auto;
   }
 
-  .BuyerAccountDashboard__table-header,
-  .BuyerAccountDashboard__table-row {
+  .BuyerAccountDashboard .table-header,
+  .BuyerAccountDashboard .table-row {
     min-width: 700px;
   }
 }
