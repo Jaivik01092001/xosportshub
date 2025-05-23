@@ -9,6 +9,7 @@ import {
 import SectionWrapper from "../../components/common/SectionWrapper";
 import { FaDownload, FaGavel, FaFileAlt, FaEye } from "react-icons/fa";
 import "../../styles/BuyerAccountDashboard.css";
+import { MdDashboard } from "react-icons/md";
 
 const BuyerAccountDashboard = () => {
   const downloads = useSelector(selectMyDownloads);
@@ -17,7 +18,10 @@ const BuyerAccountDashboard = () => {
 
   return (
     <div className="BuyerAccountDashboard">
-      <SectionWrapper title="My Account Dashboard">
+      <SectionWrapper
+        icon={<MdDashboard className="BuyerSidebar__icon" />}
+        title="Dashboard"
+      >
         {/* Stats Cards */}
         <div className="stats">
           <div className="stat-card downloads">

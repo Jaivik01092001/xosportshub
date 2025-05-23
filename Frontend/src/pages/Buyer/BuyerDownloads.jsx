@@ -11,10 +11,14 @@ const BuyerDownloads = () => {
   // Function to get file type icon
   const getFileTypeIcon = (fileType) => {
     switch (fileType.toLowerCase()) {
-      case 'pdf':
-        return <FaFilePdf className="BuyerDownloads__file-icon BuyerDownloads__file-icon--pdf" />;
-      case 'video':
-        return <FaVideo className="BuyerDownloads__file-icon BuyerDownloads__file-icon--video" />;
+      case "pdf":
+        return (
+          <FaFilePdf className="BuyerDownloads__file-icon BuyerDownloads__file-icon--pdf" />
+        );
+      case "video":
+        return (
+          <FaVideo className="BuyerDownloads__file-icon BuyerDownloads__file-icon--video" />
+        );
       default:
         return <FaFilePdf className="BuyerDownloads__file-icon" />;
     }
@@ -22,7 +26,10 @@ const BuyerDownloads = () => {
 
   return (
     <div className="BuyerDownloads">
-      <SectionWrapper title="My Downloads">
+      <SectionWrapper
+        icon={<FaDownload className="BuyerSidebar__icon" />}
+        title="My Downloads"
+      >
         {downloads.length > 0 ? (
           <div className="BuyerDownloads__list">
             {downloads.map((download) => (
@@ -31,11 +38,19 @@ const BuyerDownloads = () => {
                   {getFileTypeIcon(download.fileType)}
                 </div>
                 <div className="BuyerDownloads__item-info">
-                  <h3 className="BuyerDownloads__item-title">{download.title}</h3>
-                  <p className="BuyerDownloads__item-coach">By {download.coach}</p>
+                  <h3 className="BuyerDownloads__item-title">
+                    {download.title}
+                  </h3>
+                  <p className="BuyerDownloads__item-coach">
+                    By {download.coach}
+                  </p>
                   <div className="BuyerDownloads__item-details">
-                    <span className="BuyerDownloads__item-date">Downloaded: {download.downloadDate}</span>
-                    <span className="BuyerDownloads__item-size">{download.fileSize}</span>
+                    <span className="BuyerDownloads__item-date">
+                      Downloaded: {download.downloadDate}
+                    </span>
+                    <span className="BuyerDownloads__item-size">
+                      {download.fileSize}
+                    </span>
                   </div>
                 </div>
                 <button className="BuyerDownloads__download-btn">

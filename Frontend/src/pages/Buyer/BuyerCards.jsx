@@ -8,10 +8,16 @@ import {
   setCardViewMode,
   updateCardForm,
   resetCardForm,
-  addCard
+  addCard,
 } from "../../redux/slices/buyerDashboardSlice";
 import SectionWrapper from "../../components/common/SectionWrapper";
-import { FaPlus, FaTrash, FaCreditCard, FaCalendarAlt, FaLock } from "react-icons/fa";
+import {
+  FaPlus,
+  FaTrash,
+  FaCreditCard,
+  FaCalendarAlt,
+  FaLock,
+} from "react-icons/fa";
 import "../../styles/BuyerCards.css";
 
 const BuyerCards = () => {
@@ -22,8 +28,8 @@ const BuyerCards = () => {
 
   // Toggle between list and add views
   const toggleAddCardView = () => {
-    dispatch(setCardViewMode(viewMode === 'list' ? 'add' : 'list'));
-    if (viewMode === 'add') {
+    dispatch(setCardViewMode(viewMode === "list" ? "add" : "list"));
+    if (viewMode === "add") {
       dispatch(resetCardForm());
     }
   };
@@ -58,7 +64,7 @@ const BuyerCards = () => {
     const newCard = {
       id: Date.now().toString(),
       lastFourDigits: cardForm.cardNumber.slice(-4),
-      cardType: 'mastercard',
+      cardType: "mastercard",
     };
 
     // Add the card to the store
@@ -68,13 +74,16 @@ const BuyerCards = () => {
     dispatch(resetCardForm());
 
     // Switch back to list view
-    dispatch(setCardViewMode('list'));
+    dispatch(setCardViewMode("list"));
   };
 
   return (
     <div className="BuyerCards">
-      <SectionWrapper title="My Cards">
-        {viewMode === 'list' ? (
+      <SectionWrapper
+        icon={<FaCreditCard className="BuyerSidebar__icon" />}
+        title="My Cards"
+      >
+        {viewMode === "list" ? (
           <div className="BuyerCards__list-view">
             <div className="BuyerCards__header">
               <h3 className="BuyerCards__subtitle">Saved Cards</h3>
@@ -92,7 +101,10 @@ const BuyerCards = () => {
                   <div className="BuyerCards__card-item" key={card.id}>
                     <div className="BuyerCards__card-content">
                       <div className="BuyerCards__card-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" alt="Mastercard" />
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png"
+                          alt="Mastercard"
+                        />
                       </div>
                       <div className="BuyerCards__card-number">
                         •••• •••• •••• {card.lastFourDigits}
@@ -121,7 +133,12 @@ const BuyerCards = () => {
             </div>
 
             <div className="BuyerCards__form">
-              <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSubmit();
+                }}
+              >
                 <div className="BuyerCards__form-row">
                   <div className="BuyerCards__input-field BuyerCards__input-field--full">
                     <div className="BuyerCards__input-container">
@@ -163,7 +180,10 @@ const BuyerCards = () => {
                     </div>
                   </div>
                   <div className="BuyerCards__card-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" alt="Mastercard" />
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png"
+                      alt="Mastercard"
+                    />
                   </div>
                 </div>
 
@@ -197,7 +217,9 @@ const BuyerCards = () => {
                         id="cvv"
                         name="cvv"
                         value={cardForm.cvv}
-                        onChange={(e) => handleCvvChange(e.target.value.replace(/\D/g, ''))}
+                        onChange={(e) =>
+                          handleCvvChange(e.target.value.replace(/\D/g, ""))
+                        }
                         placeholder="CVV"
                         required
                         maxLength={4}

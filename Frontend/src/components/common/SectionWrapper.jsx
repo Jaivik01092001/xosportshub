@@ -4,19 +4,24 @@ import "../../styles/SectionWrapper.css";
 /**
  * Section Wrapper Component
  * A reusable wrapper component for consistent section layout
- * 
+ *
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Child components
  * @param {string} props.title - Section title
  * @param {string} props.className - Additional CSS class names
  */
-const SectionWrapper = ({ children, title, className = "" }) => {
+const SectionWrapper = ({ children, title, icon, className = "" }) => {
   return (
     <div className={`SectionWrapper ${className}`}>
-      {title && <h2 className="SectionWrapper__title">{title}</h2>}
-      <div className="SectionWrapper__content">
-        {children}
-      </div>
+      {title && (
+        <div className="bordrdiv mb-15">
+          <h2 className="SectionWrapper__title">
+            {icon}
+            {title}
+          </h2>
+        </div>
+      )}
+      <div className="SectionWrapper__content">{children}</div>
     </div>
   );
 };

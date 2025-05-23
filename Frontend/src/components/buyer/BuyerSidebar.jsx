@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectActiveTab,
-  setActiveTab
+  setActiveTab,
 } from "../../redux/slices/buyerDashboardSlice";
 import "../../styles/BuyerSidebar.css";
 
@@ -59,7 +59,9 @@ const BuyerSidebar = () => {
       <div className="BuyerSidebar__container">
         <ul className="BuyerSidebar__menu">
           <li
-            className={`BuyerSidebar__item ${activeTab === "dashboard" ? "active" : ""}`}
+            className={`BuyerSidebar__item ${
+              activeTab === "dashboard" ? "active" : ""
+            }`}
             onClick={() => handleTabClick("dashboard")}
           >
             <MdDashboard className="BuyerSidebar__icon" />
@@ -67,7 +69,9 @@ const BuyerSidebar = () => {
           </li>
 
           <li
-            className={`BuyerSidebar__item ${activeTab === "profile" ? "active" : ""}`}
+            className={`BuyerSidebar__item ${
+              activeTab === "profile" ? "active" : ""
+            }`}
             onClick={() => handleTabClick("profile")}
           >
             <FaUser className="BuyerSidebar__icon" />
@@ -75,7 +79,9 @@ const BuyerSidebar = () => {
           </li>
 
           <li
-            className={`BuyerSidebar__item ${activeTab === "downloads" ? "active" : ""}`}
+            className={`BuyerSidebar__item ${
+              activeTab === "downloads" ? "active" : ""
+            }`}
             onClick={() => handleTabClick("downloads")}
           >
             <FaDownload className="BuyerSidebar__icon" />
@@ -83,7 +89,9 @@ const BuyerSidebar = () => {
           </li>
 
           <li
-            className={`BuyerSidebar__item ${activeTab === "requests" ? "active" : ""}`}
+            className={`BuyerSidebar__item ${
+              activeTab === "requests" ? "active" : ""
+            }`}
             onClick={() => handleTabClick("requests")}
           >
             <MdRequestPage className="BuyerSidebar__icon" />
@@ -91,7 +99,9 @@ const BuyerSidebar = () => {
           </li>
 
           <li
-            className={`BuyerSidebar__item ${activeTab === "bids" ? "active" : ""}`}
+            className={`BuyerSidebar__item ${
+              activeTab === "bids" ? "active" : ""
+            }`}
             onClick={() => handleTabClick("bids")}
           >
             <FaGavel className="BuyerSidebar__icon" />
@@ -99,7 +109,9 @@ const BuyerSidebar = () => {
           </li>
 
           <li
-            className={`BuyerSidebar__item ${activeTab === "cards" ? "active" : ""}`}
+            className={`BuyerSidebar__item ${
+              activeTab === "cards" ? "active" : ""
+            }`}
             onClick={() => handleTabClick("cards")}
           >
             <FaCreditCard className="BuyerSidebar__icon" />

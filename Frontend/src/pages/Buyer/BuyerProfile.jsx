@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectProfile,
   updateProfile,
-  updateProfileImage
+  updateProfileImage,
 } from "../../redux/slices/buyerDashboardSlice";
 import SectionWrapper from "../../components/common/SectionWrapper";
-import { FaUser, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaPhone, FaUserAlt } from "react-icons/fa";
 import "../../styles/BuyerProfile.css";
 
 const BuyerProfile = () => {
@@ -52,14 +52,21 @@ const BuyerProfile = () => {
   // Handle account deletion
   const handleDeleteAccount = () => {
     // Show confirmation dialog and handle account deletion
-    if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+    if (
+      window.confirm(
+        "Are you sure you want to delete your account? This action cannot be undone."
+      )
+    ) {
       // Handle account deletion logic here
     }
   };
 
   return (
     <div className="BuyerProfile">
-      <SectionWrapper title="My Profile">
+      <SectionWrapper
+        icon={<FaUser className="BuyerSidebar__icon" />}
+        title="My Profile"
+      >
         <div className="BuyerProfile__container">
           <div className="BuyerProfile__left-section">
             <div className="BuyerProfile__form-row">
@@ -144,13 +151,16 @@ const BuyerProfile = () => {
                   <img src={profile.profileImage} alt="Profile" />
                 ) : (
                   <div className="BuyerProfile__placeholder">
-                    {profile.firstName.charAt(0)}{profile.lastName.charAt(0)}
+                    {profile.firstName.charAt(0)}
+                    {profile.lastName.charAt(0)}
                   </div>
                 )}
               </div>
               <button
                 className="BuyerProfile__upload-btn"
-                onClick={() => document.getElementById("profile-image-upload").click()}
+                onClick={() =>
+                  document.getElementById("profile-image-upload").click()
+                }
               >
                 Upload Photo
               </button>
