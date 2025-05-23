@@ -5,10 +5,10 @@
 }
 
 .BuyerCards__header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  margin-bottom: 24px;
+  padding-bottom: var(--heading6);
 }
 
 .BuyerCards__subtitle {
@@ -21,11 +21,11 @@
 .BuyerCards__add-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--extrasmallfont);
   background-color: transparent;
   color: var(--btn-color);
   border: 1px solid var(--btn-color);
-  padding: 8px 16px;
+  padding: var(--extrasmallfont) var(--basefont);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -38,20 +38,20 @@
 }
 
 .BuyerCards__cards-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--basefont);
 }
 
 .BuyerCards__card-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px;
+  padding: var(--basefont);
   border: 1px solid var(--light-gray);
   border-radius: var(--border-radius);
   background-color: var(--white);
-  margin-bottom: 12px;
+  margin-bottom: var(--smallfont);
   transition: box-shadow 0.3s ease;
 }
 
@@ -65,9 +65,9 @@
 }
 
 .BuyerCards__card-logo {
-  margin-right: 16px;
   display: flex;
   align-items: center;
+  padding-right: var(--basefont);
 }
 
 .BuyerCards__card-logo img {
@@ -227,9 +227,8 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .BuyerCards__header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: var(--basefont);
   }
 
   .BuyerCards__add-btn {

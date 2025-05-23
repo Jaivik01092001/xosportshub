@@ -165,7 +165,7 @@ const BuyerProfile = () => {
           </div>
         </div>
 
-        <div className="BuyerProfile__buttons">
+        <div className="BuyerProfile__buttons mt-30">
           <button
             type="button"
             className="BuyerProfile__delete-btn"

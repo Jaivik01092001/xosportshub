@@ -15,20 +15,20 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   background-color: var(--bg-gray);
-  padding: 16px;
+  padding: var(--basefont);
   font-weight: 600;
   color: var(--secondary-color);
   border-bottom: 1px solid var(--light-gray);
 }
 
 .BuyerBids__header-item {
-  padding: 0 8px;
+  padding: 0 var(--extrasmallfont);
 }
 
 .BuyerBids__item {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  padding: 16px;
+  padding: var(--basefont);
   border-bottom: 1px solid var(--light-gray);
   transition: background-color 0.3s ease;
 }
@@ -44,23 +44,24 @@
 .BuyerBids__item-title {
   font-weight: 500;
   color: var(--text-color);
-  padding: 0 8px;
+  padding: 0 var(--extrasmallfont);
 }
 
 .BuyerBids__item-coach,
 .BuyerBids__item-amount,
 .BuyerBids__item-date {
   color: var(--dark-gray);
-  padding: 0 8px;
+  padding: 0 var(--extrasmallfont);
 }
 
 .BuyerBids__item-status {
-  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--extrasmallfont) var(--extrasmallfont);
   border-radius: var(--border-radius);
-  text-align: center;
   font-weight: 500;
   font-size: var(--smallfont);
-  display: inline-block;
   min-width: 80px;
 }
 

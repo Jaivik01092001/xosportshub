@@ -7,17 +7,17 @@
 .BuyerRequests__header {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 24px;
+  padding-bottom: var(--heading6);
 }
 
 .BuyerRequests__add-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--extrasmallfont);
   background-color: var(--btn-color);
   color: var(--white);
   border: none;
-  padding: 8px 16px;
+  padding: var(--extrasmallfont) var(--basefont);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -36,13 +36,15 @@
 }
 
 .BuyerRequests__list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--basefont);
 }
 
 .BuyerRequests__item {
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--basefont);
   border: 1px solid var(--light-gray);
   border-radius: var(--border-radius);
   background-color: var(--white);
@@ -54,10 +56,10 @@
 }
 
 .BuyerRequests__item-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  margin-bottom: 12px;
+  padding-bottom: var(--smallfont);
 }
 
 .BuyerRequests__item-title {
@@ -68,7 +70,10 @@
 }
 
 .BuyerRequests__item-status {
-  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--extrasmallfont) var(--extrasmallfont);
   border-radius: var(--border-radius);
   font-size: var(--smallfont);
   font-weight: 500;
@@ -90,9 +95,10 @@
 }
 
 .BuyerRequests__item-description {
+  display: flex;
   font-size: var(--basefont);
   color: var(--dark-gray);
-  margin-bottom: 16px;
+  padding-bottom: var(--basefont);
   line-height: 1.5;
 }
 
@@ -113,7 +119,7 @@
   min-height: 200px;
   background-color: var(--bg-gray);
   border-radius: var(--border-radius);
-  padding: 24px;
+  padding: var(--heading6);
   color: var(--dark-gray);
   font-size: var(--basefont);
   text-align: center;
@@ -131,9 +137,8 @@
   }
 
   .BuyerRequests__item-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    grid-template-columns: 1fr;
+    gap: var(--extrasmallfont);
   }
 
   .BuyerRequests__item-status {
