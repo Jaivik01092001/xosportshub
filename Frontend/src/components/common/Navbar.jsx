@@ -4,6 +4,7 @@ import "../../styles/Navbar.css";
 import logo from "../../assets/images/XOsports-hub-logo.svg";
 import Sidebar from "./Sidebar";
 import { RiMenu5Line } from "react-icons/ri";
+import AccountDropdown from "../buyer/AccountDropdown";
 
 const Navbar = () => {
   const location = useLocation();
@@ -131,19 +132,7 @@ const Navbar = () => {
               </>
             )}
 
-            {userRole === "buyer" && (
-              <>
-                {path === "/buyer/dashboard" ? (
-                  <Link to="/buyer/account/profile" className="btn btn-primary">
-                    My Account
-                  </Link>
-                ) : (
-                  <Link to="/" className="btn btn-outline">
-                    Logout
-                  </Link>
-                )}
-              </>
-            )}
+            {userRole === "buyer" && <AccountDropdown />}
 
             {userRole === "seller" && (
               <Link to="/" className="btn btn-outline">

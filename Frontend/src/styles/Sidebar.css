@@ -73,6 +73,13 @@
   font-size: var(--basefont);
   transition: color 0.3s ease;
   padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-component .sidebar-icon {
+  margin-right: 10px;
+  font-size: var(--basefont);
 }
 
 .sidebar-component .sidebar-links a:hover {
@@ -133,6 +140,49 @@
 .sidebar-component .sidebar-auth .btn-outline:hover {
   background-color: var(--btn-color);
   color: var(--white);
+}
+
+/* Account dropdown styles */
+.sidebar-account-section {
+  margin-top: 10px;
+  border-top: 1px solid var(--light-gray);
+  padding-top: 10px;
+}
+
+.sidebar-account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+.sidebar-account-header:hover {
+  color: var(--btn-color);
+}
+
+.sidebar-dropdown-icon {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-dropdown-icon.active {
+  transform: rotate(180deg);
+}
+
+.sidebar-account-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 0 10px 15px;
+  margin-top: 5px;
+  border-left: 2px solid var(--light-gray);
+}
+
+.sidebar-account-dropdown a {
+  padding: 5px 0;
 }
 
 /* Only show sidebar on small screens */

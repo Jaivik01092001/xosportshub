@@ -1,0 +1,122 @@
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.account-dropdown__button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background-color: var(--btn-color);
+  color: var(--white);
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  font-size: var(--basefont);
+  transition: all 0.3s ease;
+}
+
+.account-dropdown__button:hover {
+  background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--btn-color)
+  );
+  box-shadow: 0 4px 8px rgba(238, 52, 37, 0.3);
+}
+
+.account-dropdown__icon {
+  font-size: var(--basefont);
+  transition: transform 0.3s ease;
+}
+
+.account-dropdown__button.active .account-dropdown__icon {
+  transform: rotate(180deg);
+}
+
+.account-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 200px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: var(--smallfont) 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.account-dropdown__menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear;
+}
+
+.account-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px var(--basefont);
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: var(--basefont);
+  transition: background-color 0.3s ease;
+}
+
+.account-dropdown__item:hover {
+  background-color: var(--bg-gray);
+  color: var(--btn-color);
+}
+
+.account-dropdown__item.active {
+  color: var(--btn-color);
+  font-weight: 600;
+}
+
+.account-dropdown__item-icon {
+  font-size: var(--basefont);
+  color: currentColor;
+}
+
+.account-dropdown__divider {
+  height: 1px;
+  background-color: var(--light-gray);
+  margin: 8px 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .account-dropdown {
+    display: none;
+  }
+  
+  /* Show dropdown in mobile sidebar */
+  .sidebar-component .account-dropdown {
+    display: block;
+    width: 100%;
+  }
+  
+  .sidebar-component .account-dropdown__button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .sidebar-component .account-dropdown__menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid var(--light-gray);
+    margin-top: 8px;
+  }
+  
+  .sidebar-component .account-dropdown__menu.active {
+    display: block;
+  }
+}
