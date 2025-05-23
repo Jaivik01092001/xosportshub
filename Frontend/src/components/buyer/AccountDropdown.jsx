@@ -39,11 +39,11 @@ const AccountDropdown = () => {
   const handleNavigation = (tab) => {
     setIsOpen(false);
     dispatch(setActiveTab(tab));
-    
+
     // Navigate to the corresponding route
     switch (tab) {
       case "dashboard":
-        navigate("/buyer/dashboard");
+        navigate("/buyer/account/dashboard");
         break;
       case "profile":
         navigate("/buyer/account/profile");
@@ -65,13 +65,13 @@ const AccountDropdown = () => {
         navigate("/");
         break;
       default:
-        navigate("/buyer/dashboard");
+        navigate("/buyer/account/dashboard");
     }
   };
 
   // Determine if a menu item is active
   const isActive = (route) => {
-    if (route === "dashboard" && path === "/buyer/dashboard") return true;
+    if (route === "dashboard" && path.includes("/account/dashboard")) return true;
     if (route === "profile" && path.includes("/profile")) return true;
     if (route === "bids" && path.includes("/bids")) return true;
     if (route === "downloads" && path.includes("/downloads")) return true;
@@ -82,73 +82,73 @@ const AccountDropdown = () => {
 
   return (
     <div className="account-dropdown" ref={dropdownRef}>
-      <button 
+      <button
         className={`account-dropdown__button ${isOpen ? 'active' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         My Account
         <MdKeyboardArrowDown className="account-dropdown__icon" />
       </button>
-      
+
       <div className={`account-dropdown__menu ${isOpen ? 'active' : ''}`}>
-        <Link 
-          to="/buyer/dashboard" 
+        <Link
+          to="/buyer/account/dashboard"
           className={`account-dropdown__item ${isActive("dashboard") ? 'active' : ''}`}
           onClick={() => handleNavigation("dashboard")}
         >
           <MdDashboard className="account-dropdown__item-icon" />
           Dashboard
         </Link>
-        
-        <Link 
-          to="/buyer/account/profile" 
+
+        <Link
+          to="/buyer/account/profile"
           className={`account-dropdown__item ${isActive("profile") ? 'active' : ''}`}
           onClick={() => handleNavigation("profile")}
         >
           <FaUser className="account-dropdown__item-icon" />
           My Profile
         </Link>
-        
-        <Link 
-          to="/buyer/account/bids" 
+
+        <Link
+          to="/buyer/account/bids"
           className={`account-dropdown__item ${isActive("bids") ? 'active' : ''}`}
           onClick={() => handleNavigation("bids")}
         >
           <FaGavel className="account-dropdown__item-icon" />
           My Bids
         </Link>
-        
-        <Link 
-          to="/buyer/account/downloads" 
+
+        <Link
+          to="/buyer/account/downloads"
           className={`account-dropdown__item ${isActive("downloads") ? 'active' : ''}`}
           onClick={() => handleNavigation("downloads")}
         >
           <FaDownload className="account-dropdown__item-icon" />
           My Downloads
         </Link>
-        
-        <Link 
-          to="/buyer/account/requests" 
+
+        <Link
+          to="/buyer/account/requests"
           className={`account-dropdown__item ${isActive("requests") ? 'active' : ''}`}
           onClick={() => handleNavigation("requests")}
         >
           <MdRequestPage className="account-dropdown__item-icon" />
           My Requests
         </Link>
-        
-        <Link 
-          to="/buyer/account/cards" 
+
+        <Link
+          to="/buyer/account/cards"
           className={`account-dropdown__item ${isActive("cards") ? 'active' : ''}`}
           onClick={() => handleNavigation("cards")}
         >
           <FaCreditCard className="account-dropdown__item-icon" />
           My Cards
         </Link>
-        
+
         <div className="account-dropdown__divider"></div>
-        
-        <Link 
-          to="/" 
+
+        <Link
+          to="/"
           className="account-dropdown__item"
           onClick={() => handleNavigation("logout")}
         >

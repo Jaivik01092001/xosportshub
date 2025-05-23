@@ -11,6 +11,7 @@ import BuyerDownloads from "./BuyerDownloads";
 import BuyerRequests from "./BuyerRequests";
 import BuyerBids from "./BuyerBids";
 import BuyerCards from "./BuyerCards";
+import BuyerAccountDashboard from "./BuyerAccountDashboard";
 import "../../styles/BuyerAccount.css";
 
 const BuyerAccount = () => {
@@ -22,7 +23,9 @@ const BuyerAccount = () => {
   useEffect(() => {
     const path = location.pathname;
 
-    if (path.includes("/profile")) {
+    if (path.includes("/dashboard")) {
+      dispatch(setActiveTab("dashboard"));
+    } else if (path.includes("/profile")) {
       dispatch(setActiveTab("profile"));
     } else if (path.includes("/downloads")) {
       dispatch(setActiveTab("downloads"));
@@ -33,13 +36,15 @@ const BuyerAccount = () => {
     } else if (path.includes("/cards")) {
       dispatch(setActiveTab("cards"));
     } else {
-      dispatch(setActiveTab("profile")); // Default to profile
+      dispatch(setActiveTab("dashboard")); // Default to dashboard
     }
   }, [location.pathname, dispatch]);
 
   // Render the active component based on the active tab
   const renderActiveComponent = () => {
     switch (activeTab) {
+      case "dashboard":
+        return <BuyerAccountDashboard />;
       case "profile":
         return <BuyerProfile />;
       case "downloads":
@@ -51,7 +56,7 @@ const BuyerAccount = () => {
       case "cards":
         return <BuyerCards />;
       default:
-        return <BuyerProfile />;
+        return <BuyerAccountDashboard />;
     }
   };
 

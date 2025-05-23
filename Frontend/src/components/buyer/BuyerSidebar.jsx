@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { 
-  selectActiveTab, 
-  setActiveTab 
+import {
+  selectActiveTab,
+  setActiveTab
 } from "../../redux/slices/buyerDashboardSlice";
 import "../../styles/BuyerSidebar.css";
 
@@ -24,11 +24,11 @@ const BuyerSidebar = () => {
   // Handle tab click
   const handleTabClick = (tab) => {
     dispatch(setActiveTab(tab));
-    
+
     // Navigate to the corresponding route
     switch (tab) {
       case "dashboard":
-        navigate("/buyer/dashboard");
+        navigate("/buyer/account/dashboard");
         break;
       case "profile":
         navigate("/buyer/account/profile");
@@ -50,7 +50,7 @@ const BuyerSidebar = () => {
         navigate("/");
         break;
       default:
-        navigate("/buyer/dashboard");
+        navigate("/buyer/account/dashboard");
     }
   };
 
@@ -58,55 +58,55 @@ const BuyerSidebar = () => {
     <div className="BuyerSidebar">
       <div className="BuyerSidebar__container">
         <ul className="BuyerSidebar__menu">
-          <li 
+          <li
             className={`BuyerSidebar__item ${activeTab === "dashboard" ? "active" : ""}`}
             onClick={() => handleTabClick("dashboard")}
           >
             <MdDashboard className="BuyerSidebar__icon" />
             <span>Dashboard</span>
           </li>
-          
-          <li 
+
+          <li
             className={`BuyerSidebar__item ${activeTab === "profile" ? "active" : ""}`}
             onClick={() => handleTabClick("profile")}
           >
             <FaUser className="BuyerSidebar__icon" />
             <span>My Profile</span>
           </li>
-          
-          <li 
+
+          <li
             className={`BuyerSidebar__item ${activeTab === "downloads" ? "active" : ""}`}
             onClick={() => handleTabClick("downloads")}
           >
             <FaDownload className="BuyerSidebar__icon" />
             <span>My Downloads</span>
           </li>
-          
-          <li 
+
+          <li
             className={`BuyerSidebar__item ${activeTab === "requests" ? "active" : ""}`}
             onClick={() => handleTabClick("requests")}
           >
             <MdRequestPage className="BuyerSidebar__icon" />
             <span>My Requests</span>
           </li>
-          
-          <li 
+
+          <li
             className={`BuyerSidebar__item ${activeTab === "bids" ? "active" : ""}`}
             onClick={() => handleTabClick("bids")}
           >
             <FaGavel className="BuyerSidebar__icon" />
             <span>My Bids</span>
           </li>
-          
-          <li 
+
+          <li
             className={`BuyerSidebar__item ${activeTab === "cards" ? "active" : ""}`}
             onClick={() => handleTabClick("cards")}
           >
             <FaCreditCard className="BuyerSidebar__icon" />
             <span>My Cards</span>
           </li>
-          
-          <li 
+
+          <li
             className="BuyerSidebar__item BuyerSidebar__logout"
             onClick={() => handleTabClick("logout")}
           >

@@ -33,6 +33,7 @@ const BuyerDashboard = lazy(() => import("./pages/Buyer/BuyerDashboard"));
 const BuyerOrders = lazy(() => import("./pages/Buyer/BuyerOrders"));
 const BuyerSettings = lazy(() => import("./pages/Buyer/BuyerSettings"));
 const BuyerAccount = lazy(() => import("./pages/Buyer/BuyerAccount"));
+const BuyerAccountDashboard = lazy(() => import("./pages/Buyer/BuyerAccountDashboard"));
 
 // Lazy-loaded Seller Pages
 const SellerDashboard = lazy(() => import("./pages/Seller/SellerDashboard"));
@@ -108,6 +109,7 @@ const App = () => {
               <Route path="/buyer/settings" element={<BuyerSettings />} />
 
               {/* Buyer Account Routes */}
+              <Route path="/buyer/account/dashboard" element={<BuyerAccount />} />
               <Route path="/buyer/account/profile" element={<BuyerAccount />} />
               <Route path="/buyer/account/downloads" element={<BuyerAccount />} />
               <Route path="/buyer/account/requests" element={<BuyerAccount />} />

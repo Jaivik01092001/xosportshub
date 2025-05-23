@@ -136,8 +136,8 @@ const Sidebar = ({ isOpen, toggleSidebar, userRole }) => {
                 {accountDropdownOpen && (
                   <div className="sidebar-account-dropdown">
                     <Link
-                      to="/buyer/dashboard"
-                      className={path === "/buyer/dashboard" ? "active" : ""}
+                      to="/buyer/account/dashboard"
+                      className={path.includes("/account/dashboard") ? "active" : ""}
                       onClick={() => handleAccountNavigation("dashboard")}
                     >
                       <MdDashboard className="sidebar-icon" />

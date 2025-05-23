@@ -209,6 +209,7 @@ display: grid
 
   .BuyerProfile__left-section {
     width: 100%;
+    gap: 20px;
   }
 
   .BuyerProfile__form-row {
