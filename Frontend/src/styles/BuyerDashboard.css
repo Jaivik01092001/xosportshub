@@ -461,7 +461,7 @@
 
 /* Responsive Styles */
 @media (max-width: 992px) {
-  .buyer-dashboard .container {
+  .buyer-dashboard .max-container {
     grid-template-columns: 230px 1fr;
   }
 
@@ -506,7 +506,7 @@
 
 /* Media Queries */
 @media (max-width: 680px) {
-  .buyer-dashboard .container {
+  .buyer-dashboard .max-container {
     grid-template-columns: 1fr;
   }
 

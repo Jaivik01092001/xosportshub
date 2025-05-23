@@ -218,12 +218,6 @@ select {
   padding: 0 20px;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 .flex {
   display: flex;
 }
@@ -710,10 +704,6 @@ select {
   .p-section {
     padding-top: 40px;
     padding-bottom: 40px;
-  }
-  .container {
-    margin: 0 5px;
-    padding: 0 5px;
   }
 }
 /* Large Smartphones (Portrait & Landscape) */
