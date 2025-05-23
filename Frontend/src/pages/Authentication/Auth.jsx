@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../../styles/Auth.css";
-import { IoPhonePortraitOutline } from "react-icons/io5";
-import { CiMail } from "react-icons/ci";
+import { FaEnvelope } from "react-icons/fa";
+import { FaMobile } from "react-icons/fa6";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -85,7 +85,7 @@ const Auth = () => {
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="auth-form-input form-input-container email-input-container">
             <div className="email-icon">
-              <CiMail />
+              <FaEnvelope />
             </div>
             <input
               type="email"
@@ -106,7 +106,7 @@ const Auth = () => {
             <div className="phone-input-wrapper">
               <div>
                 <div className="country-code-select">
-                  <IoPhonePortraitOutline />
+                  <FaMobile style={{ color: "var(--dark-gray)" }} />
                   <select
                     value={formData.countryCode}
                     onChange={handleCountryCodeChange}
