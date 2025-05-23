@@ -1,0 +1,32 @@
+.SectionWrapper {
+  background-color: var(--white);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--box-shadow-light);
+  padding: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.SectionWrapper__title {
+  font-size: var(--heading5);
+  color: var(--secondary-color);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.SectionWrapper__content {
+  width: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .SectionWrapper {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .SectionWrapper__title {
+    font-size: var(--heading6);
+    margin-bottom: 12px;
+  }
+}

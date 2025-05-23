@@ -54,7 +54,6 @@
 .navbar-component .navbar-auth {
   display: flex;
   gap: 10px;
-  padding: 20px;
 }
 
 .navbar-component .navbar-toggle {

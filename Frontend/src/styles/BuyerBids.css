@@ -1,23 +1,123 @@
 .BuyerBids {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-.BuyerBids__title {
-  font-size: var(--heading4);
-  color: var(--secondary-color);
-  margin-bottom: var(--heading6);
+.BuyerBids__list {
+  width: 100%;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.BuyerBids__header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  background-color: var(--bg-gray);
+  padding: 16px;
   font-weight: 600;
+  color: var(--secondary-color);
+  border-bottom: 1px solid var(--light-gray);
 }
 
-.BuyerBids__content {
+.BuyerBids__header-item {
+  padding: 0 8px;
+}
+
+.BuyerBids__item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  padding: 16px;
+  border-bottom: 1px solid var(--light-gray);
+  transition: background-color 0.3s ease;
+}
+
+.BuyerBids__item:last-child {
+  border-bottom: none;
+}
+
+.BuyerBids__item:hover {
+  background-color: var(--bg-gray);
+}
+
+.BuyerBids__item-title {
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 0 8px;
+}
+
+.BuyerBids__item-coach,
+.BuyerBids__item-amount,
+.BuyerBids__item-date {
+  color: var(--dark-gray);
+  padding: 0 8px;
+}
+
+.BuyerBids__item-status {
+  padding: 4px 8px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-weight: 500;
+  font-size: var(--smallfont);
+  display: inline-block;
+  min-width: 80px;
+}
+
+.BuyerBids__status--active {
+  background-color: rgba(0, 122, 255, 0.1);
+  color: #007aff;
+}
+
+.BuyerBids__status--won {
+  background-color: rgba(52, 199, 89, 0.1);
+  color: #34c759;
+}
+
+.BuyerBids__status--lost {
+  background-color: rgba(255, 59, 48, 0.1);
+  color: #ff3b30;
+}
+
+.BuyerBids__empty {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 200px;
   background-color: var(--bg-gray);
   border-radius: var(--border-radius);
-  padding: var(--heading6);
+  padding: 24px;
   color: var(--dark-gray);
   font-size: var(--basefont);
+  text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .BuyerBids__header,
+  .BuyerBids__item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .BuyerBids__header {
+    display: none;
+  }
+
+  .BuyerBids__item-title,
+  .BuyerBids__item-coach,
+  .BuyerBids__item-amount,
+  .BuyerBids__item-date,
+  .BuyerBids__item-status {
+    padding: 4px 8px;
+  }
+
+  .BuyerBids__item-title {
+    font-weight: 600;
+    font-size: var(--heading6);
+  }
+
+  .BuyerBids__item-status {
+    margin-top: 8px;
+  }
 }
