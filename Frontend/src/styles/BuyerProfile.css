@@ -5,9 +5,10 @@
 }
 
 .BuyerProfile__container {
-  display: flex;
-  gap: 24px;
-  width: 100%;
+    display: flex
+;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .BuyerProfile__left-section {
